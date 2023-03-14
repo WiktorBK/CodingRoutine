@@ -26,12 +26,14 @@
   box-sizing: border-box;
   border: 2px solid #ccc;
   outline: none;
-  font-weight: 700;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
 }
 
 #inline::placeholder {
   opacity: 0.5;
   font-size: 18px;
+  font-weight: 600;
   font-family: "Nunito", sans-serif;
 }
 
@@ -44,6 +46,7 @@
   font-size: 16px;
   font-family: "Nunito", sans-serif;
   opacity: 0.5;
+  font-weight: 500;
 }
 
 #message[type="text"] {
@@ -59,7 +62,8 @@
   border: 2px solid #ccc;
   outline: none;
   resize: vertical;
-  font-weight: 700;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
   max-height: 300px;
   min-height: 50px;
 }
