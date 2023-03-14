@@ -1,0 +1,35 @@
+{%extends 'main.html'%}
+{%block content%}
+<div class="container">
+  <div id="verification-box">
+    <h2 style="margin-bottom: 40px">Verify your email</h2>
+    <p id="email-text">
+      You're almost there! We sent you an email with verification link. Just
+      click on it and that's all.
+    </p>
+    <p id="email-text">
+      If you don't see it, you may need to check your spam folder.
+    </p>
+    <br /><br />
+    <div id="resend-div">
+      <p id="email-text">Still can't find your email?</p>
+      <div style="height: 15px"></div>
+      <a id="resend" href="">Resend</a>
+    </div>
+
+    <div id="having-problems">
+      <p id="email-text">
+        Having problems?
+        <a id="contact-us" href="{% url 'contact'%}">Contact us</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="footer-contact">
+    <a id="bottomnav" href="{% url 'home'%}"><small>Home</small></a>
+    <a id="bottomnav" href="{% url 'contact'%}"><small>Contact</small></a>
+    <small id="copyright">&copy CodingRoutine 2023</small>
+  </div>
+</div>
+
+{%endblock%}

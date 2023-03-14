@@ -1,0 +1,35 @@
+
+{%extends 'main.html'%}
+{%block content%}
+
+<div class="container">
+  <div id="verification-box" style="height: 430px">
+    <h2 style="margin-bottom: 40px">Thank you for joining us!</h2>
+    <p id="email-text">
+      It's good to have you on board! We hope that daily coding excersises will
+      take your skills to the next level!
+    </p>
+    <p id="email-text">
+      From now on you will receive a coding problem everyday!
+    </p>
+    <br /><br />
+    <div id="resend-div">
+      <div style="height: 15px"></div>
+      <a id="resend" href="{% url 'home' %}">Take me home</a>
+    </div>
+
+    <div style="margin-top: 10px">
+      <p id="email-text">Feel free to give feedback or report a bug.</p>
+      <p id="email-text">
+        <a id="contact-us" href="{% url 'contact'%}">Contact us</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="footer-contact">
+    <a id="bottomnav" href="{% url 'home'%}"><small>Home</small></a>
+    <a id="bottomnav" href="{% url 'contact'%}"><small>Contact</small></a>
+    <small id="copyright">&copy CodingRoutine 2023</small>
+  </div>
+</div>
+{%endblock%}

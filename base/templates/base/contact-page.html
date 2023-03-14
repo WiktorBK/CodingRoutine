@@ -1,0 +1,51 @@
+{%extends 'main.html'%}
+{% block content %}
+{% include 'navbar.html'%}
+<div class="container">
+    <div id="contact-box">
+      <h2 style="margin-bottom: 5vh">Contact form</h2>
+      <form action="" method="POST">
+        <div id="inline-form">
+          <input
+            style="border-radius: 10px"
+            id="inline"
+            type="text"
+            placeholder="First name"
+          />
+          <input
+            style="border-radius: 10px"
+            id="inline"
+            type="text"
+            placeholder="Last name"
+          />
+        </div>
+        <div id="input">
+          <input
+            style="border-radius: 10px"
+            id="email-contact"
+            type="text"
+            placeholder="Email address"
+          />
+        </div>
+        <div id="input">
+          <textarea
+            id="message"
+            type="text"
+            placeholder="Write something..."
+          ></textarea>
+        </div>
+        <div id="input">
+          <input id="contact-input"
+            type="submit"
+            value="Send"
+          />
+        </div>
+      </form>
+    </div>
+    <div id="footer-contact">
+      <a id="bottomnav" href="{% url 'home'%}"><small>Home</small></a>
+      <a id="bottomnav" href="{% url 'contact'%}"><small>Contact</small></a>
+      <small id="copyright">&copy CodingRoutine 2023</small>
+    </div>
+  </div>
+  {% endblock %}
