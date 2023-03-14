@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;700&display=swap");
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: #182527;
+  font-family: "Nunito", sans-serif;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.topnav {
+  background-color: #071416;
+  height: 150px;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 3px 3px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 35px;
+  transition: 0.4s;
+  margin: 50px 200px;
+}
+
+
+#line {
+  background-color: #20cd8d;
+  width: 5px;
+  height: 45px;
+  float: left;
+  margin-right: 10px;
+}
+
+
+.topnav a:hover {
+  color: #e1e1e1e1;
+}
+
+.container {
+  margin: 100px auto;
+  padding: auto;
+  width: 1000px;
+}
+
+#text {
+  text-align: center;
+}
+
+h1 {
+  color: #20cd8d;
+  font-size: 76px;
+  width: 550px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #20cd8d;
+  font-size: 52px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  /* border: 1px solid black; */
+}
+h5 {
+  color: #20cd8d;
+  font-size: 1vw;
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+p {
+  color: white;
+  font-size: 25px;
+  width: 555px;
+  margin: 40px auto 20px auto;
+}
+
+
+#input {
+  display: flex;
+  justify-content: center;
+}
+
+#email[type="text"] {
+  width: 500px;
+  height: 50px;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #c5c5c5;
+  transition: 0.5s;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  outline: none;
+  background-image: url("https://img.icons8.com/ios-filled/256/apple-mail.png");
+  background-position: 97% 50%;
+  background-size: 35px;
+  background-repeat: no-repeat;
+  font-weight: 700;
+}
+
+
+#email::placeholder {
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+  opacity: 0.5;
+}
+
+
+#email[type="text"]:focus {
+  border: 2px solid #303030;
+  background-color: #d6d6d6;
+}
+
+#sign-up[type="submit"] {
+  background-color: #20cd8d;
+  border: none;
+  color: white;
+  width: 280px;
+  height: 60px;
+  font-size: 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: 0.3s;
+}
+
+
+#sign-up[type="submit"]:hover {
+  background-color: #10bc7c;
+}
+
+#footer-contact {
+  margin: auto;
+  width: 250px;
+  padding: auto;
+  position: absolute;
+  display: flex;
+  right: 50%;
+  top: 97%;
+  margin-right: -130px;
+}
+
+#footer {
+  margin: auto;
+  width: 250px;
+  padding: auto;
+  position: absolute;
+  display: flex;
+  right: 42%;
+  top: 197%;
+}
+
+#copyright {
+  color: white;
+  opacity: 0.5;
+  margin-left: 15px;
+}
+
+#bottomnav {
+  text-decoration: none;
+  color: white;
+  opacity: 0.6;
+  transition: 0.3s;
+  margin: auto 3px;
+}
+#bottomnav:hover {
+  opacity: 0.9;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .topnav {height: 120px;}
+  .topnav a { font-size: 30px; margin: 50px 100px;}
+  #line { width: 5px; height: 35px; margin-right: 8px;}
+  .container {width: 700px; margin: 30px auto;}
+  h1 { font-size: 56px;width: 510px;}
+  h2 {font-size: 33px;}
+  #footer {
+    width: auto;
+    padding: auto;
+    position: absolute;
+    margin: auto;
+    right: 50%;
+    margin-right: -120px;
+    top: 197%;
+  }
+  #footer-contact {
+    margin-right: -140px;
+    right: 50%;
+
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .topnav a { font-size: 24px; margin: 40px 25px;}
+  .container {width: 360px; margin: 30px auto;}
+  #line {width: 4px; height: 30px; margin-right: 8px;}
+  h1 {font-size: 49px; width: 350px;}
+  #sign-up[type="submit"] {width: 180px; height: 45px; font-size: 20px;}
+  #email[type="text"] {width: 360px; height: 42px; background-size: 30px;}
+  p {font-size: 16px;width: auto;margin: 20 auto; display:flex; justify-content: center;}
+  h2 {font-size: 20px;}
+  #footer {
+    width: auto;
+    padding: auto;
+    position: absolute;
+    margin: auto;
+    right: 50%;
+    margin-right: -120px;
+    top: 197%;
+  }
+
+}

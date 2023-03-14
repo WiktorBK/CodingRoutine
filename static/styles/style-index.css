@@ -1,0 +1,131 @@
+#line2 {
+    background-color: #20cd8d;
+    width: 5px;
+    height: 55px;
+    margin: 55px 0px 0px 55px;
+    position: absolute;
+  }
+
+  #smalltext {
+    color: white;
+    opacity: 0.8;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #icon {
+    cursor: pointer;
+    margin: auto;
+    position: absolute;
+    bottom: 0%;
+    animation: arrow 1.5s infinite;
+    right: 50%;
+    margin-right: -20px;
+  }
+
+  #icon1 {
+    /* border: 1px solid black; */
+    cursor: pointer;
+    position: absolute;
+    animation: arrow2 1.5s infinite;
+    top: 101%;
+    right: 50%;
+    margin-right: -20px;
+  }
+
+  @keyframes arrow2 {
+    80% {
+      opacity: 0.6;
+      transform: translateY(7px);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes arrow {
+    80% {
+      opacity: 0.6;
+      transform: translateY(-7px);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  svg {
+    transition: 0.3s;
+  }
+  svg:hover {
+    stroke-width: 2.2px;
+  }
+
+  #section1 {
+    height: 100vh;
+  } 
+  #section2{
+    height: 100vh;
+    padding: 100px;
+  }
+
+
+  #block {
+    margin: 0 auto;
+    width: 80%;
+    height: 700px;
+    background-color: #243234;
+    padding: 20px;
+  }
+  
+  #block-inside {
+    margin: 50 auto;
+    width: 75%;
+    height: 300px;
+    border-radius: 7px;
+    background-color: #252927;
+    padding: 30px;
+    box-shadow: -1px 7px 34px -22px #121212;
+  }
+  
+  #example {
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  #task {
+    margin-top: 20px;
+  }
+  
+  #text {
+    color: white;
+    font-size: 17px;
+    text-align: left;
+  }
+  .container2 {
+    margin: auto;
+    padding: auto;
+    width: 1000px;
+  }
+  
+  
+  @media screen and (max-width: 1200px) {
+    
+    .container2{width:600px;}
+    #block {width: 80%;height: 520px;padding: 20px; }
+    #block-inside {margin: 50 auto;width: 72%;height: 280px;padding: 30px; }
+    #example {margin-top: 16px;font-weight: 600;}
+    #task {margin-top: 20px; }
+    #text {font-size: 15px;}
+    #line2 {width: 4px;height: 35px;margin: 55px 0px 0px 22px;}
+  }
+  
+  @media screen and (max-width: 800px) {
+    #smalltext {font-size: 12px;}
+    .container2{width: 400px}
+    #block-inside {margin: 50 auto;width: 70%;height: 250px;padding: 22px}
+    #task {margin-top: 15px; }
+    #text {font-size: 12px;}
+    #block {width: 90%;height: 400;padding: 20px;  }
+    #line2 {width: 3px;height: 30px;margin: 55px 0px 0px 10px;}
+    #section2{padding:  100px  0;}
+    
+  }
+  

@@ -1,0 +1,194 @@
+#contact-box {
+  margin: 0 auto;
+  width: 70%;  
+  height: 580px;
+  background-color: #243234;
+  box-shadow: -1px 7px 40px -22px #121212;
+  padding: 20px;
+}
+#inline-form {
+  margin: 10 auto;
+  width: auto;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+}
+#inline[type="text"] {
+  margin: 0 auto;
+  width: 240px;
+  margin: 10px;
+  height: 50px;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #c5c5c5;
+  transition: 0.5s;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  outline: none;
+  font-weight: 700;
+}
+
+#inline::placeholder {
+  opacity: 0.5;
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+}
+
+#inline:focus {
+  border: 2px solid #303030;
+  background-color: #d6d6d6;
+}
+
+#message::placeholder {
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  opacity: 0.5;
+}
+
+#message[type="text"] {
+  margin: 20px;
+  width: 500px;
+  height: 200px;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #c5c5c5;
+  transition: 0.5s;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  outline: none;
+  resize: vertical;
+  font-weight: 700;
+  max-height: 300px;
+  min-height: 50px;
+}
+#message[type="text"]:focus {
+  border: 2px solid #303030;
+  background-color: #d6d6d6;
+}
+
+#contact-input[type="submit"] {
+  background-color: #20cd8d;
+  border: none;
+  color: white;
+  width: 200px;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: 0.3s;
+}
+
+#contact-input[type="submit"]:hover {
+  background-color: #10bc7c;
+}
+
+#email-contact[type="text"] {
+  width: 500px;
+  height: 50px;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #c5c5c5;
+  transition: 0.5s;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  outline: none;
+  background-image: url("https://img.icons8.com/ios-filled/256/apple-mail.png");
+  background-position: 97% 50%;
+  background-size: 35px;
+  background-repeat: no-repeat;
+  font-weight: 700;
+}
+
+#email-contact::placeholder {
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+  opacity: 0.5;
+}
+
+#email-contact[type="text"]:focus {
+  border: 2px solid #303030;
+  background-color: #d6d6d6;
+}
+
+@media screen and (max-width: 1200px) {
+  #contact-input[type="submit"] {
+    width: 160px;
+    height: 45px;
+    font-size: 18px;
+  }
+  #contact-box {
+    height: 520px;
+  }
+
+  #inline[type="text"] {
+    width: 180px;
+    height: 40px;
+    font-size: 14px;
+  }
+  #inline::placeholder {
+    font-size: 14px;
+  }
+  #email-contact[type="text"] {
+    width: 380px;
+    height: 40px;
+    background-size: 25px;
+    font-size: 14px;
+  }
+  #email-contact::placeholder {
+    font-size: 14px;
+  }
+  #message[type="text"] {
+    width: 380px;
+    margin: 20 0;
+    font-size: 14px;
+    max-height: 200px;
+  }
+  #message::placeholder {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #contact-input[type="submit"] {
+    width: 140px;
+    height: 40px;
+    font-size: 18px;
+  }
+  #contact-box {
+    height: 400px;
+  }
+
+  #inline[type="text"] {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  #inline::placeholder {
+    font-size: 14px;
+  }
+
+  #email-contact[type="text"] {
+    width: 260px;
+    height: 40px;
+    background-size: 25px;
+    font-size: 14px;
+  }
+  #email-contact::placeholder {
+    font-size: 14px;
+  }
+  #message[type="text"] {
+    width: 260px;
+    margin: 20 0;
+    font-size: 14px;
+    max-height: 100px;
+  }
+  #message::placeholder {
+    font-size: 14px;
+  }
+}

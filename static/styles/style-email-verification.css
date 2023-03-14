@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;700&display=swap");
+
+#verification-box {
+    margin: 0 auto;
+    width: 70%;
+    height: 400px;
+    background-color: #243234;
+    box-shadow: -1px 7px 40px -22px #121212;
+    padding: 20px;
+  }
+  
+  #email-text {
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    margin: 10px auto 0px auto;
+    text-align: center;
+  }
+  
+  #resend {
+    background-color: #20cd8d;
+    text-decoration: none;
+    color: white;
+    padding: 7px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  #resend:hover {
+    background-color: #10bc7c;
+  }
+  
+  #resend-div {
+    /* border:1px solid black; */
+    height: 100px;
+    text-align: center;
+    /* justify-content: center; */
+  }
+  
+  #having-problems {
+    margin-top: 30px;
+  }
+  
+  #contact-us {
+    /* text-decoration: none; */
+    font-weight: 600;
+    color: rgb(227, 227, 227);
+    transition: 0.3s;
+  }
+  #contact-us:hover {
+    color: white;
+  }
+
+
+  @media screen and (max-width: 1200px) {
+      
+  #email-text {
+    font-size: 18px;
+    width: 95%;
+  }
+  
+  }
+  @media screen and (max-width: 800px) {
+    #verification-box{
+      width: 70%;
+      height: 400px;
+    }
+    #email-text {
+      font-size: 15px;
+      width: 100%;
+    }
+
+  }
