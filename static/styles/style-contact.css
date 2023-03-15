@@ -7,7 +7,7 @@
   padding: 20px;
 }
 #inline-form {
-  margin: 10 auto;
+  margin: 0 auto;
   width: auto;
   /* border: 1px solid black; */
   display: flex;
@@ -16,7 +16,7 @@
 #inline[type="text"] {
   margin: 0 auto;
   width: 240px;
-  margin: 10px;
+  margin: 0 10px;
   height: 50px;
   border-radius: 20px;
   font-size: 18px;
@@ -46,7 +46,7 @@
   font-size: 16px;
   font-family: "Nunito", sans-serif;
   opacity: 0.5;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #message[type="text"] {
@@ -64,7 +64,7 @@
   resize: vertical;
   font-weight: 600;
   font-family: "Nunito", sans-serif;
-  max-height: 300px;
+  max-height: 200px;
   min-height: 50px;
 }
 #message[type="text"]:focus {
@@ -106,6 +106,7 @@
   background-size: 35px;
   background-repeat: no-repeat;
   font-weight: 700;
+  margin-top: 20px;
 }
 
 #email-contact::placeholder {
@@ -148,7 +149,7 @@
   }
   #message[type="text"] {
     width: 380px;
-    margin: 20 0;
+    /* margin: 20 0; */
     font-size: 14px;
     max-height: 200px;
   }
@@ -159,40 +160,42 @@
 
 @media screen and (max-width: 800px) {
   #contact-input[type="submit"] {
-    width: 140px;
-    height: 40px;
-    font-size: 18px;
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
   }
   #contact-box {
-    height: 400px;
+    height: 370px;
   }
 
   #inline[type="text"] {
-    width: 120px;
-    height: 40px;
-    font-size: 14px;
+    width: 100px;
+    height: 35px;
+    font-size: 12px;
+    margin: 0px 5px;
   }
 
   #inline::placeholder {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   #email-contact[type="text"] {
-    width: 260px;
-    height: 40px;
-    background-size: 25px;
+    width: 210px;
+    height: 35px;
+    background-size: 20px;
     font-size: 14px;
+    margin: 7px;
   }
   #email-contact::placeholder {
-    font-size: 14px;
+    font-size: 12px;
   }
   #message[type="text"] {
-    width: 260px;
-    margin: 20 0;
-    font-size: 14px;
-    max-height: 100px;
+    width: 210px;
+    margin: 0;
+    font-size: 12px;
+    max-height: 120px;
   }
   #message::placeholder {
-    font-size: 14px;
+    font-size: 12px;
   }
 }

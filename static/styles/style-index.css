@@ -12,6 +12,7 @@
     font-size: 14px;
     display: flex;
     justify-content: center;
+    margin-top: 10px;
   }
   
   #icon {
@@ -77,7 +78,8 @@
   }
   
   #block-inside {
-    margin: 50 auto;
+    margin: 0 auto;
+    margin-top: 50px;
     width: 75%;
     height: 300px;
     border-radius: 7px;
