@@ -29,6 +29,19 @@
   #resend:hover {
     background-color: #10bc7c;
   }
+
+  #take-home {
+    background-color: #20cd8d;
+    text-decoration: none;
+    color: white;
+    padding: 7px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  #take-home:hover {
+    background-color: #10bc7c;
+  }
   
   #resend-div {
     /* border:1px solid black; */
@@ -38,7 +51,7 @@
   }
   
   #having-problems {
-    margin-top: 30px;
+    margin-top: 20px;
   }
   
   #contact-us {
@@ -68,6 +81,7 @@
     #email-text {
       font-size: 15px;
       width: 100%;
+      margin-top: 4px;
     }
 
   }

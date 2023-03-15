@@ -162,12 +162,15 @@ p {
   display: flex;
   right: 42%;
   top: 197%;
+  /* border: 1px solid white; */
+
 }
 
 #copyright {
   color: white;
   opacity: 0.5;
   margin-left: 15px;
+  margin-top: 2px;
 }
 
 #bottomnav {
@@ -176,6 +179,7 @@ p {
   opacity: 0.6;
   transition: 0.3s;
   margin: auto 3px;
+  /* border: 1px solid white; */
 }
 #bottomnav:hover {
   opacity: 0.9;
@@ -206,8 +210,8 @@ p {
 }
 
 @media screen and (max-width: 800px) {
-  .topnav a { font-size: 24px; margin: 40px 25px;}
-  .container {width: 360px; margin: 30px auto;}
+  .topnav a { font-size: 22px; margin: 40px 20px;}
+  .container {width: 360px; margin: 50px auto;}
   #line {width: 4px; height: 30px; margin-right: 8px;}
   h1 {font-size: 49px; width: 350px;}
   #sign-up[type="submit"] {width: 180px; height: 45px; font-size: 20px;}
