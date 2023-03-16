@@ -18,10 +18,15 @@
       <p>Enter your email and receive daily coding excercise</p>
     </div>
 
-   <form action="">
-      <div id="input">
-        <input  id="email" type="text" placeholder="Enter email address" name="email" />
+   <form action="" method="POST">
+    {%csrf_token%}
+
+    <div id="input">
+        <!-- <input  id="email" type="text" placeholder="Enter email address" name="email"/> -->
+        {{ form.email }}
       </div>
+
+
       <div id="input">
         <input id="sign-up" type="submit" name="Submit" value="Sign Up" />
       </div>
