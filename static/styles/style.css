@@ -191,7 +191,7 @@ p {
   .topnav a { font-size: 30px; margin: 50px 100px;}
   #line { width: 5px; height: 35px; margin-right: 8px;}
   .container {width: 700px; margin: 30px auto;}
-  h1 { font-size: 56px;width: 510px;}
+  h1 { font-size: 56px;width: 512px;border:1px solid #182527}
   h2 {font-size: 33px;}
   #footer {
     width: auto;

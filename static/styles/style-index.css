@@ -26,7 +26,6 @@
   }
 
   #icon1 {
-    /* border: 1px solid black; */
     cursor: pointer;
     position: absolute;
     animation: arrow2 1.5s infinite;
