@@ -12,7 +12,7 @@ class Newsletter_User(models.Model):
 class Message_contact(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
+    email_contact = models.CharField(max_length=200)
     sent = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
 
