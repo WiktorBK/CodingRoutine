@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
-
+from .forms import MessageContactForm, NewsletterUserForm
 
 def home(request):
-    context = {}
+    form = NewsletterUserForm()
+    context = {'form': form}
+
     return render(request, "base/home.html", context)
 
 def contact(request):
-    context = {}
+    form = NewsletterUserForm()
+    context = {'form': form}
+
     return render(request, 'base/contact-page.html', context)
 
 def email_verification(request):
