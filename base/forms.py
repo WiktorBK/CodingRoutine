@@ -3,7 +3,11 @@ from django import forms
 from .models import Newsletter_User, Message_contact
 
 class NewsletterUserForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' :'Enter your email', 'id': 'email', 'type':"text"}))
+    email = forms.EmailField(widget=forms.EmailInput
+    (attrs={
+        'placeholder' :'Enter your email', 
+        'id': 'email', 
+        'type':"text"}))
 
 
 
