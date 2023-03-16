@@ -16,18 +16,31 @@ def home(request):
             Newsletter_User.objects.create(email = email)
 
 
-    return render(request, "base/home.html", context)
+    return render(request, "base/home.html", context=context)
 
 def contact(request):
-    form = NewsletterUserForm()
+    form = MessageContactForm()
     context = {'form': form}
+    if request.method == "POST":
+        form = MessageContactForm(request.POST)
+        email = request.POST.get('email_contact').lower()
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        message = request.POST.get('message')
+        
+        Message_contact.objects.create(
+        email_contact=email, 
+        first_name=first_name, 
+        last_name=last_name, 
+        message=message)
+        
 
-    return render(request, 'base/contact-page.html', context)
+    return render(request, 'base/contact-page.html', context=context)
 
 def email_verification(request):
     context = {}
-    return render(request, 'base/email-verification.html', context)
+    return render(request, 'base/email-verification.html', context=context)
 
 def thankyou_page(request):
     context = {}
-    return render(request, 'base/thankyou-page.html', context)
+    return render(request, 'base/thankyou-page.html', context=context)
