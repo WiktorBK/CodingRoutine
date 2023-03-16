@@ -6,33 +6,26 @@
       <h2 style="margin-bottom: 50px">Contact form</h2>
       <form action="" method="POST">
         <div id="inline-form">
-          <input
-            style="border-radius: 10px"
-            id="inline"
-            type="text"
-            placeholder="First name"
-          />
-          <input
-            style="border-radius: 10px"
-            id="inline"
-            type="text"
-            placeholder="Last name"
-          />
+          {{form.first_name}}
+          {{form.last_name}}
+
         </div>
         <div id="input">
-          <input
+          <!-- <input
             style="border-radius: 10px"
             id="email-contact"
             type="text"
             placeholder="Email address"
-          />
+          /> -->
+          {{form.email_contact}}
         </div>
         <div id="input">
-          <textarea
+          <!-- <textarea
             id="message"
             type="text"
             placeholder="Write something..."
-          ></textarea>
+          ></textarea> -->
+          {{form.message}}
         </div>
         <div id="input">
           <input id="contact-input"
