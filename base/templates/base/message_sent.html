@@ -1,0 +1,40 @@
+{%extends 'main.html'%} {%block content%}
+
+<div class="container">
+  <div id="verification-box" style="height: 430px">
+    <h2 style="margin-bottom: 40px">Thank you, {{first_name}}!</h2>
+    <div style="text-align: center; margin: 20px;">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100"
+      height="100"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#10bc7c"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+</div>
+    <p id="email-text">
+      Your message has been sent successfully. We appreciate every type of
+      feedback!
+    </p>
+    <p id="email-text">Expect the answer in your email inbox very soon.</p>
+    <br /><br />
+    <div id="resend-div">
+      <div style="height: 15px"></div>
+      <a id="take-home" href="{% url 'home' %}">Take me home</a>
+    </div>
+  </div>
+
+  <div id="footer-contact">
+    <a id="bottomnav" href="{% url 'home'%}"><small>Home</small></a>
+    <a id="bottomnav" href="{% url 'contact'%}"><small>Contact</small></a>
+    <small id="copyright">&copy CodingRoutine 2023</small>
+  </div>
+</div>
+{%endblock%}
