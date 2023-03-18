@@ -9,11 +9,14 @@ def home(request):
     if request.method == "POST":
         form = NewsletterUserForm(request.POST)
         email = request.POST.get('email').lower()
+
         try:
             user = Newsletter_User.objects.get(email=email)
             print("user already signed up")
         except:
             Newsletter_User.objects.create(email = email)
+            user = Newsletter_User.objects.get(email=email)
+            user.send_email(email, 'wiktor')
             return redirect('email-verification')
 
 
