@@ -8,6 +8,6 @@ urlpatterns= [
     path('thank-you/', views.thankyou_page, name="thank-you"),
     path('message-sent/', views.message_sent, name="message-sent"),
 
-
+    path('verify/<uidb64>/<token>', views.verify, name='verify')
 ]
 
