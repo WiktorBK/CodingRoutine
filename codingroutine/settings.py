@@ -133,9 +133,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import secret_values
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
+EMAIL_FROM = secret_values.email
+EMAIL_HOST_USER = secret_values.email
 EMAIL_PORT = 587
 EMAIL_HOST_PASSWORD = secret_values.password
-DEFAULT_FROM_EMAIL = secret_values.email
 EMAIL_HOST = secret_values.email_host
+
+PASSWORD_RESET_TIMEOUT = 14400
 
