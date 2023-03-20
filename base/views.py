@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_decode
 from django.http import HttpResponse
+from django.contrib import messages
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, Message_contact
