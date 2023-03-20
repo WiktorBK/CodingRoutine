@@ -12,27 +12,26 @@ from .tokens import email_verification_token
 
 def home(request):
     form = NewsletterUserForm()
-    context = {'form': form}
 
     if request.method == "POST":
         form = NewsletterUserForm(request.POST)
-        email = request.POST.get('email').lower()
-
+        email = request.POST.get('email').lower()  
         try:
-            user = Newsletter_User.objects.get(email=email)
-            print("user already signed up")
-        except:
-            user = Newsletter_User.objects.create(email = email)
-            user.save()
+            validate_email(email)
+            try:
+                user = Newsletter_User.objects.get(email=email)
+                messages.error(request, "You are already enrolled to CodingRoutine!")
+            except:
+                user = Newsletter_User.objects.create(email = email)
+                user.save()
+                email = user.generate_verification_email(request, user, email)
+                return redirect('email-verification') if email.send() else messages.error("something went wrong")
+        except: 
+            messages.error(request, "Enter valid email address")
+       
             
 
-            email = user.generate_verification_email(request, user, email)
-            if email.send():
-                return redirect('email-verification')
-            else:
-                print('email not sent')
-
-
+    context = {'form': form}
     return render(request, "base/home.html", context=context)
 
 def contact(request):
@@ -71,8 +70,7 @@ def verify(request, uidb64, token):
     try:
         uid = int(urlsafe_base64_decode(uidb64))
         user = Newsletter_User.objects.get(id=uid)
-    except:
-        user = None
+    except: user = None
 
     if user and email_verification_token.check_token(user, token): 
         user.verified = True
