@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.http import HttpResponse
+
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, Message_contact
+from .tokens import email_verification_token
+
 
 def home(request):
     form = NewsletterUserForm()
@@ -14,10 +20,15 @@ def home(request):
             user = Newsletter_User.objects.get(email=email)
             print("user already signed up")
         except:
-            Newsletter_User.objects.create(email = email)
-            user = Newsletter_User.objects.get(email=email)
-            user.send_email(email, 'wiktor')
-            return redirect('email-verification')
+            user = Newsletter_User.objects.create(email = email)
+            user.save()
+            
+
+            email = user.generate_verification_email(request, user, email)
+            if email.send():
+                return redirect('email-verification')
+            else:
+                print('email not sent')
 
 
     return render(request, "base/home.html", context=context)
@@ -53,3 +64,20 @@ def thankyou_page(request):
 def message_sent(request):
     context = {}
     return render(request, 'base/message_sent.html', context=context)
+
+def verify(request, uidb64, token):
+    try:
+        uid = int(urlsafe_base64_decode(uidb64))
+        user = Newsletter_User.objects.get(id=uid)
+    except:
+        user = None
+
+    if user and email_verification_token.check_token(user, token): 
+        user.verified = True
+        user.save()
+        return redirect('thank-you')
+    else:
+        return HttpResponse("Error: Activation link is invalid")
+        
+
+    
