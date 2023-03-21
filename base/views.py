@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils.http import urlsafe_base64_decode
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
@@ -12,7 +12,7 @@ from .tokens import email_verification_token
 
 def home(request):
     form = NewsletterUserForm()
-
+    context = {'form': form}
     if request.method == "POST":
         form = NewsletterUserForm(request.POST)
         email = request.POST.get('email').lower()  
@@ -20,18 +20,18 @@ def home(request):
             validate_email(email)
             try:
                 user = Newsletter_User.objects.get(email=email)
-                messages.error(request, "You are already enrolled to CodingRoutine!")
+                context = {'form': form, 'enrolled': True}
+               
             except:
                 user = Newsletter_User.objects.create(email = email)
                 user.save()
                 email = user.generate_verification_email(request, user, email)
-                return redirect('email-verification') if email.send() else messages.error("something went wrong")
+                return HttpResponseRedirect('email-verification') if email.send() else messages.error("something went wrong")
         except: 
             messages.error(request, "Enter valid email address")
        
             
-
-    context = {'form': form}
+    
     return render(request, "base/home.html", context=context)
 
 def contact(request):
@@ -78,6 +78,5 @@ def verify(request, uidb64, token):
         return redirect('thank-you')
     else:
         return HttpResponse("Error: Activation link is invalid")
-        
 
     
