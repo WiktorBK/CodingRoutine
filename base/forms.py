@@ -8,7 +8,7 @@ class NewsletterUserForm(ModelForm):
         model = Newsletter_User
         fields = ['email']
         widgets ={
-            'email': forms.TextInput(attrs={'id':'email', 'type': 'text', 'placeholder': 'Enter email adress'})
+            'email': forms.TextInput(attrs={'id':'email', 'type': 'text', 'placeholder': 'Enter email adress', 'autocomplete': "off"})
         }
 
 
