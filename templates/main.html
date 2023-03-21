@@ -31,5 +31,12 @@
   <body>
         {%block content%}
         {%endblock%}
+
+        <!-- Prevent auto form submission after refresh -->
+        <script>
+          if ( window.history.replaceState ) {
+              window.history.replaceState( null, null, window.location.href );
+          }
+      </script>
   </body>
 </html>
