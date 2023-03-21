@@ -1,6 +1,8 @@
 {%extends 'main.html'%}
 
 {% block content %}
+
+
 <section id="section1">
     <header>
         <div class="topnav">
@@ -13,6 +15,10 @@
         </div>
       </header>
   <div class="container">
+    {%if enrolled%}
+    {%include 'base/modal-component.html'%}
+    <style>body{overflow: hidden;}</style>
+    {%endif%}
     <div id="text">
       <h1>Let the routine help you</h1>
       <p>Enter your email and receive daily coding excercise</p>
@@ -22,7 +28,7 @@
         <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
         {% endfor %}
     {%endif%}
-   <form action="" method="POST">
+   <form action="{% url 'home' %}" method="POST">
     {%csrf_token%}
 
     <div id="input">
@@ -88,6 +94,7 @@
   <small id="copyright">&copy CodingRoutine 2023</small>
 </div>
 </div>
+
 </section>
 
 {% endblock %}
