@@ -63,7 +63,7 @@ padding: 10px;
 height: 40px;
 padding: 10px 5px;
 }
-#button
+.button
 {
 	cursor: pointer;
     float: left;
@@ -77,6 +77,22 @@ padding: 10px 5px;
     font-size: 16px;
     font-weight: 600;
 }
+.button-clicked
+{
+  background-color: #10BC7C;
+  opacity: 0.65;
+	cursor: default;
+  float: left;
+  padding: 11px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  color: white;
+  transition: 0.3s;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 #button:hover{background-color: #10BC7C;}
 </style>
 
@@ -90,8 +106,10 @@ padding: 10px 5px;
     </div>
     <div id = "modal-text"><h3 style="font-size: 18px;margin-left: 17px; width: 450px; font-weight:500;">You should have received verification link. Please click the button below to resend the link or contact us if you have any problems.</h3></div>
     <div id = "modal-footer">
-    <a><div id="button">Resend verification link</div></a>
-    <a href="{% url 'contact' %}"><div id="button">Contact us</div></a>
+
+    <button class="button" onclick = "resend()" id="button" style="border: none; outline:none;">Resend verification link</button>
+    <a href="{% url 'contact' %}"><button style="border: none;" id="button" class="button">Contact us</button></a>
+
     </div>
   
   </div>
