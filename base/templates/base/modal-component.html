@@ -117,13 +117,32 @@ padding: 10px 5px;
 </div>
 
 <script>
-// Get the modal
 var modal = document.getElementById("Modal");
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+}
+
+function resend(){
+document.getElementById("button").classList.add('button-clicked');
+document.getElementById("button").classList.remove('button');
+document.getElementById("button").disabled = true;
+document.getElementById("button").innerHTML = "Resend verification link (45)";
+var counter = 45;
+var int = setInterval(function() {
+    counter--;
+  document.getElementById("button").innerHTML = "Resend verification link ("+counter+")";
+  if (counter == 0) {
+				
+        clearInterval(int);
+        document.getElementById("button").classList.remove('button-clicked');
+        document.getElementById("button").classList.add('button');
+        document.getElementById("button").disabled = false;
+        document.getElementById("button").innerHTML = "Resend verification link";
+
+
+  }
+}, 1000)
 }
 </script>
 
