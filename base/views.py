@@ -21,7 +21,7 @@ def home(request):
             try:
                 user = Newsletter_User.objects.get(email=email)
                 context = {'form': form, 'enrolled': True}
-               
+                
             except:
                 user = Newsletter_User.objects.create(email = email)
                 user.save()
@@ -29,10 +29,10 @@ def home(request):
                 return HttpResponseRedirect('email-verification') if email.send() else messages.error("something went wrong")
         except: 
             messages.error(request, "Enter valid email address")
-       
-            
-    
+
     return render(request, "base/home.html", context=context)
+
+
 
 def contact(request):
     form = MessageContactForm()
@@ -79,4 +79,6 @@ def verify(request, uidb64, token):
     else:
         return HttpResponse("Error: Activation link is invalid")
 
+def resend(request):
     
+    return HttpResponse("Success: verification link has been sent")
