@@ -30,7 +30,7 @@
         <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
         {% endfor %}
     {%endif%}
-   <form action="{% url 'home' %}" method="POST">
+   <form action="{% url 'home' %}" onsubmit="disable()" method="POST">
     {%csrf_token%}
 
     <div id="input">
@@ -71,13 +71,37 @@
   </div>
 </div>
 </div>
-<div id="footer">
-  <a id="bottomnav" href="#section1"><small>Home</small></a>
-  <a id="bottomnav" href="{% url 'contact'%}"><small>Contact</small></a>
-  <small id="copyright">&copy CodingRoutine 2023</small>
-</div>
+
+
 </div>
 
-</section>
+
+<script>
+ 
+
+  function disable(){
+document.getElementById("sign-up").disabled = true;
+document.getElementById("sign-up").style.cursor = 'default';
+document.getElementById("sign-up").style.backgroundColor = '10bc7c';
+document.getElementById("sign-up").style.opacity = '0.6';
+document.getElementById("sign-up").value = "Signing up...";
+var counter = 3;
+var int = setInterval(function() {
+    counter--;
+
+  if (counter == 0) {
+				
+        clearInterval(int);
+        document.getElementById("sign-up").disabled = false;
+        document.getElementById("sign-up").value = "Sign up";
+        document.getElementById("sign-up").style.cursor = 'pointer';
+        document.getElementById("sign-up").style.backgroundColor = '20cd8d';
+        document.getElementById("sign-up").style.opacity = '1';
+
+
+  }
+}, 1000)
+}
+</script>
 
 {% endblock %}
