@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+from django.template import RequestContext
 from django.utils.http import urlsafe_base64_decode
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.contrib.auth.decorators import user_passes_test
 
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, Message_contact
@@ -20,7 +22,8 @@ def home(request):
             validate_email(email)
             try:
                 user = Newsletter_User.objects.get(email=email)
-                context = {'form': form, 'enrolled': True}
+                verified = user.verified
+                context = {'form': form, 'enrolled': True, 'verified': verified, 'email': email}
                 
             except:
                 user = Newsletter_User.objects.create(email = email)
@@ -79,6 +82,16 @@ def verify(request, uidb64, token):
     else:
         return HttpResponse("Error: Activation link is invalid")
 
-def resend(request):
+
+@user_passes_test(lambda u: u.is_superuser)
+def resend(request, email):
+    user = Newsletter_User.objects.get(email=email)
+    email = user.generate_verification_email(request, user, email)
+    print('test')
+    return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
+
+
+def page_not_found(request, exception, template_name='404.html'):
     
-    return HttpResponse("Success: verification link has been sent")
+    return render(request, template_name, status=404)
+

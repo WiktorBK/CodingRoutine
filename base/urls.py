@@ -7,9 +7,8 @@ urlpatterns= [
     path('email-verification/', views.email_verification, name="email-verification"),
     path('thank-you/', views.thankyou_page, name="thank-you"),
     path('message-sent/', views.message_sent, name="message-sent"),
-    path('resend/', views.resend, name="resend"),
+    path('resend/<email>', views.resend, name="resend"),
 
 
     path('verify/<uidb64>/<token>', views.verify, name='verify')
 ]
-
