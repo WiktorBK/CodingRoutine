@@ -15,24 +15,6 @@
     margin-top: 10px;
   }
   
-  #icon {
-    cursor: pointer;
-    margin: auto;
-    position: absolute;
-    bottom: 0%;
-    animation: arrow 1.5s infinite;
-    right: 50%;
-    margin-right: -20px;
-  }
-
-  #icon1 {
-    cursor: pointer;
-    position: absolute;
-    animation: arrow2 1.5s infinite;
-    top: 101%;
-    right: 50%;
-    margin-right: -20px;
-  }
 
   @keyframes arrow2 {
     80% {
