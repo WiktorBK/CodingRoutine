@@ -2,8 +2,6 @@
 
 {% block content %}
 
-
-<section id="section1">
     <header>
         <div class="topnav">
           
@@ -16,7 +14,11 @@
       </header>
   <div class="container">
     {%if enrolled%}
-    {%include 'base/modal-component.html'%}
+      {%if verified%}
+      {%include 'base/modal-verified.html'%}
+        {%else%}
+        {%include 'base/modal-enrolled.html'%}
+      {%endif%}
     <style>body{overflow: hidden;}</style>
     {%endif%}
     <div id="text">
@@ -43,31 +45,12 @@
     <div id="smalltext">
       <small>Zero spam. One click unsubscribe.</small>
     </div>
-    <div id="icon">
-      <a href="#section2"><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="35"
-        height="35"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#FFFFFF"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round">
-        <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-      </svg>
-    </div></a>
+
   </div>
-</section>
 
-
-
-<section id="section2">
   
   <div class="container2">
-  <div id="icon1">
-    <a href="#section1"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/></svg>
-  </div>
+
 </a>
 <div id="block">
   <h2>Sample coding excercise</h2>
