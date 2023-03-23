@@ -10,6 +10,7 @@ body {
   margin: 0;
   background-color: #182527;
   font-family: "Nunito", sans-serif;
+  height: 100%;
   /* overflow: hidden; */
 }
 
@@ -143,37 +144,19 @@ p {
   background-color: #10bc7c;
 }
 
-#footer-contact {
-  margin: auto;
-  width: 250px;
-  padding: auto;
-  position: absolute;
-  display: flex;
-  right: 50%;
-  top: 97%;
-  margin-right: -130px;
-}
 
-#footer {
-  margin: auto;
-  width: 250px;
-  padding: auto;
-  position: absolute;
-  display: flex;
-  right: 42%;
-  top: 197%;
-  /* border: 1px solid white; */
 
-}
 
 #copyright {
   color: white;
   opacity: 0.5;
   margin-left: 15px;
   margin-top: 2px;
+  /* border: 1px solid white; */
 }
 
 #bottomnav {
+
   text-decoration: none;
   color: white;
   opacity: 0.6;
@@ -181,6 +164,8 @@ p {
   margin: auto 3px;
   /* border: 1px solid white; */
 }
+
+
 #bottomnav:hover {
   opacity: 0.9;
 }
@@ -193,20 +178,7 @@ p {
   .container {width: 700px; margin: 30px auto;}
   h1 { font-size: 56px;width: 512px;border:1px solid #182527}
   h2 {font-size: 33px;}
-  #footer {
-    width: auto;
-    padding: auto;
-    position: absolute;
-    margin: auto;
-    right: 50%;
-    margin-right: -120px;
-    top: 197%;
-  }
-  #footer-contact {
-    margin-right: -140px;
-    right: 50%;
 
-  }
 }
 
 @media screen and (max-width: 800px) {
@@ -218,14 +190,6 @@ p {
   #email[type="text"] {width: 360px; height: 42px; background-size: 30px;}
   p {font-size: 16px;width: auto;margin: 20 auto; display:flex; justify-content: center;}
   h2 {font-size: 25px;}
-  #footer {
-    width: auto;
-    padding: auto;
-    position: absolute;
-    margin: auto;
-    right: 50%;
-    margin-right: -120px;
-    top: 197%;
-  }
+
 
 }
