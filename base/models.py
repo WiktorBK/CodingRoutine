@@ -45,3 +45,12 @@ class Message_contact(models.Model):
 
     class Meta: ordering = ['-sent']
     def __str__(self): return self.message
+
+
+class CodingExcersise(models.Model):
+    title =  models.CharField(max_length=100, null=True)
+    level = models.CharField(max_lenght=15)
+    example = models.CharField(max_length=200, null=True)
+    body =  models.CharField(max_length=500)
+    
+    def __str__(self): return self.body
