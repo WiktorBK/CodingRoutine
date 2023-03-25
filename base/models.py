@@ -27,8 +27,11 @@ class Newsletter_User(models.Model):
 
         return email
 
-    def send_daily_coding_excercise(self, request):
-        pass
+    def generate_daily_coding_excercise(self, request, coding_excercise):
+        mail_subject = "Coding Excercise for today"
+        message = render_to_string('base/email_templates/template_excercise_email.html')
+        email = EmailMessage(mail_subject, message, to = [self.email])
+        return email
 
     def generate_welcoming_email(self, request):
         mail_subject = "Welcome on board!"
@@ -55,10 +58,10 @@ class Message_contact(models.Model):
 
 
 class CodingExcercise(models.Model):
-    title =  models.CharField(max_length=100, null=True)
+    title =  models.CharField(max_length=100, null=True, blank=True)
     level = models.CharField(max_length=15)
-    example_input = models.CharField(max_length=200, null=True)
-    example_output = models.CharField(max_length=200, null=True)
+    example_input = models.CharField(max_length=200, null=True, blank=True)
+    example_output = models.CharField(max_length=200, null=True, blank=True)
     body =  models.CharField(max_length=500)
     
-    def __str__(self): return self.body
+    def __str__(self): return self.title if self.title else self.body
