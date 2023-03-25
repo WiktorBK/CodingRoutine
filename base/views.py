@@ -28,8 +28,8 @@ def home(request):
             except:
                 user = Newsletter_User.objects.create(email = email)
                 user.save()
-                email = user.generate_verification_email(request, user, email)
-                return HttpResponseRedirect('email-verification') if email.send() else messages.error("something went wrong")
+                verification_email = user.generate_verification_email(request)
+                return HttpResponseRedirect('email-verification') if verification_email.send() else messages.error("something went wrong")
         except: 
             messages.error(request, "Enter valid email address")
 
@@ -78,6 +78,11 @@ def verify(request, uidb64, token):
     if user and email_verification_token.check_token(user, token): 
         user.verified = True
         user.save()
+        welcoming_email = user.generate_welcoming_email(request)
+        # try:
+        welcoming_email.send()
+        # except:
+        #     pass
         return redirect('thank-you')
     else:
         return HttpResponse("Error: Activation link is invalid")
@@ -86,7 +91,7 @@ def verify(request, uidb64, token):
 @user_passes_test(lambda u: u.is_superuser)
 def resend(request, email):
     user = Newsletter_User.objects.get(email=email)
-    email = user.generate_verification_email(request, user, email)
+    email = user.generate_verification_email(request)
     print('test')
     return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
 
