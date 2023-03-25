@@ -11,6 +11,7 @@ from .tokens import email_verification_token
 class Newsletter_User(models.Model):
 
     email = models.CharField(max_length=200)
+    excercises_received = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -52,7 +53,6 @@ class Message_contact(models.Model):
     sent = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
 
-
     class Meta: ordering = ['-sent']
     def __str__(self): return self.message
 
@@ -65,3 +65,12 @@ class CodingExcercise(models.Model):
     body =  models.CharField(max_length=500)
     
     def __str__(self): return self.title if self.title else self.body
+
+
+class Exceptions(models.Model):
+    occured = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100)
+    exception = models.CharField(max_length=300)
+
+    class Meta: ordering = ['-occured']
+    def __str__(self): return self.title
