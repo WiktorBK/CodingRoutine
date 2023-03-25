@@ -14,20 +14,27 @@ class Newsletter_User(models.Model):
     verified = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
-    def generate_verification_email(self, request, user, to_email):
+    def generate_verification_email(self, request):
         mail_subject = "Verify your email address"
-        message = render_to_string('base/template_email.html', 
+        message = render_to_string('base/email_templates/template_verification_email.html', 
             {
             'domain': get_current_site(request).domain,
-            'uid':  urlsafe_base64_encode(force_bytes(user.id)),
-            'token': email_verification_token.make_token(user),
+            'uid':  urlsafe_base64_encode(force_bytes(self.id)),
+            'token': email_verification_token.make_token(self),
             'protocol': 'https' if request.is_secure() else 'http'
             })
-        email = EmailMessage(mail_subject, message, to = [to_email])
+        email = EmailMessage(mail_subject, message, to = [self.email])
 
         return email
 
+    def send_daily_coding_excercise(self, request):
+        pass
 
+    def generate_welcoming_email(self, request):
+        mail_subject = "Welcome on board!"
+        message = render_to_string('base/email_templates/template_welcome_email.html')
+        email = EmailMessage(mail_subject, message, to = [self.email])
+        return email
 
 
     class Meta: ordering = ['-created']
