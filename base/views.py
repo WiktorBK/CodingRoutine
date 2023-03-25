@@ -8,7 +8,7 @@ from django.core.validators import validate_email
 from django.contrib.auth.decorators import user_passes_test
 
 from .forms import MessageContactForm, NewsletterUserForm
-from .models import Newsletter_User, Message_contact
+from .models import Newsletter_User, Message_contact, ExceptionTracker
 from .tokens import email_verification_token
 
 
@@ -78,11 +78,13 @@ def verify(request, uidb64, token):
     if user and email_verification_token.check_token(user, token): 
         user.verified = True
         user.save()
-        welcoming_email = user.generate_welcoming_email(request)
-        # try:
-        welcoming_email.send()
-        # except:
-        #     pass
+        welcoming_email = user.generate_welcoming_email()
+
+        try:
+            welcoming_email.send()
+        except Exception as e: 
+            ExceptionTracker.objects.create(title='Failed to send welcoming email', exception=e)
+
         return redirect('thank-you')
     else:
         return HttpResponse("Error: Activation link is invalid")
@@ -91,8 +93,8 @@ def verify(request, uidb64, token):
 @user_passes_test(lambda u: u.is_superuser)
 def resend(request, email):
     user = Newsletter_User.objects.get(email=email)
-    email = user.generate_verification_email(request)
-    print('test')
+    email = user.generate_verification_email()
+   
     return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
 
 
