@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect
-from django.template import RequestContext
 from django.utils.http import urlsafe_base64_decode
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.contrib.auth.decorators import user_passes_test
 
 from .forms import MessageContactForm, NewsletterUserForm
-from .models import Newsletter_User, Message_contact, ExceptionTracker
+from .models import Newsletter_User, Message_contact, ExceptionTracker, CodingExcercise
 from .tokens import email_verification_token
 
 
@@ -18,10 +16,11 @@ def home(request):
     if request.method == "POST":
         form = NewsletterUserForm(request.POST)
         email = request.POST.get('email').lower()  
+        user = Newsletter_User.objects.get(email=email)
+
         try:
             validate_email(email)
             try:
-                user = Newsletter_User.objects.get(email=email)
                 verified = user.verified
                 context = {'form': form, 'enrolled': True, 'verified': verified, 'email': email}
                 
@@ -92,10 +91,15 @@ def verify(request, uidb64, token):
 
 @user_passes_test(lambda u: u.is_superuser)
 def resend(request, email):
-    user = Newsletter_User.objects.get(email=email)
-    email = user.generate_verification_email()
-   
-    return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
+
+    try: 
+        user = Newsletter_User.objects.get(email=email)
+        email = user.generate_verification_email()
+    
+        return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
+    except Exception as e: 
+        ExceptionTracker.objects.create(title="Failed to resend verification link", exception=e)
+
 
 
 def page_not_found(request, exception, template_name='404.html'):
