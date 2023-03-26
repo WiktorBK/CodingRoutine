@@ -33,11 +33,13 @@ class Newsletter_User(models.Model):
             ExceptionTracker.objects.create(
                 title='Failed to generate verification email', exception=e)
 
-    def generate_daily_coding_excercise(self, coding_excercise):
+    def generate_daily_coding_excercise(self):
+        coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
+
         try:
             mail_subject = "Coding Excercise for today"
-            message = render_to_string(
-                'base/email_templates/template_excercise_email.html')
+            message = render_to_string('base/email_templates/template_excercise.html',
+            {'coding_excercise': coding_excercise})
             email = EmailMessage(mail_subject, message, to=[self.email])
             return email
         except Exception as e:
