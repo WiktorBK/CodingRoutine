@@ -8,7 +8,6 @@ from django.utils.encoding import force_bytes
 
 from .tokens import email_verification_token
 
-
 class Newsletter_User(models.Model):
 
     email = models.CharField(max_length=200)
@@ -34,17 +33,16 @@ class Newsletter_User(models.Model):
                 title='Failed to generate verification email', exception=e)
 
     def generate_daily_coding_excercise(self):
-        coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
 
         try:
-            mail_subject = "Coding Excercise for today"
-            message = render_to_string('base/email_templates/template_excercise.html',
-            {'coding_excercise': coding_excercise})
-            email = EmailMessage(mail_subject, message, to=[self.email])
-            return email
+           
+         coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
+         return coding_excercise
+        
         except Exception as e:
             ExceptionTracker.objects.create(
-                title='Failed to generate daily coding excercise email', exception=e)
+                title='Failed to generate daily coding excercise', exception=e)
+        
 
     def generate_welcoming_email(self):
 
@@ -87,6 +85,7 @@ class CodingExcercise(models.Model):
 
     def __str__(self): return self.title if self.title else self.body
 
+    
 
 class ExceptionTracker(models.Model):
     occured = models.DateTimeField(auto_now_add=True)
