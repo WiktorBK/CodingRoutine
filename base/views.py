@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, Message_contact, ExceptionTracker, CodingExcercise
-from .tokens import email_verification_token
+from .tokens import email_verification_token, unsubscribe_token
 from .services import *
 
 def home(request):
@@ -22,7 +22,7 @@ def home(request):
             validate_email(email)
             try:
                 verified = user.verified
-                context = {'form': form, 'enrolled': True, 'verified': verified, 'email': email}
+                context = {'form': form, 'enrolled': True, 'verified': verified, 'email': email, 'active': user.active}
                 
             except:
                 user = Newsletter_User.objects.create(email = email)
@@ -88,21 +88,34 @@ def verify(request, uidb64, token):
     else:
         return HttpResponse("Error: Activation link is invalid")
 
+def unsubscribe(request, uidb64, token):
+    try:
+        uid = int(urlsafe_base64_decode(uidb64))
+        user = Newsletter_User.objects.get(id=uid)
+    except: user = None
+
+
+    #  needs change
+    if user and email_verification_token.check_token(user, token): 
+        user.active = False
+        user.verified = False
+        user.save()
+        
+
+    return render(request, "base/unsubscribe-page.html")
 
 @user_passes_test(lambda u: u.is_superuser)
 def resend(request, email):
 
     try: 
         user = Newsletter_User.objects.get(email=email)
-        email = user.generate_verification_email()
+        email = user.generate_verification_email(request)
     
         return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
     except Exception as e: 
         ExceptionTracker.objects.create(title="Failed to resend verification link", exception=e)
 
-def unsubscribe(request):
 
-    return render(request, "base/unsubscribe-page.html")
 
 def page_not_found(request, exception, template_name='404.html'):
     
