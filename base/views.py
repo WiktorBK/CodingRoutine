@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import user_passes_test
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, Message_contact, ExceptionTracker, CodingExcercise
 from .tokens import email_verification_token
-
+from .services import *
 
 def home(request):
     form = NewsletterUserForm()
@@ -100,7 +100,9 @@ def resend(request, email):
     except Exception as e: 
         ExceptionTracker.objects.create(title="Failed to resend verification link", exception=e)
 
+def unsubscribe(request):
 
+    return render(request, "base/unsubscribe-page.html")
 
 def page_not_found(request, exception, template_name='404.html'):
     
