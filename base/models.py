@@ -6,7 +6,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes
 
-from .tokens import email_verification_token
+from .tokens import email_verification_token, unsubscribe_token
 
 class Newsletter_User(models.Model):
 
@@ -14,6 +14,8 @@ class Newsletter_User(models.Model):
     excercises_received = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+  
 
     def generate_verification_email(self, request):
         try:
@@ -23,7 +25,8 @@ class Newsletter_User(models.Model):
                                            'domain': get_current_site(request).domain,
                                            'uid':  urlsafe_base64_encode(force_bytes(self.id)),
                                            'token': email_verification_token.make_token(self),
-                                           'protocol': 'https' if request.is_secure() else 'http'
+                                           'protocol': 'https' if request.is_secure() else 'http',
+                                           'unsubscribe_token': unsubscribe_token._make_hash_value(self)
                                        })
             email = EmailMessage(mail_subject, message, to=[self.email])
             return email
