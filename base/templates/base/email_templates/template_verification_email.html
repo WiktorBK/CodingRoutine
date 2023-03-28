@@ -5,4 +5,9 @@ Hello,
 Please click on the link below to verify your email:
 
 {{protocol}}://{{domain}}{% url 'verify' uidb64=uid token=token %}
+
+
+Unsubscribe:
+{{protocol}}://{{domain}}{% url 'unsubscribe' uidb64=uid token=unsubscribe_token %}
+
 {% endautoescape %}
