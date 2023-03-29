@@ -44,5 +44,24 @@ def create_user(email):
         new_user.save()
         return new_user
         
+def create_message(request):
+
+    '''
+    Get the values from the form
+
+    Create new message object 
+    '''
+    email = request.POST.get('email_contact').lower()
+    first_name = request.POST.get('first_name').capitalize()
+    last_name = request.POST.get('last_name').capitalize()
+    message = request.POST.get('message')
+
+    new_message = Message_contact.objects.create(
+    email_contact=email, 
+    first_name=first_name, 
+    last_name=last_name, 
+    message=message)
+
+    return new_message
 
 
