@@ -15,7 +15,7 @@ class Newsletter_User(models.Model):
     verified = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
-  
+    unsubscribe_token = models.CharField(max_length=200, default="")
 
     def generate_verification_email(self, request):
         try:
@@ -26,7 +26,7 @@ class Newsletter_User(models.Model):
                                            'uid':  urlsafe_base64_encode(force_bytes(self.id)),
                                            'token': email_verification_token.make_token(self),
                                            'protocol': 'https' if request.is_secure() else 'http',
-                                           'unsubscribe_token': unsubscribe_token._make_hash_value(self)
+                                           'unsubscribe_token': self.unsubscribe_token
                                        })
             email = EmailMessage(mail_subject, message, to=[self.email])
             return email
@@ -52,7 +52,7 @@ class Newsletter_User(models.Model):
         try:
             mail_subject = "Welcome on board!"
             message = render_to_string(
-                'base/email_templates/template_welcome_email.html')
+                'base/email_templates/template_welcome_email.html', {"unsubscribe_token": self.unsubscribe_token})
             email = EmailMessage(mail_subject, message, to=[self.email])
             return email
 
