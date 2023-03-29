@@ -14,23 +14,24 @@ def home(request):
     form = NewsletterUserForm()
     context = {'form': form}
     if request.method == "POST":
+
         form = NewsletterUserForm(request.POST)
         email = request.POST.get('email').lower()  
-        user = Newsletter_User.objects.get(email=email)
 
-        try:
-            validate_email(email)
-            try:
-                verified = user.verified
-                context = {'form': form, 'enrolled': True, 'verified': verified, 'email': email, 'active': user.active}
-                
-            except:
-                user = Newsletter_User.objects.create(email = email)
-                user.save()
-                verification_email = user.generate_verification_email(request)
-                return HttpResponseRedirect('email-verification') if verification_email.send() else messages.error("something went wrong")
-        except: 
-            messages.error(request, "Enter valid email address")
+        # try:
+        validate_email(email)
+        user = Newsletter_User.objects.filter(email=email).first()
+        if user:
+            verified = user.verified
+            context = {'form': form, 'enrolled': True, 'verified': verified, 'email': email, 'active': user.active}
+        else:
+            new_user = Newsletter_User.objects.create(email = email)
+            new_user.unsubscribe_token = unsubscribe_token.generate_unsubscribe_token(new_user)
+            new_user.save()
+            verification_email = new_user.generate_verification_email(request)
+            return HttpResponseRedirect('email-verification') if verification_email.send() else messages.error("something went wrong")
+        # except: 
+        #     messages.error(request, "Enter valid email address")
 
     return render(request, "base/home.html", context=context)
 
@@ -96,10 +97,10 @@ def unsubscribe(request, uidb64, token):
 
 
     #  needs change
-    if user and email_verification_token.check_token(user, token): 
-        user.active = False
-        user.verified = False
-        user.save()
+    # if user and email_verification_token.check_token(user, token): 
+    #     user.active = False
+    #     user.verified = False
+    #     user.save()
         
 
     return render(request, "base/unsubscribe-page.html")
