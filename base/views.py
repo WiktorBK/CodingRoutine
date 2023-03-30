@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.core.validators import validate_email
 from django.contrib.auth.decorators import user_passes_test
+from django.core.exceptions import ValidationError
 
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, Message_contact, ExceptionTracker, CodingExcercise
@@ -90,14 +91,19 @@ def home(request):
         try:
             validate_email(email)
             user = Newsletter_User.objects.filter(email=email).first()
-            if user:
+            if user and user.active == True:
                 verified = user.verified
                 context = {'form': form, 'enrolled': True, 'verified': verified, 'email': email, 'active': user.active}
+            elif user and user.active == False:
+                user.active = True
+                user.save()
+                verification_email = user.generate_verification_email(request)
+                return HttpResponseRedirect('email-verification') if verification_email.send() else messages.error("something went wrong")
             else:
                 new_user = create_user(email)
                 verification_email = new_user.generate_verification_email(request)
                 return HttpResponseRedirect('email-verification') if verification_email.send() else messages.error("something went wrong")
-        except: 
+        except ValidationError: 
             messages.error(request, "Enter valid email address")
 
     return render(request, "base/home.html", context=context)
