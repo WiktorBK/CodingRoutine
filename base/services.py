@@ -5,8 +5,6 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 
 
-
-
 def send_excercise():
     '''
     Sending coding excercise to each user individually according to excercise's order
@@ -21,12 +19,11 @@ def send_excercise():
 
         # Add exception if there are no excercises in database
         if excercise is None: return ExceptionTracker.objects.create(title="Daily email wasn't sent", exception=f"No excercise for {user.email}")
-            
 
         mail_subject = f"Coding Excercise - {excercise.level} [#{user.excercises_received + 1}]"
         message = render_to_string('base/email_templates/template_excercise.html',{"excercise": excercise})
         email = EmailMessage(mail_subject, message, to=[user.email])
-     
+       
         try:
             email.send()
         except Exception as e:
@@ -39,10 +36,10 @@ def create_user(email):
 
         Save to database
         '''
-        new_user = Newsletter_User.objects.create(email = email)
-        new_user.unsubscribe_token = unsubscribe_token.generate_unsubscribe_token(new_user)
-        new_user.save()
-        return new_user
+        user = Newsletter_User.objects.create(email = email)
+        user.unsubscribe_token = unsubscribe_token.generate_unsubscribe_token(user)
+        user.save()
+        return user
         
 def create_message(request):
 
@@ -56,12 +53,12 @@ def create_message(request):
     last_name = request.POST.get('last_name').capitalize()
     message = request.POST.get('message')
 
-    new_message = Message_contact.objects.create(
+    message = Message_contact.objects.create(
     email_contact=email, 
     first_name=first_name, 
     last_name=last_name, 
     message=message)
 
-    return new_message
+    return message
 
 
