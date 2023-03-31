@@ -111,4 +111,3 @@ def home(request):
 def page_not_found(request, exception, template_name='404.html'):
     
     return render(request, template_name, status=404)
-
