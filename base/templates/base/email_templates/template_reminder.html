@@ -1,0 +1,15 @@
+{% autoescape on %}
+
+Your email is not verified.
+
+
+Please click on the link below to verify your email and start receiving excercises:
+
+{{protocol}}://{{domain}}{% url 'verify' uidb64=uid token=token %}
+
+
+
+If you have changed your mind click the link below to unsubscribe:
+{{protocol}}://{{domain}}{% url 'unsubscribe' uidb64=uid token=unsubscribe_token %}
+
+{%endautoescape%}
