@@ -1,7 +1,10 @@
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
 
+from base.tokens import email_verification_token
 from base.models import Newsletter_User, ExceptionTracker
 
 
@@ -33,4 +36,29 @@ def send_excercise():
     print('okay')
 
 
+def send_reminder():
+    '''
+
+    Sends a remainder email when user has unverified account.
+
+    Refer to jobs/updater.py
+    
+    '''
+    users = Newsletter_User.objects.filter(active=True, verified=False)
+    for user in users:
+        
+        mail_subject = "Verify your account"
+        message = render_to_string(
+        'base/email_templates/template_reminder.html',
+        {'uid':  urlsafe_base64_encode(force_bytes(user.id)),
+        'token': email_verification_token.make_token(user),
+        'unsubscribe_token': user.unsubscribe_token})
+
+        email = EmailMessage(mail_subject, message, to=[user.email])
+               
+        try:
+            email.send()
+        except Exception as e:
+            ExceptionTracker.objects.create(title=f"Failed to send reminder email to {user.email}", exception=e)
+                                                
 
