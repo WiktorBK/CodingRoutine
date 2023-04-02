@@ -1,4 +1,5 @@
 {%extends 'main.html'%} {% block content %} {% include 'navbar.html'%}
+
 <div class="container">
   <div id="contact-box">
     <h2 style="margin-bottom: 50px">Contact form</h2>
@@ -12,16 +13,21 @@
       </div>
     </form>
   </div>
+  </div>
+  
+  <footer class="footer">
 
-  <!-- <div id="footer-contact">
+    <ul>
+      <li><a href="{%url 'home'%}">Home</a></li>
+      <li><a href="{%url 'contact'%}">Contact</a></li>
+      <li><a href="">Unsubscribe</a></li>
+  
+    </ul>
+  
+    <p> &copy CodingRoutine 2023</p>
+  
+  </footer>
+ 
+   
 
-    <div id="footer-content">
-    <a id="bottomnav" href="{% url 'home'%}"><small>Home</small></a>
-    <a id="bottomnav" href="{% url 'contact'%}"><small>Contact</small></a>
-    <a id="bottomnav" href="{% url 'contact'%}"><small>Unsubscribe</small></a>
-
-    <small id="copyright">&copy CodingRoutine 2023</small>
-    </div>
-  </div> -->
-</div>
 {% endblock %}
