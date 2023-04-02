@@ -2,5 +2,6 @@ __pycache__/
 db.sqlite3
 codingroutine/__pycache__/
 base/__pycache__/
+administration/__pycache__/
 migrations/
 secret_values.py
