@@ -2,6 +2,35 @@
 {% block content%}
 {% include 'navbar.html'%}
 
-AdminSite
 
+<div id="container">
+<div id="admin-box">
+<div id="admin-header">
+<h6>Administration site</h6>
+<small id="admin-small">logged in as Wiktor</small>
+<div style="clear:both;"></div>
+</div>
+
+<div id="admin-content">
+
+    <a href=""><div class="model-box">Newsletter Users</div></a>
+    <a href=""><div class="model-box">
+        Contact Messages
+        <div id="new">2</div>
+    </div></a>
+    <a href=""><div class="model-box">Excercises</div></a>
+    <a href=""><div class="model-box">Exceptions
+        <div id="new_exception">!</div>
+    </div></a>
+    <a href=""><div class="model-box">Admins</div></a>
+    <div style="clear:both;"></div>
+
+</div>
+</div>
+</div>
+
+
+
+
+{% include 'footer.html'%}
 {% endblock content%}
