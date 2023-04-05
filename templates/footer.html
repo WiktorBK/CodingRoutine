@@ -1,0 +1,14 @@
+<footer class="footer">
+
+    <ul>
+      {%if request.user.is_superuser%}
+      <li><a href="{% url 'administration-site'%}">Admin</a></li>
+      {%endif%}
+      <li><a href="">Home</a></li>
+      <li><a href="">Contact</a></li>
+      <li><a href="">Unsubscribe</a></li>
+    </ul>
+  
+    <p> &copy CodingRoutine 2023</p>
+  
+  </footer>
