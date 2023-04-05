@@ -1,0 +1,80 @@
+#admin-box{
+    background-color: #243234;
+    width: 1300px;
+    height: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+
+#admin-small{
+    font-size: 14px;
+    margin:30px;;
+    padding:0;
+    float:right;
+    color: white;
+    opacity: 0.7;
+}
+h6{
+    font-size: 36px;
+    color: white;
+    float:left;
+    width: 335px;
+    padding:5px;;
+    margin:15px;
+
+}
+
+#admin-header{
+    display: inline-block;
+    border-bottom: 1px solid rgb(116, 116, 116);
+    width: 85%;
+    margin-left: 97.5px;
+    margin-top: 10px;
+}
+
+#admin-content{
+    margin-left: 97.5px;
+    margin-top: 30px;
+    width: 85%;
+    padding-left: 15px;
+
+}
+
+.model-box{
+    height: 50px;
+    width: 280px;
+    text-align: center;
+    float: left;
+    background-color: #182527;
+    color: white;
+    padding: 50px 20px 35px 20px;
+    margin: 20px;
+    font-size: 23px;
+    border: 1px solid rgb(69, 69, 69);
+    transition: 0.3s;
+}
+
+.model-box:hover{
+    border: 1px solid rgb(104, 104, 104);
+}
+
+#new{
+    width: 18px;
+    height: 18px;
+    border-radius: 50px;
+    margin: 30px 30px 30px 275px;
+    font-size: 14px;
+    color: black;
+    font-weight: 900;
+    text-align: center;
+    position: absolute;
+    background-color: #20cd8d;
+}
+#new_exception{
+    margin: 12px 0px 0 275px;
+    font-size: 32px;
+    color: rgb(155, 0, 0);
+    font-weight: 900;
+    position: absolute;
+}
