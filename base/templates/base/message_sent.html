@@ -1,5 +1,5 @@
 {%extends 'main.html'%} {%block content%}
-
+{% include 'navbar.html'%}
 <div class="container">
   <div id="verification-box" style="height: 430px">
     <h2 style="margin-bottom: 40px">Thank you, {{first_name}}!</h2>
@@ -34,15 +34,5 @@
 
 </div>
 
-<footer class="footer">
-
-  <ul>
-    <li><a href="">Home</a></li>
-    <li><a href="">Contact</a></li>
-    <li><a href="">Unsubscribe</a></li>
-  </ul>
-
-  <p> &copy CodingRoutine 2023</p>
-
-</footer>
+{%include 'footer.html'%}
 {%endblock%}

@@ -2,7 +2,7 @@
 
 <div class="container">
   <div id="contact-box">
-    <h2 style="margin-bottom: 50px">Contact form</h2>
+    <h2 style="margin-bottom: 50px">Contact us</h2>
     <form action="" method="POST">
       {%csrf_token%}
       <div id="inline-form">{{form.first_name}} {{form.last_name}}</div>
@@ -15,18 +15,7 @@
   </div>
   </div>
   
-  <footer class="footer">
-
-    <ul>
-      <li><a href="{%url 'home'%}">Home</a></li>
-      <li><a href="{%url 'contact'%}">Contact</a></li>
-      <li><a href="">Unsubscribe</a></li>
-  
-    </ul>
-  
-    <p> &copy CodingRoutine 2023</p>
-  
-  </footer>
+  {%include 'footer.html'%}
  
    
 

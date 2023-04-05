@@ -1,6 +1,5 @@
-{% autoescape off %}
+{% autoescape on %}
 
-Hello, 
 
 Please click on the link below to verify your email:
 
@@ -10,4 +9,4 @@ Please click on the link below to verify your email:
 Unsubscribe:
 {{protocol}}://{{domain}}{% url 'unsubscribe' uidb64=uid token=unsubscribe_token %}
 
-{% endautoescape %}
+{%endautoescape%}
