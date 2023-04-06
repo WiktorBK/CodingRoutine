@@ -1,0 +1,28 @@
+{%extends 'main.html'%}
+{% block content%}
+{% include 'navbar.html'%}
+
+
+<div id="container">
+<div id="admin-box">
+<div id="admin-header">
+<h6>Admins</h6>
+<small id="admin-small">logged in as Wiktor</small>
+<div style="clear:both;"></div>
+</div>
+
+<div id="admin-content">
+
+{% for admin in admins %}
+{{admin}}
+{%endfor%}
+
+</div>
+</div>
+</div>
+
+
+
+
+{% include 'footer.html'%}
+{% endblock content%}
