@@ -11,8 +11,6 @@ def administration_site(request):
     unread_messages = len(Message_contact.get_unread_messages())
     unread_exceptions = len(ExceptionTracker.get_unread_exceptions())
 
-   
-
     context={"unread_messages": unread_messages, "unread_exceptions": unread_exceptions}
     return render(request, 'administration/administration.html', context=context)
 
@@ -47,6 +45,6 @@ def excercises(request):
 @user_passes_test(lambda u: u.is_superuser)
 def admins(request):
     admins_ = User.objects.filter(is_superuser=True)
-
+    
     context={"admins": admins_}
-    return render(request, 'administration/admins.html')
+    return render(request, 'administration/admins.html', context=context)
