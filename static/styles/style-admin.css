@@ -39,6 +39,12 @@ h6 {
   width: 85%;
   padding-left: 15px;
 }
+#models-content {
+  margin-left: 97.5px;
+  margin-top: 30px;
+  width: 85%;
+  padding-left: 15px;
+}
 
 .model-box {
   height: 50px;
@@ -78,6 +84,59 @@ h6 {
   position: absolute;
 }
 
+#back-button{
+  width: 75px;
+  height: 30px;
+  background-color: #182527;
+  text-align: center;
+  border-radius: 10px;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+#back-button:hover{background-color: rgb(31, 42, 43);}
+
+#table{
+  margin-top: 50px;
+}
+
+#table-header{
+  color: white;
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: #081719;
+  border-bottom: 1px solid #212627;
+}
+
+#table-header-element{
+  float: left;
+  padding: 15px 12px;
+  width: 195px;
+}
+
+#table-element{
+  color: rgba(255, 255, 255, 0.767);
+  font-size: 14px;
+  background-color: #141f20d7;
+  border-bottom: 2px solid #36393a;
+  cursor:pointer;
+  transition: 0.1s;
+} 
+
+#table-element:hover{
+  color: white;
+  background-color: #141f20f1;
+  font-size: 15px;
+}
+
+#table-row-element{
+  float: left;
+  padding: 10px 12px;
+  width: 195px;
+}
+
 @media screen and (max-width: 1400px) {
   #admin-header {
     margin-left: 50px;
@@ -94,6 +153,10 @@ h6 {
     font-size: 21px;
   }
   #admin-content {
+    margin-left: 25px;
+    width: 95%;
+  }
+  #models-content {
     margin-left: 25px;
     width: 95%;
   }
@@ -128,6 +191,10 @@ h6 {
     margin-left: 80px;
     width: 80%;
   }
+  #admin-content {
+    margin-left: 80px;
+    width: 80%;
+  }
   #new {
     width: 16px;
     height: 16px;
@@ -138,6 +205,8 @@ h6 {
     font-size: 30px;
   }
 }
+
+
 
 @media screen and (max-width: 850px) {
   #admin-header {
@@ -208,3 +277,5 @@ h6 {
     width: 220px;
   }
 }
+
+
