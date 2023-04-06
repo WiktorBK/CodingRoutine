@@ -72,11 +72,18 @@ class Message_contact(models.Model):
     email_contact = models.CharField(max_length=200)
     sent = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
+    unread = models.BooleanField(default=False)
 
-    class Meta:
-        ordering = ['-sent']
+    @classmethod
+    def get_messages(cls): return cls.objects.filter()
 
+    @classmethod
+    def get_unread_messages(cls): return cls.objects.filter()
+
+    class Meta:ordering = ['-sent']
     def __str__(self): return self.message
+
+
 
 
 class CodingExcercise(models.Model):
@@ -88,14 +95,11 @@ class CodingExcercise(models.Model):
 
     def __str__(self): return self.title if self.title else self.body
 
-    
 
 class ExceptionTracker(models.Model):
     occured = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
     exception = models.CharField(max_length=300)
 
-    class Meta:
-        ordering = ['-occured']
-
+    class Meta:ordering = ['-occured']
     def __str__(self): return self.title
