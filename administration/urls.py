@@ -7,6 +7,6 @@ urlpatterns= [
     path("administration/messages", views.messages, name="messages"),
     path("administration/exceptions", views.exceptions, name="exceptions"),
     path("administration/excercises", views.excercises, name="excercises"),
-
+    path("administration/admins", views.admins, name="admins"),
 
 ]
