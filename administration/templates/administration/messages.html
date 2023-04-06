@@ -1,0 +1,65 @@
+{%extends 'main.html'%}
+{% block content%}
+{% include 'navbar.html'%}
+
+
+<div id="container">
+<div id="admin-box">
+<div id="admin-header">
+<h6>Contact Messages</h6>
+<small id="admin-small">logged in as Wiktor</small>
+<div style="clear:both;"></div>
+</div>
+
+<div id="models-content">
+
+
+<a id="back-button" href="{%url 'administration-site'%}">Go back</a>
+
+
+
+<div id="table">
+    <div id="table-header">
+        <div id="table-header-element">First Name</div>
+        <div id="table-header-element">Last Name</div>
+       <div id="table-header-element">Email</div> 
+        <div id="table-header-element">Message</div>
+        <div id="table-header-element">Sent</div>
+        <div style="clear:both;"></div>
+    </div>
+{% for message in messages %}
+
+
+
+
+    <div
+    {% if message.id|divisibleby:2 and message.unread%} 
+    style="background-color: #182527bb; font-weight: 900;"
+    {% elif message.id|divisibleby:2 and message.unread == False%} 
+    style="background-color: #182527bb; "
+    {% elif message.id|divisibleby:2 == False and message.unread%} 
+    style="font-weight: 900;"
+    {%endif%}
+     id="table-element">
+     <div id="table-row-element">{{message.first_name}}</div>
+     <div id="table-row-element">{{message.last_name}}</div>
+    <div id="table-row-element">{{message.email_contact}}</div> 
+     <div id="table-row-element">{{message}}</div>
+     <div id="table-row-element">{{message.sent}}</div>
+     <div style="clear:both;"></div>
+
+    </div>
+  
+{%endfor%}
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+{% include 'footer.html'%}
+{% endblock content%}
