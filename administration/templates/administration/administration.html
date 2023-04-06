@@ -12,19 +12,22 @@
 </div>
 
 <div id="admin-content">
-
-    <a href=""><div class="model-box">Newsletter Users</div></a>
-    <a href=""><div class="model-box">
-        Contact Messages
-        <div id="new">2</div>
+    <a href="{% url 'users'%}"><div class="model-box">Newsletter Users</div></a>
+    <a href="{% url 'messages'%}"><div class="model-box">Contact Messages
+        {% if unread_messages > 0 and unread_messages < 100%}
+            <div id="new">{{unread_messages}}</div>
+        {% elif unread_messages > 99 %}
+            <div id="new">99</div>
+        {%endif%}
     </div></a>
-    <a href=""><div class="model-box">Excercises</div></a>
-    <a href=""><div class="model-box">Exceptions
+    <a href="{% url 'excercises'%}"><div class="model-box">Excercises</div></a>
+    <a href="{% url 'exceptions'%}"><div class="model-box">Exceptions
+        {% if unread_exception > 0%}
         <div id="new_exception">!</div>
+        {% endif %}
     </div></a>
-    <a href=""><div class="model-box">Admins</div></a>
+    <a href="{% url 'admins'%}"><div class="model-box">Admins</div></a>
     <div style="clear:both;"></div>
-
 </div>
 </div>
 </div>
