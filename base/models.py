@@ -17,6 +17,13 @@ class Newsletter_User(models.Model):
     active = models.BooleanField(default=True)
     unsubscribe_token = models.CharField(max_length=200, default="")
 
+    class Meta: ordering = ['-created']
+    def __str__(self): return self.email
+
+    @classmethod
+    def get_users(cls): return cls.objects.filter()
+
+
     def generate_verification_email(self, request):
         try:
          mail_subject = "Verify your email address"
@@ -54,8 +61,6 @@ class Newsletter_User(models.Model):
          ExceptionTracker.objects.create(
          title='Failed to generate welcoming email', exception=e)
 
-    class Meta: ordering = ['-created']
-    def __str__(self): return self.email
 
 
 class Message_contact(models.Model):
