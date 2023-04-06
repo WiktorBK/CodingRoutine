@@ -19,50 +19,42 @@ class Newsletter_User(models.Model):
 
     def generate_verification_email(self, request):
         try:
-            mail_subject = "Verify your email address"
-            message = render_to_string('base/email_templates/template_verification_email.html',
-                                       {
-                                           'domain': get_current_site(request).domain,
-                                           'uid':  urlsafe_base64_encode(force_bytes(self.id)),
-                                           'token': email_verification_token.make_token(self),
-                                           'protocol': 'https' if request.is_secure() else 'http',
-                                           'unsubscribe_token': self.unsubscribe_token
-                                       })
-            email = EmailMessage(mail_subject, message, to=[self.email])
-            return email
-
+         mail_subject = "Verify your email address"
+         message = render_to_string('base/email_templates/template_verification_email.html',
+         {
+        'domain': get_current_site(request).domain,
+        'uid':  urlsafe_base64_encode(force_bytes(self.id)),
+        'token': email_verification_token.make_token(self),
+        'protocol': 'https' if request.is_secure() else 'http',
+        'unsubscribe_token': self.unsubscribe_token
+         })
+         email = EmailMessage(mail_subject, message, to=[self.email])
+         return email
         except Exception as e:
-            ExceptionTracker.objects.create(
-                title='Failed to generate verification email', exception=e)
+         ExceptionTracker.objects.create(
+         title='Failed to generate verification email', exception=e)
 
     def generate_daily_coding_excercise(self):
-
         try:
-           
          coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
          return coding_excercise
-        
         except Exception as e:
-            ExceptionTracker.objects.create(
-                title='Failed to generate daily coding excercise', exception=e)
-        
+         ExceptionTracker.objects.create(
+         title='Failed to generate daily coding excercise', exception=e)
 
     def generate_welcoming_email(self):
-
         try:
-            mail_subject = "Welcome on board!"
-            message = render_to_string(
-                'base/email_templates/template_welcome_email.html', {"unsubscribe_token": self.unsubscribe_token})
-            email = EmailMessage(mail_subject, message, to=[self.email])
-            return email
+         mail_subject = "Welcome on board!"
+         message = render_to_string(
+         'base/email_templates/template_welcome_email.html', {"unsubscribe_token": self.unsubscribe_token})
+         email = EmailMessage(mail_subject, message, to=[self.email])
+         return email
 
         except Exception as e:
-            ExceptionTracker.objects.create(
-                title='Failed to generate welcoming email', exception=e)
+         ExceptionTracker.objects.create(
+         title='Failed to generate welcoming email', exception=e)
 
-    class Meta:
-        ordering = ['-created']
-
+    class Meta: ordering = ['-created']
     def __str__(self): return self.email
 
 
@@ -74,15 +66,15 @@ class Message_contact(models.Model):
     message = models.TextField()
     unread = models.BooleanField(default=False)
 
-    @classmethod
-    def get_messages(cls): return cls.objects.filter()
-
-    @classmethod
-    def get_unread_messages(cls): return cls.objects.filter()
 
     class Meta:ordering = ['-sent']
     def __str__(self): return self.message
 
+    @classmethod
+    def get_messages(cls): return cls.objects.filter()
+
+    @classmethod
+    def get_unread_messages(cls): return cls.objects.filter(unread=False)
 
 
 
@@ -95,11 +87,21 @@ class CodingExcercise(models.Model):
 
     def __str__(self): return self.title if self.title else self.body
 
+    @classmethod
+    def get_excercises(cls): return cls.objects.filter()
+
 
 class ExceptionTracker(models.Model):
     occured = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
     exception = models.CharField(max_length=300)
+    unread = models.BooleanField(default=False)
 
     class Meta:ordering = ['-occured']
     def __str__(self): return self.title
+
+    @classmethod
+    def get_exceptions(cls): return cls.objects.filter()
+
+    @classmethod
+    def get_unread_exceptions(cls): return cls.objects.filter(unread=False)
