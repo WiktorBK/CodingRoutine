@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from .models import *
 from base.models import *
-
+from .forms import AddExcerciseForm
 
 @user_passes_test(lambda u: u.is_superuser)
 def administration_site(request):
@@ -48,3 +48,10 @@ def admins(request):
     
     context={"admins": admins_}
     return render(request, 'administration/admins.html', context=context)
+
+@user_passes_test(lambda u: u.is_superuser)
+def add_excercise(request):
+    form=AddExcerciseForm()
+
+    context={'form': form}
+    return render(request, 'administration/add_excercise.html', context=context)
