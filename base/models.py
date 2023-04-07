@@ -84,11 +84,16 @@ class Message_contact(models.Model):
 
 
 class CodingExcercise(models.Model):
+    EASY="EASY"
+    MED="MEDIUM"
+    HARD="HARD"
+    DIFFICULTY_CHOICES=((EASY, "Easy"), (MED, "Medium"), (HARD, "Hard"))
     title = models.CharField(max_length=100, null=True, blank=True)
-    level = models.CharField(max_length=15)
+    difficulty = models.CharField(max_length=15, choices=DIFFICULTY_CHOICES, default="Easy")
     example_input = models.CharField(max_length=200, null=True, blank=True)
     example_output = models.CharField(max_length=200, null=True, blank=True)
     body = models.CharField(max_length=500)
+    added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self): return self.title if self.title else self.body
 
