@@ -22,6 +22,8 @@
            <div id="table-header-element">Occured</div> 
             <div style="clear:both;"></div>
         </div>
+
+        <div id="table-content">
     {% for exception in exceptions %}
         <div
         {% if exception.id|divisibleby:2 and exception.unread%} 
@@ -35,12 +37,10 @@
          <div id="table-row-element" style="width: 300px;">{{exception.title}}</div>
          <div id="table-row-element" style="width: 500px">{{exception.exception}}</div>
         <div id="table-row-element">{{exception.occured}}</div> 
-
          <div style="clear:both;"></div>
-    
         </div>
-      
     {%endfor%}
+</div>
     </div>
 
 </div>
