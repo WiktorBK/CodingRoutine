@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;700&display=swap");
-::-webkit-scrollbar {
-  display: none;
-}
+
+::-webkit-scrollbar {width: 7px;}
+::-webkit-scrollbar-track {background: #949494;border-radius: 2px;}
+::-webkit-scrollbar-thumb {background: #585858;border-radius: 3px;}
+::-webkit-scrollbar-thumb:hover {background: #444444;}
+
 html {
   scroll-behavior: smooth;
   height: 100vh;
@@ -28,7 +31,7 @@ body {
   text-decoration: none;
   font-size: 35px;
   transition: 0.4s;
-  margin: 50px 200px;
+  margin: 50px 150px;
 }
 
 
