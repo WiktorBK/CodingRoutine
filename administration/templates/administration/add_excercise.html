@@ -1,0 +1,49 @@
+{%extends 'main.html'%}
+{%block content%}
+{% include 'navbar.html'%}
+<div id="container">
+    <div id="admin-box">
+    <div id="admin-header">
+    <h6>Add new excercise</h6>
+    <small id="admin-small">logged in as Wiktor</small>
+    <div style="clear:both;"></div>
+    </div>
+    <div id="models-content">
+    
+        <a id="button" href="{%url 'excercises'%}">Go back</a>
+    
+        
+
+        <form action="" method="POST">
+            {%csrf_token%}
+            
+            <label for="">Difficulty</label>
+            <div>
+                <select id="" name="customer">
+                    {% for x, y in form.fields.difficulty.choices %}
+                        <option value="{{x}}">{{ y }}</option>
+                    {% endfor %}
+                    </select>
+            </div>
+            <label for="">Title</label>
+            <div>{{form.title}}</div>
+            <label for="">Body</label>
+            <div>{{form.body}}</div>
+            <div> {{form.example_input}}</div>
+            <div>{{form.example_output}}</div>
+            
+            
+            
+              <input id="add-button" type="submit" value="Add" />
+            
+          </form>
+        
+        </div>
+    
+    </div>
+    </div>
+    </div>
+
+
+{% include 'footer.html'%}
+{%endblock%}
