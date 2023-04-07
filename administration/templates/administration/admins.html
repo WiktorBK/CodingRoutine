@@ -23,6 +23,8 @@
             <div id="table-header-element">Date joined</div>
             <div style="clear:both;"></div>
         </div>
+
+    <div id="table-content">
     {% for admin in admins %}
         <div
         {% if user.id|divisibleby:2 %} 
@@ -34,10 +36,10 @@
          <div id="table-row-element">{{admin.last_login}}</div>
          <div id="table-row-element">{{admin.date_joined}}</div>
          <div style="clear:both;"></div>
-    
         </div>
-      
     {%endfor%}
+    </div>
+
     </div>
 
 </div>
