@@ -11,7 +11,36 @@
 <div style="clear:both;"></div>
 </div>
 
-<div id="admin-content">
+<div id="models-content">
+
+    <a id="button" href="{%url 'administration-site'%}">Go back</a>
+
+    <div id="table">
+        <div id="table-header">
+            <div id="table-header-element">Title</div>
+            <div id="table-header-element">Difficulty</div>
+           <div id="table-header-element">Body</div> 
+            <div id="table-header-element">Added</div>
+            <div style="clear:both;"></div>
+        </div>
+    {% for excercise in excercises %}
+        <div
+        {% if excercise.id|divisibleby:2 %} 
+        style="background-color: #182527bb;"
+        {%endif%}
+         id="table-element">
+         <div id="table-row-element">{{excercise.title}}</div>
+         <div id="table-row-element">{{excercise.level}}</div>
+        <div id="table-row-element">{{excercise.body}}</div> 
+         <div id="table-row-element">{{excercise.added}}</div>
+         <div style="clear:both;"></div>
+    
+        </div>
+      
+    {%endfor%}
+    </div>
+
+    <a id="button" href="{%url 'administration-site'%}">Add excercise</a>
 
 </div>
 </div>

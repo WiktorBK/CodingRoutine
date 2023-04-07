@@ -14,7 +14,7 @@
 <div id="models-content">
 
 
-<a id="back-button" href="{%url 'administration-site'%}">Go back</a>
+<a id="button" href="{%url 'administration-site'%}">Go back</a>
 
 
 
@@ -34,11 +34,11 @@
 
     <div
     {% if message.id|divisibleby:2 and message.unread%} 
-    style="background-color: #182527bb; font-weight: 900;"
+    style="background-color: #182527bb; font-weight: 900; color: white;"
     {% elif message.id|divisibleby:2 and message.unread == False%} 
     style="background-color: #182527bb; "
     {% elif message.id|divisibleby:2 == False and message.unread%} 
-    style="font-weight: 900;"
+    style="font-weight: 900; color:white;"
     {%endif%}
      id="table-element">
      <div id="table-row-element">{{message.first_name}}</div>

@@ -8,7 +8,37 @@
 <small id="admin-small">logged in as Wiktor</small>
 <div style="clear:both;"></div>
 </div>
-<div id="admin-content">
+<div id="models-content">
+
+    <a id="button" href="{%url 'administration-site'%}">Go back</a>
+
+    <div id="table">
+        <div id="table-header">
+            <div id="table-header-element">Email</div>
+            <div id="table-header-element">Verified</div>
+           <div id="table-header-element">Active</div> 
+            <div id="table-header-element">Excercises received</div>
+            <div id="table-header-element">First seen</div>
+            <div style="clear:both;"></div>
+        </div>
+    {% for user in users %}
+        <div
+        {% if user.id|divisibleby:2 %} 
+        style="background-color: #182527bb;"
+        {%endif%}
+         id="table-element">
+         <div id="table-row-element">{{user.email}}</div>
+         <div id="table-row-element">{{user.verified}}</div>
+        <div id="table-row-element">{{user.active}}</div> 
+         <div id="table-row-element">{{user.excercises_received}}</div>
+         <div id="table-row-element">{{user.created}}</div>
+         <div style="clear:both;"></div>
+    
+        </div>
+      
+    {%endfor%}
+    </div>
+
 </div>
 </div>
 </div>

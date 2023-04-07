@@ -11,8 +11,37 @@
 <div style="clear:both;"></div>
 </div>
 
-<div id="admin-content">
+<div id="models-content">
 
+    <a id="button" href="{%url 'administration-site'%}">Go back</a>
+
+    <div id="table">
+        <div id="table-header">
+            <div id="table-header-element" style="width: 300px;" >Title</div>
+            <div id="table-header-element" style="width: 500px">Exception</div>
+           <div id="table-header-element">Occured</div> 
+            <div style="clear:both;"></div>
+        </div>
+    {% for exception in exceptions %}
+        <div
+        {% if exception.id|divisibleby:2 and exception.unread%} 
+        style="background-color: #182527bb; font-weight: 900; color: white;"
+        {% elif exception.id|divisibleby:2 and exception.unread == False%} 
+        style="background-color: #182527bb; "
+        {% elif exception.id|divisibleby:2 == False and exception.unread%} 
+        style="font-weight: 900; color:white;"
+        {%endif%}
+         id="table-element">
+         <div id="table-row-element" style="width: 300px;">{{exception.title}}</div>
+         <div id="table-row-element" style="width: 500px">{{exception.exception}}</div>
+        <div id="table-row-element">{{exception.occured}}</div> 
+
+         <div style="clear:both;"></div>
+    
+        </div>
+      
+    {%endfor%}
+    </div>
 
 </div>
 </div>

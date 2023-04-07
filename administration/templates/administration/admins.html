@@ -11,11 +11,36 @@
 <div style="clear:both;"></div>
 </div>
 
-<div id="admin-content">
+<div id="models-content">
 
-{% for admin in admins %}
-{{admin}}
-{%endfor%}
+    <a id="button" href="{%url 'administration-site'%}">Go back</a>
+
+    <div id="table">
+        <div id="table-header">
+            <div id="table-header-element">Username</div>
+           <div id="table-header-element">Active</div> 
+            <div id="table-header-element">Last login</div>
+            <div id="table-header-element">Date joined</div>
+            <div style="clear:both;"></div>
+        </div>
+    {% for admin in admins %}
+        <div
+        {% if user.id|divisibleby:2 %} 
+        style="background-color: #182527bb;"
+        {%endif%}
+         id="table-element">
+         <div id="table-row-element">{{admin.username}}</div>
+        <div id="table-row-element">{{admin.is_active}}</div> 
+         <div id="table-row-element">{{admin.last_login}}</div>
+         <div id="table-row-element">{{admin.date_joined}}</div>
+         <div style="clear:both;"></div>
+    
+        </div>
+      
+    {%endfor%}
+    </div>
+
+</div>
 
 </div>
 </div>
