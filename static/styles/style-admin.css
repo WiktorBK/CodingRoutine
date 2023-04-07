@@ -84,7 +84,7 @@ h6 {
   position: absolute;
 }
 
-#back-button{
+#models-content>#button{
   width: 75px;
   height: 30px;
   background-color: #182527;
@@ -96,10 +96,12 @@ h6 {
   transition: 0.2s;
 }
 
-#back-button:hover{background-color: rgb(31, 42, 43);}
+
+#models-content>#button:hover{background-color: rgb(31, 42, 43);}
 
 #table{
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 #table-header{
@@ -123,18 +125,22 @@ h6 {
   border-bottom: 2px solid #36393a;
   cursor:pointer;
   transition: 0.1s;
+  max-height: 50px;
+  white-space: nowrap;
 } 
 
-#table-element:hover{
+#table-element:hover {
   color: white;
   background-color: #141f20f1;
-  font-size: 15px;
+  font-size: 14.1px;
+  /* padding: 2px 0px; */
 }
 
 #table-row-element{
   float: left;
   padding: 10px 12px;
   width: 195px;
+  transition: 0.1s;
 }
 
 @media screen and (max-width: 1400px) {
