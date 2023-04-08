@@ -24,7 +24,7 @@ def send_excercise():
         # Add   exception if there are no excercises in database
         if excercise is None: return ExceptionTracker.objects.create(title="Daily email wasn't sent", exception=f"No excercise for {user.email}")
 
-        mail_subject = f"Coding Excercise - {excercise.level} [#{user.excercises_received + 1}]"
+        mail_subject = f"Coding Excercise - {excercise.difficulty} [#{user.excercises_received + 1}]"
         message = render_to_string('base/email_templates/template_excercise.html',{"excercise": excercise})
         email = EmailMessage(mail_subject, message, to=[user.email])
        
