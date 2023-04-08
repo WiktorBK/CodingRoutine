@@ -5,9 +5,15 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes
+from django import forms
 
 from .tokens import email_verification_token, unsubscribe_token
 
+
+EASY="EASY"
+MED="MEDIUM"
+HARD="HARD"
+DIFFICULTY_CHOICES=((EASY, "Easy"), (MED, "Medium"), (HARD, "Hard"))
 class Newsletter_User(models.Model):
 
     email = models.CharField(max_length=200)
@@ -84,15 +90,11 @@ class Message_contact(models.Model):
 
 
 class CodingExcercise(models.Model):
-    EASY="EASY"
-    MED="MEDIUM"
-    HARD="HARD"
-    DIFFICULTY_CHOICES=((EASY, "Easy"), (MED, "Medium"), (HARD, "Hard"))
     title = models.CharField(max_length=100, null=True, blank=True)
     difficulty = models.CharField(max_length=15, choices=DIFFICULTY_CHOICES, default="Easy")
     example_input = models.CharField(max_length=200, null=True, blank=True)
     example_output = models.CharField(max_length=200, null=True, blank=True)
-    body = models.CharField(max_length=500)
+    body = models.CharField(max_length=1000)
     added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self): return self.title if self.title else self.body
