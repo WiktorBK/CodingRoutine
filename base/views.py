@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, Message_contact, ExceptionTracker, CodingExcercise
 from .tokens import email_verification_token, unsubscribe_token
-from .services import *
+from .functions import *
 
 
 def email_verification(request):
@@ -63,8 +63,11 @@ def contact(request):
     if request.method == "POST":
         form = MessageContactForm(request.POST)
         message = create_message(request)
+        
+        try: fname=message.first_name 
+        except: fname=message
 
-        context = {'form': form, 'first_name': message.first_name, 'sent': True}
+        context = {'form': form, 'first_name': fname, 'sent': True}
         return render(request, "base/message_sent.html", context=context)
     
     context = {'form': form}
