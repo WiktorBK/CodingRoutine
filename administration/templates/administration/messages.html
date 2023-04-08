@@ -20,11 +20,11 @@
 
 <div id="table">
     <div id="table-header">
-        <div id="table-header-element">First Name</div>
-        <div id="table-header-element">Last Name</div>
-       <div id="table-header-element">Email</div> 
+        <div class='hide-1100' id="table-header-element">First Name</div>
+        <div class='hide-1400' id="table-header-element">Last Name</div>
+       <div  class='hide-850' id="table-header-element">Email</div> 
         <div id="table-header-element">Message</div>
-        <div id="table-header-element">Sent</div>
+        <div class='hide-650' id="table-header-element">Sent</div>
         <div style="clear:both;"></div>
     </div>
 
@@ -41,11 +41,11 @@
     style="font-weight: 900; color:white;"
     {%endif%}
      id="table-element">
-     <div id="table-row-element">{{message.first_name}}</div>
-     <div id="table-row-element">{{message.last_name}}</div>
-    <div id="table-row-element">{{message.email_contact}}</div> 
+     <div class='hide-1100' id="table-row-element">{{message.first_name}}</div>
+     <div class='hide-1400' id="table-row-element">{{message.last_name}}</div>
+    <div class='hide-850'id="table-row-element">{{message.email_contact}}</div> 
      <div id="table-row-element">{{message}}</div>
-     <div id="table-row-element">{{message.sent}}</div>
+     <div class='hide-650' id="table-row-element">{{message.sent}}</div>
      <div style="clear:both;"></div>
 
     </div>

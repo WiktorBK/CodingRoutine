@@ -18,9 +18,9 @@
     <div id="table">
         <div id="table-header">
             <div id="table-header-element">Username</div>
-           <div id="table-header-element">Active</div> 
-            <div id="table-header-element">Last login</div>
-            <div id="table-header-element">Date joined</div>
+            <div class="hide-1100" id="table-header-element">Active</div> 
+            <div class="hide-850" id="table-header-element">Last login</div>
+            <div class="hide-650" id="table-header-element">Date joined</div>
             <div style="clear:both;"></div>
         </div>
 
@@ -32,9 +32,9 @@
         {%endif%}
          id="table-element">
          <div id="table-row-element">{{admin.username}}</div>
-        <div id="table-row-element">{{admin.is_active}}</div> 
-         <div id="table-row-element">{{admin.last_login}}</div>
-         <div id="table-row-element">{{admin.date_joined}}</div>
+         <div class="hide-1100" id="table-row-element">{{admin.is_active}}</div> 
+         <div class="hide-850" id="table-row-element">{{admin.last_login}}</div>
+         <div class="hide-650" id="table-row-element">{{admin.date_joined}}</div>
          <div style="clear:both;"></div>
         </div>
     {%endfor%}

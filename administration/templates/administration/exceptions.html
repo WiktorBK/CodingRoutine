@@ -17,9 +17,9 @@
 
     <div id="table">
         <div id="table-header">
-            <div id="table-header-element" style="width: 300px;" >Title</div>
-            <div id="table-header-element" style="width: 500px">Exception</div>
-           <div id="table-header-element">Occured</div> 
+            <div id="table-header-element" style="width: 250px;" >Title</div>
+            <div class="hide-1400" id="table-header-element" style="width: 500px">Exception</div>
+           <div class="hide-650" id="table-header-element">Occured</div> 
             <div style="clear:both;"></div>
         </div>
 
@@ -34,9 +34,9 @@
         style="font-weight: 900; color:white;"
         {%endif%}
          id="table-element">
-         <div id="table-row-element" style="width: 300px;">{{exception.title}}</div>
-         <div id="table-row-element" style="width: 500px">{{exception.exception}}</div>
-        <div id="table-row-element">{{exception.occured}}</div> 
+         <div id="table-row-element" style="width: 250px;">{{exception.title}}</div>
+         <div class="hide-1400"  id="table-row-element" style="width: 500px">{{exception.exception}}</div>
+        <div class="hide-650" id="table-row-element">{{exception.occured}}</div> 
          <div style="clear:both;"></div>
         </div>
     {%endfor%}
