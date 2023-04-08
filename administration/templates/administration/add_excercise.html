@@ -12,30 +12,38 @@
     
         <a id="button" href="{%url 'excercises'%}">Go back</a>
     
-        
+
 
         <form action="" method="POST">
             {%csrf_token%}
             
-            <label for="">Difficulty</label>
-            <div>
-                <select id="" name="customer">
-                    {% for x, y in form.fields.difficulty.choices %}
-                        <option value="{{x}}">{{ y }}</option>
-                    {% endfor %}
-                    </select>
+            <div id="inline-forms">
+                <label for="">Title<div>{{form.title}}</div></label>
+            <div style="width: 50px"></div>
+            <label for="">Difficulty
+                <div>
+                    <select id="difficulty-form" name="difficulty">
+                        {% for x, y in form.fields.difficulty.choices %}
+                            <option value="{{x}}">{{ y }}</option>
+                        {% endfor %}
+                        </select>
+                </div>
+            </label>
+            
             </div>
-            <label for="">Title</label>
-            <div>{{form.title}}</div>
-            <label for="">Body</label>
-            <div>{{form.body}}</div>
-            <div> {{form.example_input}}</div>
-            <div>{{form.example_output}}</div>
-            
-            
-            
-              <input id="add-button" type="submit" value="Add" />
-            
+
+            <div id="label">
+            <label for=""> Body <div>{{form.body}}</div></label>
+            </div>
+
+            <div id="label">
+            <label for="">Example input<div> {{form.example_input}}</div></label>
+            </div>
+            <div id="label" style=" border-bottom: 1px solid rgb(116, 116, 116);; height: 90px;">
+            <label for="">Example output<div>{{form.example_output}}</div></label>
+            </div>
+              <input id="add-button" type="submit" value="Save" />
+              <a id="button" href="{%url 'excercises'%}">Save and add another</a>
           </form>
         
         </div>
