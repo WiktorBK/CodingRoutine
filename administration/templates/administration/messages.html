@@ -27,10 +27,10 @@
         <div id="table-header-element">Sent</div>
         <div style="clear:both;"></div>
     </div>
+
+    
+    <div id="table-content">
 {% for message in messages %}
-
-
-
 
     <div
     {% if message.id|divisibleby:2 and message.unread%} 
@@ -49,8 +49,8 @@
      <div style="clear:both;"></div>
 
     </div>
-  
 {%endfor%}
+</div>
 </div>
 
 </div>

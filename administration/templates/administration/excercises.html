@@ -23,6 +23,9 @@
             <div id="table-header-element">Added</div>
             <div style="clear:both;"></div>
         </div>
+
+        
+    <div id="table-content">
     {% for excercise in excercises %}
         <div
         {% if excercise.id|divisibleby:2 %} 
@@ -30,7 +33,7 @@
         {%endif%}
          id="table-element">
          <div id="table-row-element">{{excercise.title}}</div>
-         <div id="table-row-element">{{excercise.level}}</div>
+         <div id="table-row-element">{{excercise.difficulty}}</div>
         <div id="table-row-element">{{excercise.body}}</div> 
          <div id="table-row-element">{{excercise.added}}</div>
          <div style="clear:both;"></div>
@@ -38,6 +41,7 @@
         </div>
       
     {%endfor%}
+    </div>
     </div>
 
     <a id="button" href="{%url 'add-excercise'%}">Add excercise</a>

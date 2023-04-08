@@ -16,11 +16,14 @@
         <div id="table-header">
             <div id="table-header-element">Email</div>
             <div id="table-header-element">Verified</div>
-           <div id="table-header-element">Active</div> 
-            <div id="table-header-element">Excercises received</div>
+            <div class="hide-1400" id="table-header-element">Active</div> 
+            <div class="hide-1100" id="table-header-element">Excercises received</div>
             <div id="table-header-element">First seen</div>
             <div style="clear:both;"></div>
         </div>
+
+        
+    <div id="table-content">
     {% for user in users %}
         <div
         {% if user.id|divisibleby:2 %} 
@@ -29,15 +32,16 @@
          id="table-element">
          <div id="table-row-element">{{user.email}}</div>
          <div id="table-row-element">{{user.verified}}</div>
-        <div id="table-row-element">{{user.active}}</div> 
-         <div id="table-row-element">{{user.excercises_received}}</div>
+         <div  class="hide-1400" id="table-row-element">{{user.active}}</div> 
+         <div  class="hide-1100" id="table-row-element">{{user.excercises_received}}</div>
          <div id="table-row-element">{{user.created}}</div>
          <div style="clear:both;"></div>
     
         </div>
-      
-    {%endfor%}
+          {%endfor%}
+          </div>
     </div>
+
 
 </div>
 </div>

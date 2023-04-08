@@ -22,9 +22,9 @@
     </div></a>
     <a href="{% url 'excercises'%}"><div class="model-box">Excercises</div></a>
     <a href="{% url 'exceptions'%}"><div class="model-box">Exceptions
-        {% if unread_exception > 0%}
-        <div id="new_exception">!</div>
-        {% endif %}
+    {% if unread_exceptions > 0%}
+    <div id="new_exception">!</div>
+    {% endif %}
     </div></a>
     <a href="{% url 'admins'%}"><div class="model-box">Admins</div></a>
     <div style="clear:both;"></div>
