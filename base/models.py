@@ -8,7 +8,7 @@ from django.utils.encoding import force_bytes
 from django import forms
 
 from .tokens import email_verification_token, unsubscribe_token
-
+from administration.models import ExceptionTracker
 
 EASY="EASY"
 MED="MEDIUM"
@@ -29,6 +29,8 @@ class Newsletter_User(models.Model):
     @classmethod
     def get_users(cls): return cls.objects.filter()
 
+    @classmethod
+    def get_verified_users(cls): return cls.objects.filter(verified=True)
 
     def generate_verification_email(self, request):
         try:
@@ -77,7 +79,6 @@ class Message_contact(models.Model):
     message = models.TextField()
     unread = models.BooleanField(default=True)
 
-
     class Meta:ordering = ['-sent']
     def __str__(self): return self.message
 
@@ -103,17 +104,4 @@ class CodingExcercise(models.Model):
     def get_excercises(cls): return cls.objects.filter()
 
 
-class ExceptionTracker(models.Model):
-    occured = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100)
-    exception = models.CharField(max_length=300)
-    unread = models.BooleanField(default=True)
 
-    class Meta:ordering = ['-occured']
-    def __str__(self): return self.title
-
-    @classmethod
-    def get_exceptions(cls): return cls.objects.filter()
-
-    @classmethod
-    def get_unread_exceptions(cls): return cls.objects.filter(unread=True)
