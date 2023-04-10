@@ -4,6 +4,5 @@ from .models import Newsletter_User, Message_contact, CodingExcercise, Exception
 admin.site.register(Newsletter_User)
 admin.site.register(Message_contact)
 admin.site.register(CodingExcercise)
-admin.site.register(ExceptionTracker)
 
 
