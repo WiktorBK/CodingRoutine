@@ -8,6 +8,10 @@ urlpatterns= [
     path("administration/exceptions", views.exceptions, name="exceptions"),
     path("administration/excercises", views.excercises, name="excercises"),
     path("administration/admins", views.admins, name="admins"),
-    path("administration/excercises/add", views.add_excercise, name="add-excercise")
+    path("administration/excercises/add", views.add_excercise, name="add-excercise"),
+    path("administration/messages/<mid>", views.message, name="message"),
+    
+
+
 
 ]
