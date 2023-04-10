@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 
-from .models import *
+from .models import ExceptionTracker
 from base.models import *
 from .forms import AddExcerciseForm
 from base.functions import create_excercise
+
 @user_passes_test(lambda u: u.is_superuser)
 def administration_site(request):
     unread_messages = len(Message_contact.get_unread_messages())
@@ -60,3 +61,11 @@ def add_excercise(request):
 
     context={'form': form}
     return render(request, 'administration/add_excercise.html', context=context)
+
+@user_passes_test(lambda u: u.is_superuser)
+def message(request, mid):
+    m=Message_contact.objects.get(id=mid)
+    m.make_read()
+
+    context={'message':m}
+    return render(request, 'administration/message.html', context=context)
