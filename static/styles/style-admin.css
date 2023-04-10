@@ -66,9 +66,11 @@
     background-color: #182527;color: white;
     text-align: center;
     border-radius: 10px;
-    padding: 8px 10px;
+    padding: 8px 12px;
     text-decoration: none;
-    transition: 0.2s;}
+    transition: 0.2s;
+    margin-right: 15px;
+  }
   
   #add-button[type="submit"] {
     width: 100px;height: 37px;
@@ -152,7 +154,8 @@
     cursor:pointer;
     transition: 0.1s;
     max-height: 50px;
-    white-space: nowrap;} 
+    white-space: nowrap;
+  } 
   
   #table-element:hover {
     color: white;background-color: #141f20f1;
@@ -161,10 +164,51 @@
   #table-row-element{
     float: left; padding: 10px 12px;
     width: 195px;
-    transition: 0.1s;}
+    transition: 0.1s;
+    overflow: hidden;
+  }
   
   #divider{width: 50px;}
   
+
+  #contact-message{
+    width: 100% - 40px; height: 320px;
+    margin: 20px 0 30px 0;padding: 20px;
+    border: 1px solid #08171994;}
+
+  span{
+    color:white;font-size: 16px;opacity: 0.7;
+    margin-right: 12px;
+    font-weight: 900;}
+
+  .date{
+    color:white;
+    font-size: 15px;
+    opacity: 0.8;
+    float: right;
+    margin-right: 10px;}
+
+  .message-header-info{
+    color:white;font-size: 17px;
+    margin-bottom: 7px;
+    opacity: 0.9;}
+
+  #message-body{
+    margin-top: 30px;margin-right: 10px;padding: 10px;  
+    font-size: 15px;
+    color: white;
+    opacity: 0.9;
+    text-align: left;
+    max-height: 180px;
+    overflow: auto;}
+
+  #message-header{border-bottom: 2px solid #081719b7;padding-bottom: 5px;}
+
+  #hide{
+    display:none;
+  }
+
+
   @media screen and (max-width: 1400px) {
     #admin-header {margin-left: 50px;width: 90%;}
     #admin-box {width: 1000px;height: 630px;}
@@ -184,7 +228,10 @@
     #new {width: 16px;height: 16px;margin: 25px 30px 30px 265px; }
     #new_exception {margin: 12px 0px 0 275px; font-size: 30px;}
     .hide-1100{display:none;}
-    #models-content>form{margin-top: 30px;  }}
+    #models-content>form{margin-top: 30px;  }
+    #message-body{max-height: 190px;}
+    #contact-message{height: 350px;}
+  }
   
   @media screen and (max-width: 850px) {
     #admin-header {margin-left: 30px;width: 90%; }
@@ -198,7 +245,12 @@
     h6 {font-size: 30px;}
     .hide-850{display:none;}
     #table-content{max-height:350px}
-    #models-content>form{ margin-top: 30px;  }}
+    #models-content>form{ margin-top: 30px;  }
+    #message-body{max-height: 180px;}
+    #contact-message{height: 370px;}
+    .date{display:none;}
+    #hide{ display:block; color:white;font-size: 15px;opacity: 0.8;margin-right: 10px; margin-bottom: 7px;}
+  }
   
   @media screen and (max-width: 650px) {
     #admin-header {margin-left: 18.5px;width: 90%;}
@@ -218,7 +270,11 @@
     #title-form{width: 160px;}
     #difficulty-form{width:110px;}
     #divider{ width:30px;}
-    #example-form{width:300px;}}
+    #example-form{width:300px;}
+    #message-body{max-height: 400px;}
+    #contact-message{height: 600px;}
+    span{margin-right: 8px;}
+  }
   
   
   

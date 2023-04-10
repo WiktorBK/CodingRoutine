@@ -9,7 +9,6 @@
 #inline-form {
   margin: 0 auto;
   width: auto;
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
 }
