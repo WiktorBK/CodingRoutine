@@ -87,8 +87,11 @@ class Message_contact(models.Model):
 
     @classmethod
     def get_unread_messages(cls): return cls.objects.filter(unread=True)
-
-
+    
+    def make_read(self):
+        if self.unread:
+         self.unread = False 
+         self.save()  
 
 class CodingExcercise(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
