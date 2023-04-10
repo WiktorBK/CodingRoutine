@@ -76,7 +76,7 @@ class Message_contact(models.Model):
     last_name = models.CharField(max_length=200)
     email_contact = models.CharField(max_length=200)
     sent = models.DateTimeField(auto_now_add=True)
-    message = models.TextField()
+    message = models.TextField(max_length=1000)
     unread = models.BooleanField(default=True)
 
     class Meta:ordering = ['-sent']
