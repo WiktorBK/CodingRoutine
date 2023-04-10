@@ -16,7 +16,7 @@ def send_excercise():
     Email will be sent everyday. - Refer to jobs/updater.py
 
     '''
-    users = Newsletter_User.objects.filter(verified=True)
+    users = Newsletter_User.get_verified_users()
     
     for user in users: 
         excercise = user.generate_daily_coding_excercise()
