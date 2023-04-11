@@ -107,7 +107,7 @@ padding: 10px 5px;
     <div id = "modal-text"><h3 style="font-size: 18px;margin-left: 17px; width: 450px; font-weight:500;">You should have received verification link. Please click the button below to resend the link or contact us if you have any problems.</h3></div>
     <div id = "modal-footer">
 
-    <button class="button" onclick = "resend()" id="button" style="border: none; outline:none;">Resend verification link</button>
+    <button class="button" onclick = "resend('{{email}}')" id="button" style="border: none; outline:none;">Resend verification link</button>
     <a href="{% url 'contact' %}"><button style="border: none;" id="button" class="button">Contact us</button></a>
 
     </div>
@@ -116,38 +116,6 @@ padding: 10px 5px;
 
 </div>
 
-<script>
-var modal = document.getElementById("Modal");
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() {
-  modal.style.display = "none";
-}
 
-function resend(){
-document.getElementById("button").classList.add('button-clicked');
-document.getElementById("button").classList.remove('button');
-document.getElementById("button").disabled = true;
-document.getElementById("button").innerHTML = "Resend verification link (45)";
-
-fetch('/resend/{{email}}')
-  .then((response) => response.json())
-  .then((data) => {})
-
-
-var counter = 45;
-var int = setInterval(function() {
-    counter--;
-  document.getElementById("button").innerHTML = "Resend verification link ("+counter+")";
-  if (counter == 0) {
-				
-        clearInterval(int);
-        document.getElementById("button").classList.remove('button-clicked');
-        document.getElementById("button").classList.add('button');
-        document.getElementById("button").disabled = false;
-        document.getElementById("button").innerHTML = "Resend verification link";
-  }
-}, 1000)
-}
-</script>
-
-
+{%load static%}
+<script src="{% static 'js/script.js'%}"></script>
