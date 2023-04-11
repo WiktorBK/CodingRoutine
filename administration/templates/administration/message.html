@@ -1,6 +1,7 @@
 {%extends 'main.html'%}
 {%block content%}
 {% include 'navbar.html'%}
+{%include 'administration/modals/delete_confirmation.html'%}
 <div id="container">
     <div id="admin-box">
     <div id="admin-header">
@@ -27,7 +28,7 @@
         <div id="message-body">{{message.message}}</div>
         </div>
         <a id="button" href="{%url 'add-excercise'%}">Respond</a>
-        <a id="button" href="{%url 'add-excercise'%}">Delete</a>
+        <a id="button" onclick="display()" href="#">Delete</a>
         </div>
     
     </div>
