@@ -14,7 +14,7 @@
 <div id="models-content">
 
     <a id="button" href="{%url 'administration-site'%}">Go back</a>
-    <span>{{exceptions_count}} exceptions ({{unread_count}} unread)</span>
+    <span>{{exceptions_count}} {%if exceptions_count == 1%} exception {%else%} exceptions {%endif%} ({{unread_count}} unread)</span>
 
 
     <div id="table">

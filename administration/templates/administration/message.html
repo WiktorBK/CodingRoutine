@@ -2,6 +2,8 @@
 {%block content%}
 {% include 'navbar.html'%}
 {%include 'administration/modals/delete_confirmation.html'%}
+{%load static%}
+
 <div id="container">
     <div id="admin-box">
     <div id="admin-header">
@@ -35,6 +37,6 @@
     </div>
     </div>
 
-
+    <script src="{% static 'js/script.js'%}"></script>
 {% include 'footer.html'%}
 {%endblock%}

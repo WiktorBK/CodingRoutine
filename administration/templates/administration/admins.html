@@ -14,7 +14,8 @@
 <div id="models-content">
 
     <a id="button" href="{%url 'administration-site'%}">Go back</a>
-    <span>{{admins_count}} users</span>
+
+    <span>{{admins_count}} {%if admins_count == 1%} admin {%else%} admins {%endif%}</span>
 
 
     <div id="table">

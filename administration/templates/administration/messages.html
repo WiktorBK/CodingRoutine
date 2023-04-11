@@ -16,7 +16,7 @@
 
 <a id="button" href="{%url 'administration-site'%}">Go back</a>
 
-<span>{{messages_count}} messages ({{unread_count}} unread)</span>
+<span>{{messages_count}} {%if messages_count == 1%} message {%else%} messages {%endif%} ({{unread_count}} unread)</span>
 
 
 
@@ -56,14 +56,8 @@
 {%endfor%}
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
-
-
-
-
 {% include 'footer.html'%}
 {% endblock content%}

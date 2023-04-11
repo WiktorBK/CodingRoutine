@@ -1,3 +1,5 @@
+{%load static%}
+
 <style>
     .modal {
       position: fixed;
@@ -24,7 +26,7 @@
     .modal-content {
       background-color: #E8E8E8;
       margin: auto;
-      height: 215px;
+      height: 220px;
       border: 1px solid #888;
       width: 380px;
       border-radius: 7px;
@@ -92,28 +94,8 @@
         </div>
       </div>
     </div>
-    <script>
-    var modal = document.getElementById("Modal");
-    var span = document.getElementsByClassName("close")[0];
-    var btn = document.getElementById("button-cancel")
-    span.onclick = function() {modal.style.display = "none";}
-    btn.onclick = function() {modal.style.display = "none";}
-    function display(){modal.style.display = "block";}
-    window.onclick = function(event)
-     {if (event.target == modal) {
-        modal.style.display = "none";}}
-
-    function delete_message() {
-        fetch('{{message.id}}/delete')
-        .then((response) => response.json())
-
-        location.href = "{% url 'delete-message' mid=message.id%}"
-        
-        
-        
-    }
-    </script>
-    
+  
+    <script src="{% static 'js/delete-confirm.js'%}"></script>
     
     
     
