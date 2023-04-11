@@ -1,0 +1,121 @@
+<style>
+    .modal {
+      position: fixed;
+      z-index: 1;
+      padding-top: 300px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7); 
+      display: none;
+    }
+    @keyframes modal-appear {
+      from {
+        opacity: 0;
+        transform: translateY(20%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+    .modal-content {
+      background-color: #E8E8E8;
+      margin: auto;
+      height: 215px;
+      border: 1px solid #888;
+      width: 380px;
+      border-radius: 7px;
+      animation: modal-appear 0.7s;
+    }
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    #modal-header
+    {
+        border: 1px solid #E8E8E8;
+        margin-left: 15px;
+        font-size: 18px;
+    }
+    #modal-text
+    {
+    border-bottom: 1px solid #B8B8B8;
+    border-top: 1px solid #B8B8B8;
+    height: 100px;
+    }
+    #modal-footer
+    {
+    height: 40px;
+    padding: 10px 5px;
+    }
+    .button
+    {
+        cursor: pointer;
+        float: left;
+        padding: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+        background-color: #182527;
+        border-radius: 6px;
+        color: white;
+        transition: 0.3s;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    
+    #button:hover{background-color: rgb(34, 45, 46);}
+    </style>
+    <div id="Modal" class="modal">
+      <div class="modal-content">
+        <div id="modal-header">
+        <span class="close">&times;</span>
+        <h3 style="margin-top: 10px;">Delete message<h3>
+        </div>
+        <div id = "modal-text"><h3 style="font-size: 17px;margin-left: 16px; width: 330px; font-weight:500;">Are you sure you want to delete message No. {{message.id}} from {{message.email_contact}}?</h3></div>
+        <div id = "modal-footer">
+        <button onclick="delete_message()" style="border: none; background-color: rgb(168, 0, 0)" id="button" class="button">Delete</button>
+        <button style="border: none;" id="button-cancel" class="button">Cancel</button>
+
+        </div>
+      </div>
+    </div>
+    <script>
+    var modal = document.getElementById("Modal");
+    var span = document.getElementsByClassName("close")[0];
+    var btn = document.getElementById("button-cancel")
+    span.onclick = function() {modal.style.display = "none";}
+    btn.onclick = function() {modal.style.display = "none";}
+    function display(){modal.style.display = "block";}
+    window.onclick = function(event)
+     {if (event.target == modal) {
+        modal.style.display = "none";}}
+
+    function delete_message() {
+        fetch('{{message.id}}/delete')
+        .then((response) => response.json())
+
+        location.href = "{% url 'delete-message' mid=message.id%}"
+        
+        
+        
+    }
+    </script>
+    
+    
+    
+    
+    
+    
