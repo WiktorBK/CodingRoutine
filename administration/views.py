@@ -9,7 +9,7 @@ from base.functions import create_excercise
 
 @user_passes_test(lambda u: u.is_superuser)
 def administration_site(request):
-    unread_messages = len(Message_contact.get_unread_messages())
+    unread_messages = len(MessageContact.get_unread_messages())
     unread_exceptions = len(ExceptionTracker.get_unread_exceptions())
 
     context={"unread_messages": unread_messages, "unread_exceptions": unread_exceptions}
@@ -31,25 +31,33 @@ def exceptions(request):
     return render(request, 'administration/exceptions.html', context=context)
 
 @user_passes_test(lambda u: u.is_superuser)
+def exception(request, eid):
+    e=ExceptionTracker.objects.get(id=eid)
+    e.make_read()
+
+    context={'exception':e}
+    return render(request, 'administration/exception.html', context=context)
+
+@user_passes_test(lambda u: u.is_superuser)
 def messages(request):
-    messages_=Message_contact.get_messages()
-    unread_messages = len(Message_contact.get_unread_messages())
+    messages_=MessageContact.get_messages()
+    unread_messages = len(MessageContact.get_unread_messages())
 
     context={"messages": messages_, "unread_count": unread_messages, 'messages_count': len(messages_)}
     return render(request, 'administration/messages.html', context=context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def message(request, mid):
-    m=Message_contact.objects.get(id=mid)
+    m=MessageContact.objects.get(id=mid)
     m.make_read()
 
-    context={'message':m}
+    context={'message':m,'message_id': m.id}
     return render(request, 'administration/message.html', context=context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def delete_message(request, mid):
     try:
-     m=Message_contact.objects.get(id=mid)
+     m=MessageContact.objects.get(id=mid)
      m.delete()
     except Exception as e: 
      ExceptionTracker.objects.create(title='Failed to delete message', exception=e)
