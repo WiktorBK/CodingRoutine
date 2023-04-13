@@ -10,7 +10,7 @@ urlpatterns= [
     path("administration/admins", views.admins, name="admins"),
     path("administration/excercises/add", views.add_excercise, name="add-excercise"),
     path("administration/messages/<mid>", views.message, name="message"),
+    path("administration/exception/<eid>", views.exception, name="exception"),
     path("administration/messages/<mid>/delete", views.delete_message, name="delete-message"),
-
 
 ]
