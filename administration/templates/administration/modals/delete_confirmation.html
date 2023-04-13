@@ -77,8 +77,7 @@
         font-weight: 500;
     }
 
-    
-    #button:hover{background-color: rgb(34, 45, 46);}
+
     </style>
     <div id="Modal" class="modal">
       <div class="modal-content">
@@ -88,7 +87,7 @@
         </div>
         <div id = "modal-text"><h3 style="font-size: 17px;margin-left: 16px; width: 330px; font-weight:500;">Are you sure you want to delete message No. {{message.id}} from {{message.email_contact}}?</h3></div>
         <div id = "modal-footer">
-        <button onclick="delete_message()" style="border: none; background-color: rgb(168, 0, 0)" id="button" class="button">Delete</button>
+        <button onclick="delete_message('{{message_id}}')" style="border: none; background-color: rgb(168, 0, 0)" id="button" class="button">Delete</button>
         <button style="border: none;" id="button-cancel" class="button">Cancel</button>
 
         </div>
