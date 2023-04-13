@@ -1,0 +1,39 @@
+{%extends 'main.html'%}
+{%block content%}
+{% include 'navbar.html'%}
+{%include 'administration/modals/delete_confirmation.html'%}
+{%load static%}
+
+<div id="container">
+    <div id="admin-box">
+    <div id="admin-header">
+    <h6>Exception No. {{exception.id}}</h6>
+    <small id="admin-small">logged in as Wiktor</small>
+    <div style="clear:both;"></div>
+    </div>
+    <div id="models-content">
+    
+        <a id="button" href="{%url 'exceptions'%}">Go back</a>
+
+        <div id="contact-message">
+        <div id="message-header">
+        
+        <div id="hide"><span>Occured:</span> {{exception.occured}}</div>
+        <h7 class="message-header-info">
+        <span>Title:</span>
+        {{exception.title}}</h7>
+        <span class="date">{{exception.occured}}</span>
+        <div style="clear:both"></div>
+        </div>
+        <div id="message-body">{{exception.exception}}</div>
+        </div>
+        <!-- <a id="button" href="{%url 'add-excercise'%}">Mark as solved</a> -->
+        </div>
+    
+    </div>
+    </div>
+    </div>
+
+    <script src="{% static 'js/script.js'%}"></script>
+{% include 'footer.html'%}
+{%endblock%}
