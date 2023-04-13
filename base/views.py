@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.core.exceptions import ValidationError
 
 from .forms import MessageContactForm, NewsletterUserForm
-from .models import Newsletter_User, Message_contact, ExceptionTracker, CodingExcercise
+from .models import Newsletter_User, MessageContact, ExceptionTracker, CodingExcercise
 from .tokens import email_verification_token, unsubscribe_token
 from .functions import *
 
@@ -82,6 +82,8 @@ def resend(request, email):
         return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
     except Exception as e: 
         ExceptionTracker.objects.create(title="Failed to resend verification link", exception=e)
+        return HttpResponse('Error: verifiaction email could not be sent')
+
 
 def home(request):
     form = NewsletterUserForm()

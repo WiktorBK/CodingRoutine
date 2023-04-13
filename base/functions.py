@@ -1,4 +1,4 @@
-from .models import Newsletter_User, ExceptionTracker, Message_contact, CodingExcercise
+from .models import Newsletter_User, ExceptionTracker, MessageContact, CodingExcercise
 from .tokens import unsubscribe_token
 
 from django.core.mail import EmailMessage
@@ -30,7 +30,7 @@ def create_message(request):
     message = request.POST.get('message')
 
     try:    
-     message = Message_contact.objects.create(
+     message = MessageContact.objects.create(
      email_contact=email, first_name=fname, last_name=lname, message=message)
     except Exception as e:
      ExceptionTracker.objects.create(title='Failed to create message', exception=e) 

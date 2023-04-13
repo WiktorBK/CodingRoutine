@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Newsletter_User, Message_contact
+from .models import Newsletter_User, MessageContact
 
 class NewsletterUserForm(ModelForm):
 
@@ -14,7 +14,7 @@ class NewsletterUserForm(ModelForm):
 
 class MessageContactForm(ModelForm):   
     class Meta:
-        model = Message_contact
+        model = MessageContact
         fields = '__all__'
         widgets ={
             'email_contact': forms.TextInput(attrs={'id':'email-contact', 'type': 'text', 'placeholder': 'Email adress', "name": "email", "style": "border-radius:10px"}),
