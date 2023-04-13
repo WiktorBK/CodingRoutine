@@ -8,10 +8,7 @@ window.onclick = function(event)
  {if (event.target == modal) {
     modal.style.display = "none";}}
 
-function delete_message() {
-    fetch('{{message.id}}/delete')
-    .then((response) => response.json())
-
-    location.href = "{% url 'delete-message' mid=message.id%}"
+function delete_message(message_id) {
     
+    location.href = "http://localhost:8000/administration/messages/" + message_id + "/delete";
 }
