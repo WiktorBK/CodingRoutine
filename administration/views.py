@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from django.contrib.auth.models import User
 
 from .models import ExceptionTracker
@@ -7,6 +7,8 @@ from base.models import *
 from .forms import AddExcerciseForm
 from base.functions import create_excercise
 
+
+@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def administration_site(request):
     unread_messages = len(MessageContact.get_unread_messages())
@@ -89,3 +91,9 @@ def admins(request):
     
     context={"admins": admins_, "admins_count": len(admins_)}
     return render(request, 'administration/admins.html', context=context)
+
+def login(request):
+    return render(request, 'administration/login.html')
+
+def logout(request):
+    return render(request, 'administration/logout.html')
