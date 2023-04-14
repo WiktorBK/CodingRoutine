@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
+
 from . import views
 
 urlpatterns= [
@@ -12,5 +14,8 @@ urlpatterns= [
     path("administration/messages/<mid>", views.message, name="message"),
     path("administration/exception/<eid>", views.exception, name="exception"),
     path("administration/messages/<mid>/delete", views.delete_message, name="delete-message"),
+
+    path('administration/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('administration/login/', views.login, name='login'),
 
 ]
