@@ -15,7 +15,7 @@ urlpatterns= [
     path("administration/exception/<eid>", views.exception, name="exception"),
     path("administration/messages/<mid>/delete", views.delete_message, name="delete-message"),
 
-    path('administration/logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('administration/login/', views.login, name='login'),
+    path('administration/logout/', views.logoutUser, name='logout'),
+    path('administration/login/', views.loginPage, name='login'),
 
 ]

@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from base.models import CodingExcercise
+from django.contrib.auth.models import User
 
 
 class AddExcerciseForm(ModelForm):
