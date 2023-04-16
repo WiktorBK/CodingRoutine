@@ -151,4 +151,4 @@ EMAIL_HOST = secret_values.email_host
 PASSWORD_RESET_TIMEOUT = 14400
 
 LOGIN_REDIRECT_URL = 'administration-site'
-LOGIN_URL = '/administration/login'
+LOGIN_URL = '/'
