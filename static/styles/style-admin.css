@@ -43,6 +43,13 @@
     border: 1px solid rgb(69, 69, 69);
     transition: 0.3s;}
   
+    a{text-decoration: none;}
+
+    #admin-content>p{
+      color:white; font-size: 18px;}
+
+
+
   .model-box:hover {border: 1px solid rgb(104, 104, 104);}
   #new {
     width: 18px;height: 18px;
@@ -83,9 +90,36 @@
     font-size: 16px;
     font-family: "Nunito", sans-serif;
     cursor:pointer;
-    margin: 20px 10px 0px 5px;}
+    margin: 20px 10px 0px 5px;
+  }
+
+  #login-btn[type="submit"]{
+    width: 100px;height: 37px;
+    background-color: #182527;
+    border-radius: 10px;
+    color: white;
+    transition: 0.2s;
+    border: none;
+    font-size: 16px;
+    font-family: "Nunito", sans-serif;
+    cursor:pointer;
+  }
+
+  .vertical-center{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }
+
+  #label>label>div>input{
+    width: 300px;height: 25px;font-size: 16px;
+    margin-bottom: 10px;margin-top: 3px;border-radius: 5px;
+    padding: 5px;}
   
-  #models-content>#button:hover, #add-button[type="submit"]:hover, #models-content>form>#button:hover
+  #models-content>#button:hover, #add-button[type="submit"]:hover, #models-content>form>#button:hover, #login-btn:hover
   {background-color: rgb(31, 42, 43);}
   #models-content>form{margin-top: 0px;  }
   #models-content>form>label{color: white;opacity: 0.9;}
@@ -207,6 +241,7 @@
   #hide{
     display:none;
   }
+  
 
 
   @media screen and (max-width: 1400px) {
