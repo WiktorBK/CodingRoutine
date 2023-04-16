@@ -1,0 +1,17 @@
+{%extends 'main.html'%}
+{%block content%}
+{%include 'navbar.html'%}
+<div id="container">
+    <div id="admin-box">
+    <div id="admin-header">
+    <h6>Logout page</h6>
+    </div>
+    
+    <div id="admin-content">
+        <p>You have been logged out from your account. <a href="{%url 'login' %}"><span style="margin:0; opacity:1; font-size: 18px;">Click here to login</span></a> again.</p>
+    </div>
+    </div>
+    </div>
+{%include 'footer.html'%}
+{%endblock%}
+

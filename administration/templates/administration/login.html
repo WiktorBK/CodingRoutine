@@ -1,0 +1,39 @@
+{%extends 'main.html'%}
+{%block content%}
+{%include 'navbar.html'%}
+<div id="container">
+    <div id="admin-box">
+    <div id="admin-header">
+    <h6>Login page</h6>
+    </div>
+    
+    <div id="models-content">
+        <form action="" method="POST">
+            {%csrf_token%}
+           
+            <div id="label"><label for="">Username<div>
+                <input placeholder="enter username" type="text" name="username" id="username">
+            </div></label></div>
+
+
+            <div id="label">
+            <label for="">Password
+                <div><input type="password" name="password" id="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"></div>
+            </label>
+            </div>
+            <div class="vertical-center">
+                {% if messages %}
+                {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                {% endfor %}
+            {%endif%}
+            <input id="login-btn" type="submit" value="Login" />
+            </div>
+          </form>
+
+    </div>
+    </div>
+    </div>
+{%include 'footer.html'%}
+{%endblock%}
+
