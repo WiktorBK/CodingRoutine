@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms  import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 from .models import ExceptionTracker
 from base.models import *
@@ -8,7 +11,6 @@ from .forms import AddExcerciseForm
 from base.functions import create_excercise
 
 
-@login_required
 @user_passes_test(lambda u: u.is_superuser)
 def administration_site(request):
     unread_messages = len(MessageContact.get_unread_messages())
@@ -41,7 +43,7 @@ def exception(request, eid):
     return render(request, 'administration/exception.html', context=context)
 
 @user_passes_test(lambda u: u.is_superuser)
-def messages(request):
+def contact_messages(request):
     messages_=MessageContact.get_messages()
     unread_messages = len(MessageContact.get_unread_messages())
 
@@ -92,8 +94,22 @@ def admins(request):
     context={"admins": admins_, "admins_count": len(admins_)}
     return render(request, 'administration/admins.html', context=context)
 
-def login(request):
+
+def loginPage(request):
+    if request.user.is_authenticated: return redirect('administration-site')
+    if request.method == "POST":
+        username = request.POST.get('username').lower()
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('administration-site')
+        else:
+            messages.error(request, "Invalid credentials")
+
     return render(request, 'administration/login.html')
 
-def logout(request):
+def logoutUser(request):
+    logout(request)
     return render(request, 'administration/logout.html')
