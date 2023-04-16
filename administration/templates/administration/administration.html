@@ -7,7 +7,7 @@
 <div id="admin-box">
 <div id="admin-header">
 <h6>Administration site</h6>
-<small id="admin-small">logged in as Wiktor</small>
+<small id="admin-small">logged in as {{request.user.username}}</small>
 <div style="clear:both;"></div>
 </div>
 
@@ -27,6 +27,8 @@
     {% endif %}
     </div></a>
     <a href="{% url 'admins'%}"><div class="model-box">Admins</div></a>
+    </div></a>
+    <a href="{% url 'logout'%}"><div class="model-box">Logout</div></a>
     <div style="clear:both;"></div>
 </div>
 </div>
