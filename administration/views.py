@@ -110,6 +110,7 @@ def loginPage(request):
 
     return render(request, 'administration/login.html')
 
+@user_passes_test(lambda u: u.is_superuser)
 def logoutUser(request):
     logout(request)
     return render(request, 'administration/logout.html')

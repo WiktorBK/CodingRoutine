@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 
+from secret_values import admin_key
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(f'{admin_key}/', admin.site.urls),
     path('', include('base.urls')),
     path('', include('administration.urls')), 
 
