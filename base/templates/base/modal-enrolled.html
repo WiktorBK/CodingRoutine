@@ -7,7 +7,6 @@
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: rgba(0,0,0,0.7); 
   
 }
@@ -49,22 +48,20 @@
     padding: 0px 10px;
     margin-top: 5px;
     margin-left: 15px;
-    font-size: 20px;
+  font-size: 20px;
 }
 #modal-text
 {
-border-bottom: 1px solid #B8B8B8;
+  border-bottom: 1px solid #B8B8B8;
 border-top: 1px solid #B8B8B8;
-height: 130px;
-padding: 10px;
+height: 110px;
+padding: 20px;
+font-size:18px;
+width: 93%;
+font-weight:500;
 }
-#modal-footer
-{
-height: 40px;
-padding: 10px 5px;
-}
-.button
-{
+#modal-footer{height: 40px;padding: 10px 5px;}
+.button{
 	cursor: pointer;
     float: left;
     padding: 11px;
@@ -77,8 +74,7 @@ padding: 10px 5px;
     font-size: 16px;
     font-weight: 600;
 }
-.button-clicked
-{
+.button-clicked{
   background-color: #10BC7C;
   opacity: 0.65;
 	cursor: default;
@@ -94,6 +90,16 @@ padding: 10px 5px;
 }
 
 #button:hover{background-color: #10BC7C;}
+
+@media screen and (max-width: 800px) {
+  .modal-content{width: 340px;height: 300px;overflow: hidden;}
+  .modal{padding-top: 200px;}
+  #modal-header{font-size: 16px;}
+  #modal-text{font-size: 15px;height: 120px;width: 96%;padding: 15px; }
+  .button{font-size: 13px; }
+  .button-clicked{font-size: 13px;margin-right: 0px;}
+}
+
 </style>
 
 <div id="Modal" class="modal">
@@ -102,9 +108,9 @@ padding: 10px 5px;
   
     <div id="modal-header">
     <span class="close">&times;</span>
-    <h3 style="margin-top: 30px;">You are already enrolled to CodingRoutine<h3>
+    <h3 style="margin-top: 15px;">You are already enrolled to CodingRoutine<h3>
     </div>
-    <div id = "modal-text"><h3 style="font-size: 18px;margin-left: 17px; width: 450px; font-weight:500;">You should have received verification link. Please click the button below to resend the link or contact us if you have any problems.</h3></div>
+    <div id = "modal-text">You should have received verification link. Please click the button below to resend the link or contact us if you have any problems.</div>
     <div id = "modal-footer">
 
     <button class="button" onclick = "resend('{{email}}')" id="button" style="border: none; outline:none;">Resend verification link</button>
