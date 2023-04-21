@@ -1,15 +1,31 @@
-{% autoescape on %}
+{%load static%}
 
-Your email is not verified.
+<!DOCTYPE html>
+<html>
 
+<head>
+    <title>Reminder</title>
+    <link rel="stylesheet" href="{% static 'styles/email-templates-styles.css'%}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-Please click on the link below to verify your email and start receiving excercises:
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div id="line"></div>
+            <div class="navbar-logo">CodingRoutine</div>
+        </div>
+        <div class="content">
+        <h1 style="text-align: center;">Verify your email</h1>
+        <p>You have enrolled CodingRoutine, but haven't verified your email address! Click the button below to start receiving daily coding excercises</p>
+        <a href="#" class="button">Verify Email</a>
+        <div id="hr"></div>
+        <div class="see-you">
+        <div>See you,</div>
+        <div>CodingRoutine</div>
+        </div>
+        </div>
+        {%include 'email-footer.html'%}
 
-{{protocol}}://{{domain}}{% url 'verify' uidb64=uid token=token %}
-
-
-
-If you have changed your mind click the link below to unsubscribe:
-{{protocol}}://{{domain}}{% url 'unsubscribe' uidb64=uid token=unsubscribe_token %}
-
-{%endautoescape%}
+        </div>
+</body>

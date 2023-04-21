@@ -102,13 +102,11 @@
   
   @media screen and (max-width: 800px) {
     #smalltext {font-size: 12px;}
-    .container2{width: 400px}
+    .container2{width: 350px}
     #block-inside {margin: 50 auto;width: 70%;height: 250px;padding: 22px}
     #task {margin-top: 15px; }
     #text {font-size: 12px;}
     #block {width: 90%;height: 400;padding: 20px;  }
     #line2 {width: 3px;height: 30px;margin: 55px 0px 0px 10px;}
-    #section2{padding:  100px  0;}
-    
   }
   

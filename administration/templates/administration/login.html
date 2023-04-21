@@ -21,15 +21,24 @@
                 <div><input type="password" name="password" id="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"></div>
             </label>
             </div>
-            <div class="vertical-center">
+
+            <div class="center">
                 {% if messages %}
                 {% for message in messages %}
-                <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                <div style="color:rgb(199, 1, 1); font-weight: 900;margin-top: 0px;">{{ message }}</div>
                 {% endfor %}
-            {%endif%}
+                {%endif%}
+            </div>
+
+            <div class="center">
             <input id="login-btn" type="submit" value="Login" />
             </div>
+
+            
+       
           </form>
+          
+ 
 
     </div>
     </div>

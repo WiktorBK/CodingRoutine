@@ -9,17 +9,20 @@
         {%else%}
         {%include 'base/modal-enrolled.html'%}
       {%endif%}
-    <style>body{overflow: hidden;}</style>
+    {%else%}
     {%endif%}
+
     <div id="text">
       <h1>Let the routine help you</h1>
       <p>Enter your email and receive daily coding excercise</p>
     </div>
+    <div class="center">
     {% if messages %}
         {% for message in messages %}
-        <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+        <div style="color:rgb(183, 0, 0); font-weight: 900; opacity: 0.7; margin-top: 230px;">{{ message }}</div>
         {% endfor %}
     {%endif%}
+  </div>
    <form action="{% url 'home' %}" onsubmit="disable()" method="POST">
     {%csrf_token%}
 

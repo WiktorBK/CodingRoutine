@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, EmailMultiAlternatives
+from django.utils.html import strip_tags
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -42,8 +43,11 @@ class Newsletter_User(models.Model):
         'token': email_verification_token.make_token(self),
         'protocol': 'https' if request.is_secure() else 'http',
         'unsubscribe_token': self.unsubscribe_token
-         })
-         email = EmailMessage(mail_subject, message, to=[self.email])
+         }) 
+         text_conent = strip_tags(message)
+         email = EmailMultiAlternatives(mail_subject, text_conent, to=[self.email])
+         email.attach_alternative(message, "text/html")
+
          return email
         except Exception as e:
          ExceptionTracker.objects.create(
