@@ -1,8 +1,30 @@
-{% autoescape off %}
+{%load static%}
+<!DOCTYPE html>
+<html>
 
-Hello,
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static 'styles/email-templates-styles.css'%}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-We are glad you've joined us!
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div id="line"></div>
+            <div class="navbar-logo">CodingRoutine</div>
+        </div>
+        <div style="height: 250px; padding: 50px 60px 50px 60px;"class="content">
+        <h1 style="text-align: center;">Thanks for joining!</h1>
+        <p>We're glad you've joined us. From now on you will receive daily coding excercise!</p>
+        <div id="hr"></div>
+        <div class="see-you">
+        <div>See you,</div>
+        <div>CodingRoutine</div>
+        </div>
+        </div>
 
+        {%include 'email-footer.html'%}
 
-{% endautoescape %}
+        </div>
+</body>

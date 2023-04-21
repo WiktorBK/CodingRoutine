@@ -1,19 +1,37 @@
-{% autoescape off %}
+{%load static%}
+<!DOCTYPE html>
+<html>
 
-Coding excercise for today:
-{{coding_excercise.level}}
+<head>
+    <title>Excercise</title>
+    <link rel="stylesheet" href="{% static 'styles/email-templates-styles.css'%}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-{%if excercise.title%}
-{{excercise.title}}
-{%endif%}
-{{excercise.body}}
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div id="line"></div>
+            <div class="navbar-logo">CodingRoutine</div>
+        </div>
+        <div style="height: auto; padding-top: 20px;"class="content">
+        <h1 style="text-align: center;">Coding excercise [#4] - easy</h1>
+        <div class="excercise">
+        <h2>Even or odd</h2>
+        <p style="margin-bottom: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quam eius tenetur, voluptatum libero molestias reprehenderit repellat cum debitis accusamus eligendi dolorem distinctio? Quo voluptatibus, repellendus porro inventore atque recusandae. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia asperiores inventore eligendi numquam consectetur animi eaque commodi qui, maxime laborum nobis atque debitis quibusdam eveniet</p>
+        <p style="margin-bottom: 20px;">Example input: 2</p>
+        <p style="margin-bottom: 20px;">returns: 1</p>
+        </div>
+        <p style="margin-bottom: 20px;">Let the routine help you.</p>
+        <div id="hr"></div>
+        <div class="see-you">
+        <p style="margin-bottom: 20px;">Something wrong with your excercise? <a style="color:rgb(16,188,124)" href="">Contact us</a></p>
+        <div>See you tommorow,</div>
+        <div>CodingRoutine</div>
+        </div>
+        </div>
 
-{%if excercise.example_input%}
-Example input:
-{{excercise.example_input}}
-returns:
-{{excercise.example_output}}
-{%endif%}
+        {%include 'email-footer.html'%}
 
-
-{% endautoescape %}
+        </div>
+</body>
