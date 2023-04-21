@@ -1,0 +1,9 @@
+<div class="footer">
+    <div class="footer-options">
+        <a href="{% url 'home'%}" class="footer-option">Visit website</a>
+        <a href="{% url 'contact'%}" class="footer-option">Report a bug</a>
+        <a href="{% url 'unsubscribe' token=unsubscribe_token uidb64=uid %}" class="footer-option">Unsubscribe</a>
+    </div>
+    <a id="icon" target="_blank" href="https://github.com/WiktorBK/codingroutine"><i class="fa fa-github" style="font-size:24px"></i></a>
+    <p class="footer-text">&copy; Codingroutine 2023</p>
+</div>
