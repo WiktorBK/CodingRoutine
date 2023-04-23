@@ -1,4 +1,4 @@
-from .models import Newsletter_User, ExceptionTracker, MessageContact, CodingExcercise
+from base.models import Newsletter_User, ExceptionTracker, MessageContact, CodingExcercise
 from .tokens import unsubscribe_token
 
 from django.core.mail import EmailMessage

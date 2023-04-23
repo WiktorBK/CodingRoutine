@@ -8,7 +8,7 @@ from django.contrib import messages
 from .models import ExceptionTracker
 from base.models import *
 from .forms import AddExcerciseForm
-from base.functions import create_excercise
+from codingroutine.functions import create_excercise
 
 
 @user_passes_test(lambda u: u.is_superuser)

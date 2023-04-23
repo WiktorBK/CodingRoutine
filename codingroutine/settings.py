@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
     'administration.apps.AdministrationConfig',
+    'verification',
 ]
 
 MIDDLEWARE = [

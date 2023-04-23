@@ -7,6 +7,8 @@ urlpatterns = [
     path(f'{admin_key}/', admin.site.urls),
     path('', include('base.urls')),
     path('', include('administration.urls')), 
+    path('', include('verification.urls')), 
+
 
 ]
 
