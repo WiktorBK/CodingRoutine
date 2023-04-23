@@ -8,7 +8,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes
 from django import forms
 
-from .tokens import email_verification_token, unsubscribe_token
+from codingroutine.tokens import email_verification_token, unsubscribe_token
 from administration.models import ExceptionTracker
 
 EASY="EASY"

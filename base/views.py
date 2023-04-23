@@ -8,13 +8,10 @@ from django.core.exceptions import ValidationError
 
 from .forms import MessageContactForm, NewsletterUserForm
 from .models import Newsletter_User, MessageContact, ExceptionTracker, CodingExcercise
-from .tokens import email_verification_token, unsubscribe_token
-from .functions import *
+from codingroutine.tokens import email_verification_token, unsubscribe_token
+from codingroutine.functions import *
 
 
-def email_verification(request):
-    context = {}
-    return render(request, 'base/email-verification.html', context=context)
 
 def thankyou_page(request):
     context = {}
