@@ -25,7 +25,7 @@ def verify(request, uidb64, token):
     if user and email_verification_token.check_token(user, token): 
         user.verified = True
         user.save()
-        welcoming_email = user.generate_welcoming_email()
+        welcoming_email = user.generate_welcoming_email(request)
 
         try:
             welcoming_email.send()
