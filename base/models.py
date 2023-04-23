@@ -65,8 +65,11 @@ class Newsletter_User(models.Model):
         try:
          mail_subject = "Welcome on board!"
          message = render_to_string(
-         'base/email_templates/template_welcome_email.html', {"unsubscribe_token": self.unsubscribe_token})
-         email = EmailMessage(mail_subject, message, to=[self.email])
+         'base/email_templates/template_welcome_email.html', {"unsubscribe_token": self.unsubscribe_token, 
+         'uid':  urlsafe_base64_encode(force_bytes(self.id)),})
+         text_conent = strip_tags(message)
+         email = EmailMultiAlternatives(mail_subject, text_conent, to=[self.email])
+         email.attach_alternative(message, "text/html")
          return email
 
         except Exception as e:

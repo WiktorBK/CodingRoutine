@@ -26,8 +26,11 @@ def send_excercise():
         if excercise is None: return ExceptionTracker.objects.create(title="Daily email wasn't sent", exception=f"No excercise for {user.email}")
 
         mail_subject = f"Coding Excercise - {excercise.difficulty} [#{user.excercises_received + 1}]"
-        message = render_to_string('base/email_templates/template_excercise.html',{"excercise": excercise})
-        email = EmailMessage(mail_subject, message, to=[user.email])
+        message = render_to_string('base/email_templates/template_excercise.html',{"excercise": excercise, 'uid':  urlsafe_base64_encode(force_bytes(user.id)),
+         'unsubscribe_token': user.unsubscribe_token})
+        text_conent = strip_tags(message)
+        email = EmailMultiAlternatives(mail_subject, text_conent, to=[user.email])
+        email.attach_alternative(message, "text/html")
        
         try:
             email.send()
