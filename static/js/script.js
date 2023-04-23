@@ -41,7 +41,7 @@ function disable(){
     document.getElementById("sign-up").style.backgroundColor = '10bc7c';
     document.getElementById("sign-up").style.opacity = '0.6';
     document.getElementById("sign-up").value = "Signing up...";
-    var counter = 3;
+    var counter = 5;
     var int = setInterval(function() {
         counter--;
     
