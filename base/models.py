@@ -61,12 +61,12 @@ class Newsletter_User(models.Model):
          ExceptionTracker.objects.create(
          title='Failed to generate daily coding excercise', exception=e)
 
-    def generate_welcoming_email(self):
+    def generate_welcoming_email(self, request):
         try:
          mail_subject = "Welcome on board!"
          message = render_to_string(
          'base/email_templates/template_welcome_email.html', {"unsubscribe_token": self.unsubscribe_token, 
-         'uid':  urlsafe_base64_encode(force_bytes(self.id)),})
+         'uid':  urlsafe_base64_encode(force_bytes(self.id)), 'protocol': 'https' if request.is_secure() else 'http', 'domain': get_current_site(request).domain,})
          text_conent = strip_tags(message)
          email = EmailMultiAlternatives(mail_subject, text_conent, to=[self.email])
          email.attach_alternative(message, "text/html")
