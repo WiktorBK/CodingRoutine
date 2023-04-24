@@ -3,5 +3,7 @@ db.sqlite3
 codingroutine/__pycache__/
 base/__pycache__/
 administration/__pycache__/
+verification/__pycache__/
 migrations/
 secret_values.py
+codingroutine\base\templates\base\email_templates
