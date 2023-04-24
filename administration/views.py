@@ -1,13 +1,12 @@
-from django.shortcuts import render, redirect, HttpResponse
-from django.contrib.auth.decorators import user_passes_test, login_required
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
-from django.contrib.auth.forms  import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from .models import ExceptionTracker
 from base.models import *
-from .forms import AddExcerciseForm
+from .forms import AddExcerciseForm, EditExcerciseForm
 from codingroutine.functions import create_excercise
 
 import traceback
@@ -87,6 +86,32 @@ def add_excercise(request):
 
     context={'form': form}
     return render(request, 'administration/add_excercise.html', context=context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def edit_excercise(request, eid):
+
+    # context values
+    excercise=CodingExcercise.objects.get(id=eid)
+    form=EditExcerciseForm(excercise)
+
+
+    from base.models import DIFFICULTY_CHOICES
+    ''' 
+    find difficulties left to choose
+    '''
+    diff_left = []
+    for x, y in DIFFICULTY_CHOICES:
+        if y.lower() == excercise.difficulty.lower(): continue
+        diff_left.append((x, y))
+    
+    if request.method == "POST":
+        form = EditExcerciseForm(request.POST)
+        excercise.update_excercise(request)
+        return redirect('excercises')
+    
+    context={"excercise": excercise, "form": form, "difficulties": diff_left}
+    return render(request, 'administration/edit_excercise.html', context=context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def admins(request):
