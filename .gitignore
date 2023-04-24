@@ -6,4 +6,4 @@ administration/__pycache__/
 verification/__pycache__/
 migrations/
 secret_values.py
-codingroutine\base\templates\base\email_templates
+base/templates/base/email_templates/
