@@ -11,6 +11,9 @@ from django import forms
 from codingroutine.tokens import email_verification_token, unsubscribe_token
 from administration.models import ExceptionTracker
 
+import traceback
+
+
 EASY="EASY"
 MED="MEDIUM"
 HARD="HARD"
@@ -49,17 +52,17 @@ class Newsletter_User(models.Model):
          email.attach_alternative(message, "text/html")
 
          return email
-        except Exception as e:
+        except Exception:
          ExceptionTracker.objects.create(
-         title='Failed to generate verification email', exception=e)
+         title='Failed to generate verification email', exception=traceback.format_exc())
 
     def generate_daily_coding_excercise(self):
         try:
          coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
          return coding_excercise
-        except Exception as e:
+        except Exception:
          ExceptionTracker.objects.create(
-         title='Failed to generate daily coding excercise', exception=e)
+         title='Failed to generate daily coding excercise', exception=traceback.format_exc())
 
     def generate_welcoming_email(self, request):
         try:
@@ -72,9 +75,9 @@ class Newsletter_User(models.Model):
          email.attach_alternative(message, "text/html")
          return email
 
-        except Exception as e:
+        except Exception:
          ExceptionTracker.objects.create(
-         title='Failed to generate welcoming email', exception=e)
+         title='Failed to generate welcoming email', exception=traceback.format_exc())
 
 
 
@@ -109,9 +112,23 @@ class CodingExcercise(models.Model):
     added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self): return self.title if self.title else self.body
-
+    class Meta:ordering = ['-added']
+    
     @classmethod
     def get_excercises(cls): return cls.objects.filter()
 
+    def update_excercise(self, request):
+        try:
+            difficulty = request.POST.get('difficulty').capitalize()
+            self.difficulty = self.difficulty if difficulty == "" else difficulty 
+            self.title = request.POST.get('title').capitalize()
+            self.body = request.POST.get('body')
+            self.example_input = request.POST.get('example_input')
+            self.example_output = request.POST.get('example_output')
+            self.save()
+        except Exception: 
+            ExceptionTracker.objects.create(
+            title=f'Failed to update excercise {self.title}', exception=traceback.format_exc())
 
+        return self
 

@@ -1,0 +1,60 @@
+{%extends 'main.html'%}
+{%block content%}
+{% include 'navbar.html'%}
+<div id="container">
+    <div id="admin-box">
+    <div id="admin-header">
+    <h6>Edit excercise</h6>
+    <small id="admin-small">logged in as {{request.user.username}}</small>
+    <div style="clear:both;"></div>
+    </div>
+    <div id="models-content">
+    
+        <a id="button" href="{%url 'excercises'%}">Go back</a>
+    
+
+
+        <form action="" method="POST">
+            {%csrf_token%}
+            
+            <div id="inline-forms">
+                <label for="">Title<div>{{form.title}}</div></label>
+            <div id="divider"></div>
+            <label for="">Difficulty
+                <div>
+                    <select id="difficulty-form" name="difficulty">
+                            <option value="">{{excercise.difficulty}}</option>
+                            {%for x, y in difficulties%}
+                                <option value="{{x}}">{{y}}</option>
+                            {%endfor%}
+                    </select>
+                </div>
+            </label>
+            
+            </div>
+          
+            <div id="label">
+            <label for=""> Body <div>{{form.body}}</div></label>
+            </div>
+
+            <div id="label">
+            <label for="">Example input<div> {{form.example_input}}</div></label>
+            </div>
+            <div id="label" style=" border-bottom: 1px solid rgb(116, 116, 116); height: 90px;">
+            <label for="">Example output<div>{{form.example_output}}</div></label>
+            </div>
+              <input id="add-button" type="submit" value="Save" />
+              <a id="button" href="{%url 'excercises'%}">Save and add another</a>
+          </form>
+        
+        </div>
+    
+    </div>
+    </div>
+    </div>
+    <script> textarea = document.getElementById("body-form").innerHTML = "{{excercise.body}}"; </script>
+
+    
+
+{% include 'footer.html'%}
+{%endblock%}

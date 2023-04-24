@@ -8,6 +8,7 @@ from django.utils.encoding import force_bytes
 from codingroutine.tokens import email_verification_token
 from base.models import Newsletter_User, ExceptionTracker
 
+import traceback
 
 
 def send_excercise():
@@ -27,15 +28,15 @@ def send_excercise():
 
         mail_subject = f"Coding Excercise - {excercise.difficulty} [#{user.excercises_received + 1}]"
         message = render_to_string('base/email_templates/template_excercise.html',{"excercise": excercise, 'uid':  urlsafe_base64_encode(force_bytes(user.id)),
-         'unsubscribe_token': user.unsubscribe_token})
+         'unsubscribe_token': user.unsubscribe_token, "eid": user.excercises_received+1})
         text_conent = strip_tags(message)
         email = EmailMultiAlternatives(mail_subject, text_conent, to=[user.email])
         email.attach_alternative(message, "text/html")
        
         try:
             email.send()
-        except Exception as e:
-            ExceptionTracker.objects.create(title=f"Failed to send excercise email to {user.email}", exception=e)
+        except Exception:
+            ExceptionTracker.objects.create(title=f"Failed to send excercise email to {user.email}", exception=traceback.format_exc())
 
     print('okay')
 
@@ -62,7 +63,7 @@ def send_reminder():
                
         try:
             email.send()
-        except Exception as e:
-            ExceptionTracker.objects.create(title=f"Failed to send reminder email to {user.email}", exception=e)
+        except Exception:
+            ExceptionTracker.objects.create(title=f"Failed to send reminder email to {user.email}", exception=traceback.format_exc())
                                                 
 

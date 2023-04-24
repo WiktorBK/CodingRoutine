@@ -4,6 +4,7 @@ from .tokens import unsubscribe_token
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 
+import traceback
 
 def create_user(email):
         
@@ -32,8 +33,8 @@ def create_message(request):
     try:    
      message = MessageContact.objects.create(
      email_contact=email, first_name=fname, last_name=lname, message=message)
-    except Exception as e:
-     ExceptionTracker.objects.create(title='Failed to create message', exception=e) 
+    except Exception:
+     ExceptionTracker.objects.create(title='Failed to create message', exception=traceback.format_exc()) 
 
     return message
 
@@ -50,12 +51,11 @@ def create_excercise(request):
     body = request.POST.get('body')
     exiput = request.POST.get('example_input')
     exoput = request.POST.get('example_output')
-    try:    
-     excercise = CodingExcercise.objects.create(
-     title=title,difficulty=diff,body=body,example_input=exoput,example_output=exiput)
+    try:     
+     excercise = CodingExcercise.objects.create( title=title,difficulty=diff,body=body,example_input=exoput,example_output=exiput)
      return excercise
-    except Exception as e:
-     ExceptionTracker.objects.create(title='Failed to create excercise', exception=e)   
+    except Exception:
+     ExceptionTracker.objects.create(title='Failed to create excercise', exception=traceback.format_exc())   
     
     
 

@@ -11,6 +11,8 @@ from base.models import Newsletter_User, MessageContact, ExceptionTracker, Codin
 from codingroutine.tokens import email_verification_token, unsubscribe_token
 from codingroutine.functions import *
 
+import traceback
+
 
 def email_verification(request):
     context = {}
@@ -29,8 +31,8 @@ def verify(request, uidb64, token):
 
         try:
             welcoming_email.send()
-        except Exception as e: 
-            ExceptionTracker.objects.create(title='Failed to send welcoming email', exception=e)
+        except Exception: 
+            ExceptionTracker.objects.create(title='Failed to send welcoming email', exception=traceback.format_exc())
 
         return redirect('thank-you')
     else:
@@ -57,6 +59,6 @@ def resend(request, email):
         email = user.generate_verification_email(request)
     
         return HttpResponse('Success: verifiaction email has been sent') if email.send() else HttpResponse('Error: Something went wrong')
-    except Exception as e: 
-        ExceptionTracker.objects.create(title="Failed to resend verification link", exception=e)
+    except Exception: 
+        ExceptionTracker.objects.create(title="Failed to resend verification link", exception=traceback.format_exc())
         return HttpResponse('Error: verifiaction email could not be sent')
