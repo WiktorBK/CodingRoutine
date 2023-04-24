@@ -28,7 +28,7 @@
         
     <div id="table-content">
     {% for excercise in excercises %}
-        <div
+        <a href="{%url 'edit-excercise' eid=excercise.id %}"><div
         {% if excercise.id|divisibleby:2 %} 
         style="background-color: #182527bb;"
         {%endif%}
@@ -40,6 +40,7 @@
          <div style="clear:both;"></div>
     
         </div>
+        </a>
       
     {%endfor%}
     </div>
