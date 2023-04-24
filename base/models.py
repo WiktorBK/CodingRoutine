@@ -112,9 +112,23 @@ class CodingExcercise(models.Model):
     added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self): return self.title if self.title else self.body
-
+    class Meta:ordering = ['-added']
+    
     @classmethod
     def get_excercises(cls): return cls.objects.filter()
 
+    def update_excercise(self, request):
+        try:
+            difficulty = request.POST.get('difficulty').capitalize()
+            self.difficulty = self.difficulty if difficulty == "" else difficulty 
+            self.title = request.POST.get('title').capitalize()
+            self.body = request.POST.get('body')
+            self.example_input = request.POST.get('example_input')
+            self.example_output = request.POST.get('example_output')
+            self.save()
+        except Exception: 
+            ExceptionTracker.objects.create(
+            title=f'Failed to update excercise {self.title}', exception=traceback.format_exc())
 
+        return self
 
