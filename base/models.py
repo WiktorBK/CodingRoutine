@@ -37,16 +37,18 @@ class Newsletter_User(models.Model):
     def get_verified_users(cls): return cls.objects.filter(verified=True)
 
     def generate_verification_email(self, request):
+        '''
+        Render email template
+        Attach alternatives: text_content and html template
+        '''
         try:
          mail_subject = "Verify your email address"
          message = render_to_string('base/email_templates/template_verification_email.html',
-         {
-        'domain': get_current_site(request).domain,
+         {'domain': get_current_site(request).domain,
         'uid':  urlsafe_base64_encode(force_bytes(self.id)),
         'token': email_verification_token.make_token(self),
         'protocol': 'https' if request.is_secure() else 'http',
-        'unsubscribe_token': self.unsubscribe_token
-         }) 
+        'unsubscribe_token': self.unsubscribe_token}) 
          text_conent = strip_tags(message)
          email = EmailMultiAlternatives(mail_subject, text_conent, to=[self.email])
          email.attach_alternative(message, "text/html")
@@ -57,6 +59,10 @@ class Newsletter_User(models.Model):
          title='Failed to generate verification email', exception=traceback.format_exc())
 
     def generate_daily_coding_excercise(self):
+
+        '''
+        Get coding excercise based on already received amount
+        '''
         try:
          coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
          return coding_excercise
@@ -65,6 +71,10 @@ class Newsletter_User(models.Model):
          title='Failed to generate daily coding excercise', exception=traceback.format_exc())
 
     def generate_welcoming_email(self, request):
+        '''
+        Render email template
+        Attach alternatives: text_content and html template
+        '''
         try:
          mail_subject = "Welcome on board!"
          message = render_to_string(
@@ -78,7 +88,6 @@ class Newsletter_User(models.Model):
         except Exception:
          ExceptionTracker.objects.create(
          title='Failed to generate welcoming email', exception=traceback.format_exc())
-
 
 
 class MessageContact(models.Model):
@@ -103,6 +112,7 @@ class MessageContact(models.Model):
          self.unread = False 
          self.save()  
 
+
 class CodingExcercise(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
     difficulty = models.CharField(max_length=15, choices=DIFFICULTY_CHOICES, default="Easy")
@@ -117,8 +127,14 @@ class CodingExcercise(models.Model):
     @classmethod
     def get_excercises(cls): return cls.objects.filter()
 
+
     def update_excercise(self, request):
+        '''
+        Update already existing excercise
+        '''
         try:
+
+            # make sure difficulty is set
             difficulty = request.POST.get('difficulty').capitalize()
             self.difficulty = self.difficulty if difficulty == "" else difficulty 
             self.title = request.POST.get('title').capitalize()
