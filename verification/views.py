@@ -24,26 +24,28 @@ def verify(request, uidb64, token):
         user = Newsletter_User.objects.get(id=uid)
     except: user = None
 
+    # check if the verification url is valid
     if user and email_verification_token.check_token(user, token): 
         user.verified = True
         user.save()
         welcoming_email = user.generate_welcoming_email(request)
-
-        try:
-            welcoming_email.send()
-        except Exception: 
-            ExceptionTracker.objects.create(title='Failed to send welcoming email', exception=traceback.format_exc())
+        
+        # send welcoming email 
+        try: welcoming_email.send()
+        except Exception: ExceptionTracker.objects.create(title='Failed to send welcoming email', exception=traceback.format_exc())
 
         return redirect('thank-you')
     else:
         return HttpResponse("Error: Activation link is invalid")
 
 def unsubscribe(request, uidb64, token):
+
+    
+    # check if the unsubscribe link is valid
     try:
         uid = int(urlsafe_base64_decode(uidb64))
         user = Newsletter_User.objects.get(id=uid)
     except: return HttpResponse("Error: Activation link is invalid")
-    
     if user and user.unsubscribe_token == token:
         user.active = False
         user.verified = False

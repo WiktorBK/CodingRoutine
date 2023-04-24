@@ -21,13 +21,13 @@ class EditExcerciseForm(ModelForm):
     def __init__(self, excercise, *args, **kwargs):
         super(EditExcerciseForm, self).__init__(*args, **kwargs)
         try:
+            # add dynamic values
+
             self.fields['title'].widget.attrs["value"] = excercise.title
             self.fields['body'].widget.attrs["value"] = excercise.body
             self.fields['example_input'].widget.attrs["value"] = excercise.example_input
             self.fields['example_output'].widget.attrs["value"] = excercise.example_output
         except: pass
-
-
 
     class Meta:
         model=CodingExcercise
