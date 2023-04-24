@@ -10,6 +10,7 @@ from base.models import *
 from .forms import AddExcerciseForm
 from codingroutine.functions import create_excercise
 
+import traceback
 
 @user_passes_test(lambda u: u.is_superuser)
 def administration_site(request):
@@ -63,8 +64,8 @@ def delete_message(request, mid):
     try:
      m=MessageContact.objects.get(id=mid)
      m.delete()
-    except Exception as e: 
-     ExceptionTracker.objects.create(title='Failed to delete message', exception=e)
+    except Exception: 
+     ExceptionTracker.objects.create(title='Failed to delete message', exception=traceback.format_exc())
     return redirect('messages')
 
 @user_passes_test(lambda u: u.is_superuser)

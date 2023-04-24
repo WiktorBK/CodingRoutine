@@ -11,6 +11,9 @@ from django import forms
 from codingroutine.tokens import email_verification_token, unsubscribe_token
 from administration.models import ExceptionTracker
 
+import traceback
+
+
 EASY="EASY"
 MED="MEDIUM"
 HARD="HARD"
@@ -49,17 +52,17 @@ class Newsletter_User(models.Model):
          email.attach_alternative(message, "text/html")
 
          return email
-        except Exception as e:
+        except Exception:
          ExceptionTracker.objects.create(
-         title='Failed to generate verification email', exception=e)
+         title='Failed to generate verification email', exception=traceback.format_exc())
 
     def generate_daily_coding_excercise(self):
         try:
          coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
          return coding_excercise
-        except Exception as e:
+        except Exception:
          ExceptionTracker.objects.create(
-         title='Failed to generate daily coding excercise', exception=e)
+         title='Failed to generate daily coding excercise', exception=traceback.format_exc())
 
     def generate_welcoming_email(self, request):
         try:
@@ -72,9 +75,9 @@ class Newsletter_User(models.Model):
          email.attach_alternative(message, "text/html")
          return email
 
-        except Exception as e:
+        except Exception:
          ExceptionTracker.objects.create(
-         title='Failed to generate welcoming email', exception=e)
+         title='Failed to generate welcoming email', exception=traceback.format_exc())
 
 
 
