@@ -19,6 +19,12 @@ def email_verification(request):
     return render(request, 'verification/email-verification.html', context=context)
 
 def verify(request, uidb64, token):
+
+    # make unable to verify if not active !!!
+
+
+
+
     try:
         uid = int(urlsafe_base64_decode(uidb64))
         user = Newsletter_User.objects.get(id=uid)
@@ -39,7 +45,7 @@ def verify(request, uidb64, token):
         return HttpResponse("Error: Activation link is invalid")
 
 def unsubscribe(request, uidb64, token):
-
+    
     
     # check if the unsubscribe link is valid
     try:
