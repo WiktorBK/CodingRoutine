@@ -1,6 +1,8 @@
 {%extends 'main.html'%}
 
 {% block content %}
+{%load static%}
+
     {% include 'navbar.html'%}
   <div class="container">
     {%if enrolled%}
@@ -47,28 +49,38 @@
 </a>
 <div id="block">
   <h2>Sample coding excercise</h2>
-  <div id="line2"></div>
+  
   <div id="block-inside">
     <div id="text">
+      <div id="title"> String Anagram Checker</div>
+      <div style="margin-bottom: 8px;">Difficulty: Easy</div>
       <div id="explanation">
-        Given an array of numbers representing the stock prices of a company in chronological order and an integer k, return the maximum profit you can make from k buys and sells. You must buy the stock before you can sell it, and you must sell the stock before you can buy it again.
-        For example:
+        You are given two strings as input. Write a program to determine if they are anagrams of each other. Anagrams are words or phrases that have the same characters but can be rearranged to form different words or phrases.
       </div>
       <div id="example">
-         given k = 2 <br/>
-         and the array = [5, 2, 4, 0, 1] <br/>
+        <div> String 1: "listen"</div>
+        String 2: "silent"
       </div>
       <div id="task">
-        you should return 3.
+        returns: True
+    </div>
+    <div id="explanation">
+      <div> Explanation: </div>
+      In the example above, the input strings "listen" and "silent" are anagrams of each other as they have the same characters (l, i, s, t, e, n) and can be rearranged to form the same word.   
     </div>
   </div>
 </div>
+
+<div id="sec-header">Email sample:</div>
+<div id="img-wrapper">
+<img id="img" src="{% static 'images/email_screen.png'%}" alt="">
+</div>
+
 </div>
 
 
 </div>
 
-{%load static%}
 <script src="{% static 'js/script.js'%}"></script>
 
 {%include 'footer.html'%}
