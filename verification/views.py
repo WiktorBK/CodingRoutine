@@ -19,12 +19,6 @@ def email_verification(request):
     return render(request, 'verification/email-verification.html', context=context)
 
 def verify(request, uidb64, token):
-
-    # make unable to verify if not active !!!
-
-
-
-
     try:
         uid = int(urlsafe_base64_decode(uidb64))
         user = Newsletter_User.objects.get(id=uid)
@@ -32,6 +26,7 @@ def verify(request, uidb64, token):
 
     # check if the verification url is valid
     if user and email_verification_token.check_token(user, token): 
+        if user.active == False: return HttpResponse("Error: User is inactive")
         user.verified = True
         user.save()
         welcoming_email = user.generate_welcoming_email(request)
