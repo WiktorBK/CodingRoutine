@@ -26,6 +26,7 @@ def verify(request, uidb64, token):
 
     # check if the verification url is valid
     if user and email_verification_token.check_token(user, token): 
+        if user.active == False: return HttpResponse("Error: User is inactive")
         user.verified = True
         user.save()
         welcoming_email = user.generate_welcoming_email(request)
@@ -39,7 +40,7 @@ def verify(request, uidb64, token):
         return HttpResponse("Error: Activation link is invalid")
 
 def unsubscribe(request, uidb64, token):
-
+    
     
     # check if the unsubscribe link is valid
     try:

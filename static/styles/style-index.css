@@ -17,23 +17,14 @@
   
 
   @keyframes arrow2 {
-    80% {
-      opacity: 0.6;
-      transform: translateY(7px);
-    }
-    100% {
-      opacity: 1;
-    }
+    80% { opacity: 0.6; transform: translateY(7px); }
+    100% { opacity: 1; }
   }
   @keyframes arrow {
-    80% {
-      opacity: 0.6;
-      transform: translateY(-7px);
-    }
-    100% {
-      opacity: 1;
-    }
+    80% {opacity: 0.6; transform: translateY(-7px);}
+    100% {opacity: 1;}
   }
+  
   svg {
     transition: 0.3s;
   }
@@ -53,16 +44,16 @@
   #block {
     margin: 0 auto;
     width: 80%;
-    height: 700px;
+    height: auto;
     background-color: #243234;
-    padding: 20px;
+    padding: 20px 20px 80px 20px;
   }
   
   #block-inside {
     margin: 0 auto;
     margin-top: 50px;
     width: 75%;
-    height: 300px;
+    height: 375px;
     border-radius: 7px;
     background-color: #252927;
     padding: 30px;
@@ -75,6 +66,8 @@
   }
   #task {
     margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 700;
   }
   
   #text {
@@ -88,25 +81,43 @@
     width: 1000px;
   }
   
+  #title{
+    font-size:20px; margin-bottom: 15px; font-weight: 700; text-align: center;
+  }
   
+  #sec-header{
+    font-size: 35px;
+    margin-top: 60px;
+    text-align: center;
+    font-weight: 900;
+    color: #20cd8d; }
+
+  #img-wrapper{margin-top: 50px;text-align: center;}
+
+  #img{border-radius: 5px;width: 80%;}
+
+
   @media screen and (max-width: 1200px) {
     
     .container2{width:600px;}
-    #block {width: 80%;height: 520px;padding: 20px; }
-    #block-inside {margin: 50 auto;width: 72%;height: 280px;padding: 30px; }
+    #block {width: 80%;padding: 20px; }
+    #block-inside {margin: 20px auto;width: 72%;height: 385px;padding: 30px; }
     #example {margin-top: 16px;font-weight: 600;}
     #task {margin-top: 20px; }
     #text {font-size: 15px;}
     #line2 {width: 4px;height: 35px;margin: 55px 0px 0px 22px;}
+    #sec-header{font-size: 25px; margin-top: 30px;}
+    #img-wrapper{margin-top: 20px;}
   }
   
   @media screen and (max-width: 800px) {
     #smalltext {font-size: 12px;}
     .container2{width: 350px}
-    #block-inside {margin: 50 auto;width: 70%;height: 250px;padding: 22px}
+    #block-inside {margin: 30 auto;width: 70%;height: 370px;padding: 22px}
     #task {margin-top: 15px; }
     #text {font-size: 12px;}
     #block {width: 90%;height: 400;padding: 20px;  }
-    #line2 {width: 3px;height: 30px;margin: 55px 0px 0px 10px;}
+    #line2 {width: 3px;height: 30px;margin: 55px 0px 0px 14px;}
+    #title {font-size: 15px;}
   }
   
