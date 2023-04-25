@@ -7,3 +7,4 @@ verification/__pycache__/
 migrations/
 secret_values.py
 base/templates/base/email_templates/
+static/images/
