@@ -6,7 +6,7 @@
 <div id="container">
 <div id="admin-box">
 <div id="admin-header">
-<h6>Excercises</h6>
+<h6>Exercises</h6>
 <small id="admin-small">logged in as {{request.user.username}}</small>
 <div style="clear:both;"></div>
 </div>
@@ -14,7 +14,7 @@
 <div id="models-content">
 
     <a id="button" href="{%url 'administration-site'%}">Go back</a>
-    <span>{{excercises_count}} {%if excercises_count == 1%} excercise {%else%} excercises {%endif%}</span>
+    <span>{{exercises_count}} {%if exercises_count == 1%} exercise {%else%} exercises {%endif%}</span>
 
     <div id="table">
         <div id="table-header">
@@ -27,16 +27,16 @@
 
         
     <div id="table-content">
-    {% for excercise in excercises %}
-        <a href="{%url 'edit-excercise' eid=excercise.id %}"><div
-        {% if excercise.id|divisibleby:2 %} 
+    {% for exercise in exercises %}
+        <a href="{%url 'edit-exercise' eid=exercise.id %}"><div
+        {% if exercise.id|divisibleby:2 %} 
         style="background-color: #182527bb;"
         {%endif%}
          id="table-element">
-         <div id="table-row-element">{{excercise.title}}</div>
-         <div class="hide-1100" id="table-row-element">{{excercise.difficulty}}</div>
-        <div class="hide-650"id="table-row-element">{{excercise.body}}</div> 
-         <div class="hide-850"id="table-row-element">{{excercise.added}}</div>
+         <div id="table-row-element">{{exercise.title}}</div>
+         <div class="hide-1100" id="table-row-element">{{exercise.difficulty}}</div>
+        <div class="hide-650"id="table-row-element">{{exercise.body}}</div> 
+         <div class="hide-850"id="table-row-element">{{exercise.added}}</div>
          <div style="clear:both;"></div>
     
         </div>
@@ -46,7 +46,7 @@
     </div>
     </div>
 
-    <a id="button" href="{%url 'add-excercise'%}">Add excercise</a>
+    <a id="button" href="{%url 'add-exercise'%}">Add exercise</a>
 
 </div>
 </div>

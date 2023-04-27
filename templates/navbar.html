@@ -1,6 +1,7 @@
+{%load static%}
 <header>
     <div class="topnav">
-      <a class="active" href="{% url 'home' %}">
+      <a class="active" href="{% url 'home' %}"> 
         <div id="line"></div>
         CodingRoutine
          {% if request.user.is_superuser %}

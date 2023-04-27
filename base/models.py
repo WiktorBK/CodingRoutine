@@ -21,7 +21,7 @@ DIFFICULTY_CHOICES=((EASY, "Easy"), (MED, "Medium"), (HARD, "Hard"))
 class Newsletter_User(models.Model):
 
     email = models.CharField(max_length=200)
-    excercises_received = models.IntegerField(default=0)
+    exercises_received = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
@@ -58,17 +58,17 @@ class Newsletter_User(models.Model):
          ExceptionTracker.objects.create(
          title='Failed to generate verification email', exception=traceback.format_exc())
 
-    def generate_daily_coding_excercise(self):
+    def generate_daily_coding_exercise(self):
 
         '''
-        Get coding excercise based on already received amount
+        Get coding exercise based on already received amount
         '''
         try:
-         coding_excercise = CodingExcercise.objects.get(id= self.excercises_received + 1)
-         return coding_excercise
+         coding_exercise = CodingExercise.objects.get(id= self.exercises_received + 1)
+         return coding_exercise
         except Exception:
          ExceptionTracker.objects.create(
-         title='Failed to generate daily coding excercise', exception=traceback.format_exc())
+         title='Failed to generate daily coding exercise', exception=traceback.format_exc())
 
     def generate_welcoming_email(self, request):
         '''
@@ -113,7 +113,7 @@ class MessageContact(models.Model):
          self.save()  
 
 
-class CodingExcercise(models.Model):
+class CodingExercise(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
     difficulty = models.CharField(max_length=15, choices=DIFFICULTY_CHOICES, default="Easy")
     example_input = models.CharField(max_length=200, null=True, blank=True)
@@ -125,12 +125,12 @@ class CodingExcercise(models.Model):
     class Meta:ordering = ['-added']
     
     @classmethod
-    def get_excercises(cls): return cls.objects.filter()
+    def get_exercises(cls): return cls.objects.filter()
 
 
-    def update_excercise(self, request):
+    def update_exercise(self, request):
         '''
-        Update already existing excercise
+        Update already existing exercise
         '''
         try:
 
@@ -144,7 +144,7 @@ class CodingExcercise(models.Model):
             self.save()
         except Exception: 
             ExceptionTracker.objects.create(
-            title=f'Failed to update excercise {self.title}', exception=traceback.format_exc())
+            title=f'Failed to update exercise {self.title}', exception=traceback.format_exc())
 
         return self
 

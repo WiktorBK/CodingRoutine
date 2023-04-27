@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from .models import ExceptionTracker
+from .models import ExceptionTracker, CodingExercise
 from base.models import *
-from .forms import AddExcerciseForm, EditExcerciseForm
-from codingroutine.functions import create_excercise
+from .forms import AddExerciseForm, EditExerciseForm
+from codingroutine.functions import create_exercise
 
 import traceback
 
@@ -68,32 +68,32 @@ def delete_message(request, mid):
     return redirect('messages')
 
 @user_passes_test(lambda u: u.is_superuser)
-def excercises(request):
-    excercises_ = CodingExcercise.get_excercises()
+def exercises(request):
+    exercises_ = CodingExercise.get_exercises()
 
-    context={"excercises": excercises_, "excercises_count": len(excercises_)}
-    return render(request, 'administration/excercises.html', context=context)
+    context={"exercises": exercises_, "exercises_count": len(exercises_)}
+    return render(request, 'administration/exercises.html', context=context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def add_excercise(request):
-    form=AddExcerciseForm()
+def add_exercise(request):
+    form=AddExerciseForm()
 
     if request.method == "POST":   
-        form = AddExcerciseForm(request.POST)
-        excercise = create_excercise(request)
-        return redirect('excercises')
+        form = AddExerciseForm(request.POST)
+        exercise = create_exercise(request)
+        return redirect('exercises')
 
     context={'form': form}
-    return render(request, 'administration/add_excercise.html', context=context)
+    return render(request, 'administration/add_exercise.html', context=context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def edit_excercise(request, eid):
+def edit_exercise(request, eid):
 
     # context values
-    excercise=CodingExcercise.objects.get(id=eid)
-    form=EditExcerciseForm(excercise)
+    exercise=CodingExercise.objects.get(id=eid)
+    form=EditExerciseForm(exercise)
 
 
     from base.models import DIFFICULTY_CHOICES
@@ -102,16 +102,16 @@ def edit_excercise(request, eid):
     '''
     diff_left = []
     for x, y in DIFFICULTY_CHOICES:
-        if y.lower() == excercise.difficulty.lower(): continue
+        if y.lower() == exercise.difficulty.lower(): continue
         diff_left.append((x, y))
     
     if request.method == "POST":
-        form = EditExcerciseForm(request.POST)
-        excercise.update_excercise(request)
-        return redirect('excercises')
+        form = EditExerciseForm(request.POST)
+        exercise.update_exercise(request)
+        return redirect('exercises')
     
-    context={"excercise": excercise, "form": form, "difficulties": diff_left}
-    return render(request, 'administration/edit_excercise.html', context=context)
+    context={"exercise": exercise, "form": form, "difficulties": diff_left}
+    return render(request, 'administration/edit_exercise.html', context=context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def admins(request):

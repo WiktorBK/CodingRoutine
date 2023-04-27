@@ -1,4 +1,4 @@
-from base.models import Newsletter_User, ExceptionTracker, MessageContact, CodingExcercise
+from base.models import Newsletter_User, ExceptionTracker, MessageContact, CodingExercise
 from .tokens import unsubscribe_token
 
 from django.core.mail import EmailMessage
@@ -39,12 +39,12 @@ def create_message(request):
     return message
 
 
-def create_excercise(request):
+def create_exercise(request):
     
     '''
     Get the values from the form
 
-    Create new coding excercise
+    Create new coding exercise
     '''
     title = request.POST.get('title').capitalize()
     diff = request.POST.get('difficulty').capitalize()
@@ -52,10 +52,10 @@ def create_excercise(request):
     exiput = request.POST.get('example_input')
     exoput = request.POST.get('example_output')
     try:     
-     excercise = CodingExcercise.objects.create( title=title,difficulty=diff,body=body,example_input=exoput,example_output=exiput)
-     return excercise
+     exercise = CodingExercise.objects.create( title=title,difficulty=diff,body=body,example_input=exoput,example_output=exiput)
+     return exercise
     except Exception:
-     ExceptionTracker.objects.create(title='Failed to create excercise', exception=traceback.format_exc())   
+     ExceptionTracker.objects.create(title='Failed to create exercise', exception=traceback.format_exc())   
     
     
 

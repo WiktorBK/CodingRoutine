@@ -6,9 +6,8 @@ from django.core.validators import validate_email
 from django.contrib.auth.decorators import user_passes_test
 from django.core.exceptions import ValidationError
 
-from base.forms import MessageContactForm, NewsletterUserForm
-from base.models import Newsletter_User, MessageContact, ExceptionTracker, CodingExcercise
-from codingroutine.tokens import email_verification_token, unsubscribe_token
+from base.models import Newsletter_User, ExceptionTracker
+from codingroutine.tokens import email_verification_token
 from codingroutine.functions import *
 
 import traceback

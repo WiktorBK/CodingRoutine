@@ -4,13 +4,13 @@
 <div id="container">
     <div id="admin-box">
     <div id="admin-header">
-    <h6>Edit excercise</h6>
+    <h6>Edit exercise</h6>
     <small id="admin-small">logged in as {{request.user.username}}</small>
     <div style="clear:both;"></div>
     </div>
     <div id="models-content">
     
-        <a id="button" href="{%url 'excercises'%}">Go back</a>
+        <a id="button" href="{%url 'exercises'%}">Go back</a>
     
 
 
@@ -23,7 +23,7 @@
             <label for="">Difficulty
                 <div>
                     <select id="difficulty-form" name="difficulty">
-                            <option value="">{{excercise.difficulty}}</option>
+                            <option value="">{{exercise.difficulty}}</option>
                             {%for x, y in difficulties%}
                                 <option value="{{x}}">{{y}}</option>
                             {%endfor%}
@@ -44,7 +44,7 @@
             <label for="">Example output<div>{{form.example_output}}</div></label>
             </div>
               <input id="add-button" type="submit" value="Save" />
-              <a id="button" href="{%url 'excercises'%}">Save and add another</a>
+              <a id="button" href="{%url 'exercises'%}">Save and add another</a>
           </form>
         
         </div>
@@ -52,7 +52,7 @@
     </div>
     </div>
     </div>
-    <script> textarea = document.getElementById("body-form").innerHTML = "{{excercise.body}}"; </script>
+    <script> textarea = document.getElementById("body-form").innerHTML = "{{exercise.body}}"; </script>
 
     
 
