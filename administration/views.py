@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from .models import ExceptionTracker, CodingExercise
+from .models import ExceptionTracker
 from base.models import *
 from .forms import AddExerciseForm, EditExerciseForm
 from codingroutine.functions import create_exercise
