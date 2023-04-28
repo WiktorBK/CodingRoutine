@@ -48,8 +48,6 @@
     #admin-content>p{
       color:white; font-size: 18px;}
 
-
-
   .model-box:hover {border: 1px solid rgb(104, 104, 104);}
   #new {
     width: 18px;height: 18px;
@@ -150,13 +148,16 @@
   padding-left: 5px;}
   
   #example-form{
-    width: 450px;height: 30px;
+    width: 400px;
+    height: 90px;
     font-size: 15px;
     border-radius: 5px;
     font-family: "Nunito", sans-serif;
     padding-left: 5px;
-    font-weight: 900;}
+    font-weight: 900;
+   }
   
+
   #label{
     display: flex;justify-content: center;}
   

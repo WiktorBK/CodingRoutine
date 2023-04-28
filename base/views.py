@@ -7,8 +7,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.core.exceptions import ValidationError
 
 from .forms import MessageContactForm, NewsletterUserForm
-from .models import Newsletter_User, MessageContact, ExceptionTracker, CodingExcercise
-from codingroutine.tokens import email_verification_token, unsubscribe_token
+from .models import Newsletter_User
 from codingroutine.functions import *
 
 
@@ -26,21 +25,21 @@ def contact(request):
     if request.method == "POST":
         form = MessageContactForm(request.POST)
         message = create_message(request)
-        
         try: fname=message.first_name 
-        except: fname=message
-
+        except: pass
         context = {'form': form, 'first_name': fname, 'sent': True}
         return render(request, "base/message_sent.html", context=context)
     
     context = {'form': form}
     return render(request, 'base/contact-page.html', context=context)
 
+
 def unsubscribe_how_to(request):
     return render(request, "base/unsubscribe-how-to.html")
 
 
 def home(request):
+
     form = NewsletterUserForm()
     context = {'form': form}
     if request.method == "POST":

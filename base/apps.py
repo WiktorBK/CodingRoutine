@@ -6,6 +6,5 @@ class BaseConfig(AppConfig):
     name = 'base'
 
     def ready(self):
-        
         from jobs import updater
         updater.start()
