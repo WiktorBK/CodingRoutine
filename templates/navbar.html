@@ -4,9 +4,6 @@
       <a class="active" href="{% url 'home' %}"> 
         <div id="line"></div>
         CodingRoutine
-         {% if request.user.is_superuser %}
-         <small style="font-weight: 100; font-size: 13px">admin</small>
-         {%endif%}
         </a>
       
       <a style="float: right" href="{% url 'contact'%}">Contact</a>
