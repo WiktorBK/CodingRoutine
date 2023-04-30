@@ -24,11 +24,15 @@ def contact(request):
     form = MessageContactForm()
     if request.method == "POST":
         form = MessageContactForm(request.POST)
-        message = create_message(request)
-        try: fname=message.first_name 
-        except: pass
-        context = {'form': form, 'first_name': fname, 'sent': True}
-        return render(request, "base/message_sent.html", context=context)
+        try:
+            validate_email(request.POST.get('email_contact').lower())
+            message = create_message(request)
+            try: fname=message.first_name 
+            except: pass
+            context = {'form': form, 'first_name': fname, 'sent': True}
+            return render(request, "base/message_sent.html", context=context)
+        except ValidationError:
+            messages.error(request, "Enter valid email address, so we can contact you back!")
     
     context = {'form': form}
     return render(request, 'base/contact-page.html', context=context)
