@@ -13,50 +13,29 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
-  }
-
-  @keyframes arrow2 {
-    80% { opacity: 0.6; transform: translateY(7px); }
-    100% { opacity: 1; }
-  }
-  @keyframes arrow {
-    80% {opacity: 0.6; transform: translateY(-7px);}
-    100% {opacity: 1;}
-  }
-  
-  svg {
-    transition: 0.3s;
-  }
-  svg:hover {
-    stroke-width: 2.2px;
-  }
-
-  #section1 {
-    height: 100vh;
-  } 
-  #section2{
-    height: 100vh;
-    padding: 100px;
+    margin-bottom: 100px;
   }
 
 
   #block {
     margin: 0 auto;
-    width: 80%;
+    margin-top: 20px;
     height: auto;
     background-color: #243234;
-    padding: 20px 20px 80px 20px;
+    padding: 30px 20px 80px 20px;
   }
   
   #block-inside {
     margin: 0 auto;
     margin-top: 50px;
-    width: 75%;
+    margin-bottom: 50px;
+    width: 85%;
     height: 375px;
     border-radius: 7px;
     background-color: #252927;
     padding: 30px;
-    box-shadow: -1px 7px 34px -22px #121212;
+    box-shadow: -1px 7px 34px -22px #12121289;
+    border: 1px solid rgba(69, 69, 69, 0.431);
   }
   
   #example {
@@ -74,49 +53,65 @@
     font-size: 17px;
     text-align: left;
   }
-  .container2 {
-    margin: 150px auto;
-    padding: auto;
-    width: 1000px;
-  }
-  
+ 
   #title{
     font-size:20px; margin-bottom: 15px; font-weight: 700; text-align: center;
   }
-  
-  #sec-header{
-    font-size: 35px;
-    margin-top: 60px;
-    text-align: center;
-    font-weight: 900;
-    color: #20cd8d; }
 
-  #img-wrapper{margin-top: 50px;text-align: center;}
+
+  #img-wrapper{margin-top: 40px;text-align: center;}
 
   #img{border-radius: 5px;width: 80%;}
 
 
+#top-wrap{
+  display:flex;justify-content: center;
+  margin-top: 70px;
+}
+
+
+  #top{
+    background-color:#20cd8d;
+    padding: 15px;
+    border-radius: 7px;
+    color: #006f46;
+    font-weight: 700;
+    font-size: 18px;
+    transition: 0.2s;
+  }
+  #top:hover{
+    box-shadow: -1px 5px 20px -1px rgba(0, 0, 0, 0.496);
+  }
+
   @media screen and (max-width: 1200px) {
-    
-    .container2{width:600px;}
+
     #block {width: 80%;padding: 20px; }
     #block-inside {margin: 20px auto;width: 72%;height: 385px;padding: 30px; }
     #example {margin-top: 16px;font-weight: 600;}
     #task {margin-top: 20px; }
     #text {font-size: 15px;}
     #line2 {width: 4px;height: 35px;margin: 55px 0px 0px 22px;}
-    #sec-header{font-size: 25px; margin-top: 30px;}
     #img-wrapper{margin-top: 20px;}
   }
   
   @media screen and (max-width: 800px) {
     #smalltext {font-size: 12px;}
-    .container2{width: 350px}
-    #block-inside {margin: 30 auto;width: 70%;height: 370px;padding: 22px}
+    #block-inside {margin: 30 auto;width: 80%;height: 370px;padding: 22px}
     #task {margin-top: 15px; }
     #text {font-size: 12px;}
-    #block {width: 90%;height: 400;padding: 20px;  }
+    #block {width: 90%;padding: 30px;  }
     #line2 {width: 3px;height: 30px;margin: 55px 0px 0px 14px;}
     #title {font-size: 15px;}
   }
   
+
+  @media screen and (max-width: 600px) {
+    #smalltext {font-size: 12px;}
+    #block-inside {margin: 30px auto;width: 80%;height: 370px;padding: 22px}
+    #task {margin-top: 15px; }
+    #text {font-size: 12px;}
+    #block {width: 80%;height: 400;padding: 20px;  }
+    #line2 {width: 3px;height: 30px;margin: 55px 0px 0px 14px;}
+    #title {font-size: 15px;}
+    #top{padding: 12px;font-size: 16px;}
+  }

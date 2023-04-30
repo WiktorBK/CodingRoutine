@@ -292,7 +292,7 @@
   
   @media screen and (max-width: 650px) {
     #admin-header {margin-left: 18.5px;width: 90%;}
-    #admin-box {width: 370px;height: 900px;}
+    #admin-box {width: 370px;height: 1000px;}
     .model-box {height: 35px;width: 275px;margin: 10px;font-size: 21px;padding: 45px 20px 35px 20px;}
     #admin-content {margin-left: 18.5px;width: 90%;}
     #models-content {margin-left: 18.5px;width: 90%;}

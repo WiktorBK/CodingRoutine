@@ -21,11 +21,12 @@
     background-color: #20cd8d;
     text-decoration: none;
     color: white;
-    padding: 7px 25px;
+    padding: 10px 25px;
     border-radius: 10px;
     font-weight: 600;
     transition: 0.3s;
   }
+
   #resend:hover {
     background-color: #10bc7c;
   }
@@ -36,7 +37,7 @@
     color: white;
     padding: 7px 25px;
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: 700;
     transition: 0.3s;
   }
   #take-home:hover {
@@ -44,10 +45,8 @@
   }
   
   #resend-div {
-    /* border:1px solid black; */
     height: 100px;
     text-align: center;
-    /* justify-content: center; */
   }
   
   #having-problems {
@@ -55,8 +54,8 @@
   }
   
   #contact-us {
-    /* text-decoration: none; */
-    font-weight: 600;
+    font-weight: 700;
+    margin-left: 5px;
     color: rgb(227, 227, 227);
     transition: 0.3s;
   }
@@ -82,6 +81,11 @@
       font-size: 15px;
       width: 100%;
       margin-top: 4px;
+    }
+
+    #resend{
+      font-size: 15px;
+
     }
 
   }

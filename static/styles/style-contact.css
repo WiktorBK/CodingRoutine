@@ -1,7 +1,7 @@
 #contact-box {
   margin: 0 auto;
-  width: 70%;  
-  height: 580px;
+  width: 80%;  
+  height: auto;
   background-color: #243234;
   box-shadow: -1px 7px 40px -22px #121212;
   padding: 20px;
@@ -13,9 +13,9 @@
   justify-content: center;
 }
 #inline[type="text"] {
-  width: 245px;
+  width: 265px;
   margin: 0 5px;
-  height: 50px;
+  height: 45px;
   border-radius: 20px;
   font-size: 18px;
   padding: 10px;
@@ -49,8 +49,8 @@
 
 #message[type="text"] {
   margin: 15px;
-  width: 500px;
-  height: 200px;
+  width: 540px;
+  height: 230px;
   border-radius: 10px;
   font-size: 16px;
   padding: 7px;
@@ -59,7 +59,7 @@
   box-sizing: border-box;
   border: 2px solid #ccc;
   outline: none;
-  resize: vertical;
+  resize: none;
   font-weight: 600;
   font-family: "Nunito", sans-serif;
   max-height: 200px;
@@ -89,7 +89,7 @@
 }
 
 #email-contact[type="text"] {
-  width: 500px;
+  width: 540px;
   height: 50px;
   border-radius: 20px;
   font-size: 18px;
@@ -124,13 +124,11 @@
     height: 45px;
     font-size: 18px;
   }
-  #contact-box {
-    height: 520px;
-  }
+
 
   #inline[type="text"] {
     width: 185px;
-    height: 40px;
+    height: 40x;
     font-size: 14px;
   }
   #inline::placeholder {
@@ -149,7 +147,7 @@
   #message[type="text"] {
     width: 380px;
     font-size: 14px;
-    max-height: 200px;
+    height: 300px;
     margin-top: 0px;
   }
   #message::placeholder {
@@ -159,41 +157,78 @@
 
 @media screen and (max-width: 800px) {
   #contact-input[type="submit"] {
-    width: 120px;
-    height: 35px;
+    height: 40px;
     font-size: 16px;
   }
-  #contact-box {
-    height: 420px;
-  }
+
 
   #inline[type="text"] {
-    width: 102px;
-    height: 30px;
-    font-size: 11px;
+    width: 165px;
+    height: 40px;
+    font-size: 14px;
     margin: 0px 3px;
     padding: 5px;
   }
 
   #inline::placeholder {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   #email-contact[type="text"] {
-    width: 210px;
-    height: 30px;
-    background-size: 20px;
-    font-size: 11px;
+    width: 336px;
+    height: 40px;
+    background-size: 25px;
+    font-size: 14px;
     margin: 7px;
   }
   #email-contact::placeholder {
-    font-size: 11px;
+    font-size: 14px;
   }
   #message[type="text"] {
-    width: 210px;
+    width: 336px;
+    margin: 0;
+    font-size: 13px;
+    max-height: 200px;
+  }
+  #message::placeholder {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #contact-input[type="submit"] {
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  #inline[type="text"] {
+    width: 130px;
+    height: 35px;
+    font-size: 12px;
+    margin: 0px 3px;
+    padding: 5px;
+  }
+
+  #inline::placeholder {
+    font-size: 12px;
+  }
+
+  #email-contact[type="text"] {
+    width: 266px;
+    height: 35px;
+    background-size: 20px;
+    font-size: 12px;
+    margin: 7px;
+  }
+  #email-contact::placeholder {
+    font-size: 12px;
+  }
+  #message[type="text"] {
+    width: 266px;
     margin: 0;
     font-size: 11px;
-    max-height: 120px;
+    max-height: 200px;
   }
   #message::placeholder {
     font-size: 11px;

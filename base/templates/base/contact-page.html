@@ -3,6 +3,12 @@
 <div class="container">
   <div id="contact-box">
     <h2 style="margin-bottom: 50px">Contact us</h2>
+      {% if messages %}
+          {% for message in messages %} 
+          <div style="color:rgb(196, 1, 1); font-weight: 900; opacity: 0.8; margin-bottom: 15px;text-align:center;">{{message}}</div>
+          {% endfor %}
+      {%endif%}
+
     <form action="" method="POST">
       {%csrf_token%}
       <div id="inline-form">{{form.first_name}} {{form.last_name}}</div>
