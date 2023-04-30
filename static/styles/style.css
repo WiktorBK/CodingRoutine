@@ -51,7 +51,7 @@ body {
 .container {
   margin: 100px auto;
   padding: auto;
-  width: 1000px;
+  width: 900px;
 }
 
 #text {
@@ -68,7 +68,7 @@ h1 {
 
 h2 {
   color: #20cd8d;
-  font-size: 52px;
+  font-size: 37px;
   width: 100%;
   text-align: center;
   margin: 0 auto;
@@ -95,7 +95,7 @@ p {
 }
 
 #email[type="text"] {
-  width: 500px;
+  width: 540px;
   height: 50px;
   border-radius: 20px;
   font-size: 18px;
@@ -203,19 +203,29 @@ footer{
   #line { width: 5px; height: 35px; margin-right: 8px;}
   .container {width: 700px; margin: 30px auto;}
   h1 { font-size: 56px;width: 512px;border:1px solid #182527}
-  h2 {font-size: 33px;}
+  h2 {font-size: 30px;}
 
 }
 
 @media screen and (max-width: 800px) {
   .topnav a { font-size: 22px; margin: 40px 20px;}
-  .container {width: 360px; margin: 50px auto;}
+  .container {width: 450px; margin: 50px auto;}
   #line {width: 4px; height: 30px; margin-right: 8px;}
   h1 {font-size: 49px; width: 350px;}
-  #sign-up[type="submit"] {width: 180px; height: 45px; font-size: 20px;}
-  #email[type="text"] {width: 360px; height: 42px; background-size: 30px;}
-  p {font-size: 16px;width: auto;margin: 20 auto; display:flex; justify-content: center;}
+  #sign-up[type="submit"] {width: 200px; height: 45px; font-size: 20px;}
+  #email[type="text"] {width: 400px; height: 42px; background-size: 30px;}
+  p {font-size: 18px;width: auto;margin: 20 auto; display:flex; justify-content: center;}
   h2 {font-size: 25px;}
-
-
 }
+
+@media screen and (max-width: 600px) {
+  .topnav a { font-size: 22px; margin: 40px 20px;}
+  .container {width: 350px; margin: 50px auto;}
+  #line {width: 3px; height: 28px; margin-right: 3px;}
+  h1 {font-size: 47px; width: 350px;}
+  #sign-up[type="submit"] {width: 180px; height: 45px; font-size: 20px;}
+  #email[type="text"] {width: 320px; height: 40px; background-size: 26px;}
+  p {font-size: 15px;width: auto;margin: 10 auto; display:flex; justify-content: center;}
+  h2 {font-size: 20px;}
+}
+
