@@ -2,9 +2,26 @@
 {%extends 'main.html'%}
 {%block content%}
 {% include 'navbar.html'%}
-<div class="container">
- <h1>How to unsubscribe?</h1>
+{%load static%}
+<link rel="stylesheet"href="{% static 'styles/unsubscribe.css'%}"type="text/css"/>
+
+
+<div class="wrapper">
+
+<div id="left">
+
+ <div id="header">How to unsubscribe?</div>
+ <div class="element"><span>1.</span> Open an email message sent by CodingRoutine. You will find it<a id="link" target="_blank" href="https://mail.google.com/mail/u/#search/from%3Acodingroutine.help%40gmail.com"> here.</a>  </div>
+ <div class="element"><span>2.</span> At the bottom of the email content search for unsubscribe button.</div>
+ <div class="element"><span>3.</span> After clicking it, you will no longer receive any emails from CodingRoutine. If you change your mind, you can always sign up again!</div>
+
 </div>
+
+<img id="screenshot" src="{%static 'images/footer.png'%}" alt="">
+
+</div>
+
+
 
 {%include 'footer.html'%}
 {%endblock%}

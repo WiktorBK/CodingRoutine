@@ -14,17 +14,11 @@
     {%else%}
     {%endif%}
 
+
     <div id="text">
       <h1>Let the routine help you</h1>
       <p>Enter your email and receive daily coding exercise</p>
     </div>
-    <div class="center">
-    {% if messages %}
-        {% for message in messages %}
-        <div style="color:rgb(183, 0, 0); font-weight: 900; opacity: 0.7; margin-top: 230px;">{{ message }}</div>
-        {% endfor %}
-    {%endif%}
-  </div>
    <form action="{% url 'home' %}" onsubmit="disable()" method="POST">
     {%csrf_token%}
 
@@ -32,6 +26,11 @@
         {{ form.email }}
       </div>
 
+      {% if messages %}
+      {% for message in messages %}
+      <div style="color:rgb(199, 0, 0); font-weight: 900; text-align:center; opacity: 0.8; margin-top: 10px;">{{ message }}</div>
+      {% endfor %}
+  {%endif%}
 
       <div id="input">
         <input id="sign-up" type="submit" name="Submit" value="Sign Up" />
@@ -40,14 +39,10 @@
     <div id="smalltext">
       <small>Zero spam. One click unsubscribe.</small>
     </div>
+ 
 
-  </div>
+    <div id="block">
 
-  
-  <div class="container2">
-
-</a>
-<div id="block">
   <h2>Sample coding exercise</h2>
   
   <div id="block-inside">
@@ -70,8 +65,9 @@
     </div>
   </div>
 </div>
-
-<div id="sec-header">Email sample:</div>
+</div>
+<div id="block">
+<h2>Email sample</h2>
 <div id="img-wrapper">
 <img id="img" src="{% static 'images/email_screen.png'%}" alt="">
 </div>
@@ -79,7 +75,12 @@
 </div>
 
 
+<div id="top-wrap">
+<a href="#" id="top">Enter email and get exercise everyday</a>
 </div>
+
+</div>
+
 
 <script src="{% static 'js/script.js'%}"></script>
 
