@@ -28,6 +28,11 @@ Currently running on a server (NGINX + GUNICORN)
 ### Administration Panel
 ![](https://github.com/WiktorBK/CodingRoutine/assets/82653550/abd9b6ed-1d39-4f03-b03d-111d2836ae18)
 
+### Custom email templates
+![](https://github.com/WiktorBK/CodingRoutine/assets/82653550/9128fd03-17a9-49bf-aa65-ed76f5ded4bd)
+![image](https://github.com/WiktorBK/CodingRoutine/assets/82653550/3ae1c603-9918-476a-b57d-5c37a7119810)
+
+
 
 ### Bug / Feature Request
 
